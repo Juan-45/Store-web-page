@@ -1,6 +1,16 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960, //smartphonePortrait
+      lg: 1200,
+      xl: 1920, //desktop
+    },
+  },
+
   components: {
     // Name of the component
     MuiPaper: {
@@ -13,14 +23,27 @@ const theme = createTheme({
           },
         },
       ],
+    },
 
-      /* styleOverrides: {
-			// Name of the slot
-			root: {
-			  // Some CSS
-			  fontSize: '1rem',
-			},
-		  },*/
+    MuiTypography: {
+      styleOverrides: {
+        // Name of the slot
+        h1: {
+          // Some CSS
+          fontSize: "4rem",
+        },
+        h2: {
+          // Some CSS
+          fontSize: "3rem",
+        },
+        h3: {
+          // Some CSS
+          fontSize: "2rem",
+        },
+        body1: {
+          fontSize: "1.4rem",
+        },
+      },
     },
   },
 });
