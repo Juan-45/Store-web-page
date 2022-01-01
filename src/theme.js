@@ -12,7 +12,6 @@ const theme = createTheme({
   },
 
   components: {
-    // Name of the component
     MuiPaper: {
       variants: [
         {
@@ -25,19 +24,20 @@ const theme = createTheme({
       ],
     },
 
+    // Name of the component
     MuiTypography: {
       styleOverrides: {
+        root: {
+          lineHeight: 1.2, //To improve overflow avoidness on laptop screen
+        },
         // Name of the slot
         h1: {
-          // Some CSS
           fontSize: "4rem",
         },
         h2: {
-          // Some CSS
           fontSize: "3rem",
         },
         h3: {
-          // Some CSS
           fontSize: "2rem",
         },
         body1: {

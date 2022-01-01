@@ -81,7 +81,7 @@ const Home = () => {
     backgroundColor: "#747474",
     color: "white",
     opacity: "80%",
-    width: "70%",
+    width: "90%", //On laptop screen %70 causes overflow.
   }));
 
   return (
