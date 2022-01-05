@@ -25,6 +25,8 @@ const NavBar = ({ children, shouldDisplay }) => {
   const Container = useMemo(
     () =>
       styled(Grid)({
+        position: "relative",
+        height: "100%",
         background: "green",
       }),
     []
