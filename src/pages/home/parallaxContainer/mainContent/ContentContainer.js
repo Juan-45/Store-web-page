@@ -10,7 +10,7 @@ const ContentContainer = styled(Grid)(({ img }) => ({
   filter: "sepia(30%)",
   //object
   width: "100vw",
-  height: "70vh",
+  height: "80vh",
   zIndex: "1",
   //object-wrapper
   position: "relative",
