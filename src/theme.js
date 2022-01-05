@@ -32,7 +32,7 @@ theme.components.MuiTypography = {
   styleOverrides: {
     root: {
       [theme.breakpoints.up("xs")]: {
-        lineHeight: 1,
+        lineHeight: 1.1,
       },
 
       [theme.breakpoints.up("xl")]: {
@@ -41,7 +41,7 @@ theme.components.MuiTypography = {
     },
     h1: {
       [theme.breakpoints.up("xs")]: {
-        fontSize: "3.5rem",
+        fontSize: "3rem",
       },
 
       [theme.breakpoints.up("xl")]: {
