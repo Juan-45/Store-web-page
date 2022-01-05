@@ -6,7 +6,7 @@ const theme = createTheme({
       xs: 0,
       sm: 600,
       md: 960, //smartphonePortrait
-      lg: 1200,
+      lg: 1366,
       xl: 1920, //desktop
     },
   },
@@ -23,29 +23,59 @@ const theme = createTheme({
         },
       ],
     },
+  },
+});
 
-    // Name of the component
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          lineHeight: 1.2, //To improve overflow avoidness on laptop screen
-        },
-        // Name of the slot
-        h1: {
-          fontSize: "4rem",
-        },
-        h2: {
-          fontSize: "3rem",
-        },
-        h3: {
-          fontSize: "2rem",
-        },
-        body1: {
-          fontSize: "1.4rem",
-        },
+//Name of the component (MuiTypography)
+//Name of the slot (root, h1, h2, etc)
+theme.components.MuiTypography = {
+  styleOverrides: {
+    root: {
+      [theme.breakpoints.up("xs")]: {
+        lineHeight: 1,
+      },
+
+      [theme.breakpoints.up("xl")]: {
+        lineHeight: 1.2,
+      },
+    },
+    h1: {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "3.5rem",
+      },
+
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "4rem",
+      },
+    },
+    h2: {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "2.625rem",
+      },
+
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "3rem",
+      },
+    },
+    h3: {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "1.75rem",
+      },
+
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "2rem",
+      },
+    },
+    body1: {
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "1.225rem",
+      },
+
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "1.4rem",
       },
     },
   },
-});
+};
 
 export default theme;
