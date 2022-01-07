@@ -4,10 +4,10 @@ import Paper from "@mui/material/Paper";
 const FadeOnScrolling = ({ currentOpacityValue }) => {
   const FadeOnScrolling = styled(Paper, {
     shouldForwardProp: (prop) => prop !== "currentOpacityValue",
-  })(({ currentOpacityValue }) => ({
+  })(({ currentOpacityValue, theme }) => ({
     width: "100vw",
     height: "20vh",
-    backgroundColor: "#000000a1", //"#747474ba",
+    backgroundColor: "#000000a1",
     opacity: currentOpacityValue,
     position: "relative",
     top: "80vh",
