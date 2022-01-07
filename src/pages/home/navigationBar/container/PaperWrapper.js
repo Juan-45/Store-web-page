@@ -1,12 +1,9 @@
 import { styled } from "@mui/material/styles";
 import { Paper } from "@mui/material";
 import { useMemo } from "react";
-import useCheckTouchScreens from "hooks/useCheckTouchScreens";
 import "./paperWrapper/PaperWrapperFade.css";
 
-const PaperWrapper = ({ children, shouldDisplay }) => {
-  const { isTouchScreen } = useCheckTouchScreens();
-
+const PaperWrapper = ({ children, shouldDisplay, isTouchScreen }) => {
   const Wrapper = useMemo(
     () =>
       styled(Paper, {

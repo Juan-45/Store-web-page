@@ -2,9 +2,9 @@ import { Grid } from "@mui/material/";
 import { Typography } from "@mui/material";
 import PaperWrapper from "./container/PaperWrapper";
 
-const Container = ({ children, shouldDisplay }) => {
+const Container = ({ children, shouldDisplay, isTouchScreen }) => {
   return (
-    <PaperWrapper shouldDisplay={shouldDisplay}>
+    <PaperWrapper shouldDisplay={shouldDisplay} isTouchScreen={isTouchScreen}>
       <Grid container justifyContent="center">
         <Grid item xs={10} md={9} lg={7} xl={6}>
           <Grid
