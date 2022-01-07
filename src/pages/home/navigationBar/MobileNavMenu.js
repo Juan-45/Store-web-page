@@ -7,11 +7,11 @@ import { Typography } from "@mui/material";
 import MobileButton from "./mobileNavMenu/MobileButton";
 import { useState } from "react";
 
-const MobileNavMenu = ({ pages }) => {
+const MobileNavMenu = ({ pages, isTouchScreen }) => {
   const [elementPosition, setElementPosition] = useState();
   const handleOpenMenu = (e) => setElementPosition(e.currentTarget);
   const handleCloseMenu = () => setElementPosition(false);
-
+  console.log(isTouchScreen);
   return (
     <Grid
       container
@@ -34,6 +34,9 @@ const MobileNavMenu = ({ pages }) => {
         onClose={handleCloseMenu}
         sx={{
           display: { xs: "block", md: "none" },
+          "& .MuiMenu-paper": {
+            maxWidth: isTouchScreen ? "100%" : "calc(100% - 16px)",
+          },
         }}
       >
         {pages.map((page) => (
