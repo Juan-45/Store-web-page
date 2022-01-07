@@ -1,4 +1,3 @@
-import React from "react";
 import ContentSample from "./mainContent/ContentSample";
 import ContentContainer from "./mainContent/ContentContainer";
 import PresentationContainer from "./mainContent/PresentationContainer";
@@ -79,4 +78,4 @@ const MainContent = () => {
   );
 };
 
-export default React.memo(MainContent);
+export default MainContent;

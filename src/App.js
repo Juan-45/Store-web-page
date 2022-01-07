@@ -5,6 +5,7 @@ import Home from "pages/Home";
 
 //TODO set min width for large screen and no-effects for smartphone screens
 //TODO comprobar layout en laptop
+//TODO set all imports from MUI to {}
 function App() {
   return (
     <ThemeProvider theme={theme}>
