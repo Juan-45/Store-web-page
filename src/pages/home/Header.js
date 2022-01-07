@@ -4,7 +4,6 @@ import HeaderContainer from "./header/HeaderContainer";
 import TopSection from "./header/TopSection";
 import BottomSection from "./header/BottomSection";
 import HeaderBackground from "./header/HeaderBackground";
-import { memo } from "react";
 
 const Header = () => {
   return (
@@ -34,4 +33,4 @@ const Header = () => {
   );
 };
 
-export default memo(Header);
+export default Header;

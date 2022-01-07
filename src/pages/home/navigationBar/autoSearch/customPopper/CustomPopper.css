@@ -1,0 +1,5 @@
+#customPopper .MuiPaper-root {
+  background: #bdbdbd;
+  color: black;
+  border-radius: unset;
+}
