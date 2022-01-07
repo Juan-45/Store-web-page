@@ -102,7 +102,6 @@ theme.components = {
             borderRadius: "0",
             background: theme.palette.primary.main,
             width: "100vw",
-            maxWidth: "calc(100% - 16px)",
             position: "fixed",
             top: "0 !important",
             left: "0 !important",
