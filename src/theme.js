@@ -15,6 +15,7 @@ const theme = createTheme({
     background: {
       dark: "#2d2d2d",
       default: "#747474",
+      defaultTraslucid: "#747474e6",
       light: "#f2f2f2",
     },
   },
@@ -22,7 +23,7 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 600,
+      sm: 800,
       md: 960, //smartphonePortrait
       lg: 1366,
       xl: 1920, //desktop
