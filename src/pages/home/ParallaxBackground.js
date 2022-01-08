@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import wood from "images/wood.jpg";
 import Grid from "@mui/material/Grid";
 
-const HeaderBackground = styled(Grid)({
+const ParallaxBackground = styled(Grid)({
   //component-style
   backgroundImage: `url(${wood})`,
   backgroundSize: "cover",
@@ -23,4 +23,4 @@ const HeaderBackground = styled(Grid)({
   transform: "translateZ(-13px) scale(14.2)",
 });
 
-export default HeaderBackground;
+export default ParallaxBackground;
