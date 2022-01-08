@@ -5,10 +5,8 @@ import MobileButton from "../MobileButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState, useEffect, useMemo } from "react";
-//import useCheckTouchScreens from "hooks/useCheckTouchScreens";
 
 const Carousel = ({ children }) => {
-  //const { isTouchScreen } = useCheckTouchScreens();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
   const [touchPosition, setTouchPosition] = useState(null);
@@ -19,7 +17,7 @@ const Carousel = ({ children }) => {
   };
 
   const goForwardHandler = () => {
-    if (currentIndex < length - 1) {
+    if (currentIndex < length /* - show*/) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -60,15 +58,15 @@ const Carousel = ({ children }) => {
 
   const CarouselContent = useMemo(
     () =>
-      styled(Box, {
-        shouldForwardProp: (prop) => prop !== "currentIndex",
-      })(({ currentIndex }) => ({
+      styled(Box)({
         display: "flex",
         msOverflowStyle: "none",
         scrollbarWidth: "none",
         transition: "all 600ms ease-in-out",
-        transform: `translateX(-${currentIndex * 100}%)`,
-      })),
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+      }),
     []
   );
 
@@ -79,13 +77,21 @@ const Carousel = ({ children }) => {
 
   return (
     <Grid container justifyContent="center">
-      <Grid item xs={12} md={10} lg={8}>
+      <Grid item xs={12} md={10}>
         <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <Box sx={{ display: "flex", width: "100%", position: "relative" }}>
+          <Box
+            sx={{
+              display: "flex",
+              boxSizing: "border-box",
+              width: "100%",
+              position: "relative",
+              paddingX: "68px",
+            }}
+          >
             {currentIndex > 0 && (
               <ButtonContainer
                 sx={{
-                  left: "24px",
+                  left: "17px",
                   "@media (hover: none) and (pointer: coarse)": {
                     display: "none",
                   },
@@ -97,30 +103,48 @@ const Carousel = ({ children }) => {
               </ButtonContainer>
             )}
             <Box
-              sx={{ overflow: "hidden", width: "100%", height: "100%" }}
+              sx={{ overflow: "hidden", width: "100%", minWidth: "100px" }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
             >
               <CarouselContent
+                //show={show}
                 currentIndex={currentIndex}
                 sx={{
-                  "& > *": {
-                    width: "100%",
-                    flexShrink: "0",
-                    flexGrow: "0",
-                  },
-                  "&::-webkit-scrollbar": {
-                    display: "none",
+                  transform: {
+                    xs: `translateX(-${currentIndex * 100}%)`,
+                    sm: `translateX(-${currentIndex * 50}%)`,
+                    lg: `translateX(-${currentIndex * (100 / 3)}%)`,
+                    xl: `translateX(-${currentIndex * 25}%)`,
                   },
                 }}
               >
-                {children}
+                {children.map((item) => (
+                  <Box
+                    /*container
+                justifyContent="center"*/
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      width: {
+                        xs: "100%",
+                        sm: "50%",
+                        lg: `${100 / 3}%`,
+                        xl: "25%",
+                      },
+                      flexShrink: "0",
+                      flexGrow: "0",
+                    }}
+                  >
+                    {item}
+                  </Box>
+                ))}
               </CarouselContent>
             </Box>
-            {currentIndex < length - 1 && (
+            {currentIndex < length /*- show*/ && (
               <ButtonContainer
                 sx={{
-                  right: "24px",
+                  right: "17px",
                   "@media (hover: none) and (pointer: coarse)": {
                     display: "none",
                   },
