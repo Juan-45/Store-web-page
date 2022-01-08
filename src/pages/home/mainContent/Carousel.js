@@ -5,11 +5,23 @@ import MobileButton from "../MobileButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState, useEffect, useMemo } from "react";
+import { useMediaQuery } from "@mui/material";
 
 const Carousel = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
   const [touchPosition, setTouchPosition] = useState(null);
+  const [show, setShow] = useState(1);
+
+  const isOnXS = useMediaQuery("(min-width:0px)");
+
+  const isOnSM = useMediaQuery("(min-width:800px)");
+
+  const isOnLG = useMediaQuery("(min-width:1366px)");
+
+  const isOnXL = useMediaQuery("(min-width:1920px)");
+
+  console.log(isOnXS);
 
   const handleTouchStart = (e) => {
     const touchDown = e.touches[0].clientX;
@@ -17,7 +29,7 @@ const Carousel = ({ children }) => {
   };
 
   const goForwardHandler = () => {
-    if (currentIndex < length /* - show*/) {
+    if (currentIndex < length - show) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -69,11 +81,33 @@ const Carousel = ({ children }) => {
       }),
     []
   );
-
+  console.log("cantidad de items:", show);
+  console.log("isOnXS", isOnXS);
+  console.log("isOnSM", isOnSM);
+  console.log("isOnLG", isOnLG);
+  console.log("isOnXL", isOnXL);
   // Set the length to match current children from props
   useEffect(() => {
     setLength(children.length);
   }, [children]);
+  useEffect(() => {
+    if (isOnXS) {
+      setShow(1);
+      setCurrentIndex(0);
+    }
+    if (isOnSM) {
+      setShow(2);
+      setCurrentIndex(0);
+    }
+    if (isOnLG) {
+      setShow(3);
+      setCurrentIndex(0);
+    }
+    if (isOnXL) {
+      setShow(4);
+      setCurrentIndex(0);
+    }
+  }, [isOnXS, isOnSM, isOnLG, isOnXL]);
 
   return (
     <Grid container justifyContent="center">
@@ -121,8 +155,7 @@ const Carousel = ({ children }) => {
               >
                 {children.map((item) => (
                   <Box
-                    /*container
-                justifyContent="center"*/
+                    key={`CarouselItem-${Math.random()}`}
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -141,7 +174,7 @@ const Carousel = ({ children }) => {
                 ))}
               </CarouselContent>
             </Box>
-            {currentIndex < length /*- show*/ && (
+            {currentIndex < length - show && (
               <ButtonContainer
                 sx={{
                   right: "17px",
