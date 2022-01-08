@@ -1,14 +1,14 @@
 import { Typography } from "@mui/material";
-import FadeBottomBackground from "./header/FadeBottomBackground";
+import FadeBackground from "./FadeBackground";
 import HeaderContainer from "./header/HeaderContainer";
 import TopSection from "./header/TopSection";
 import BottomSection from "./header/BottomSection";
-import HeaderBackground from "./header/HeaderBackground";
+import ParallaxBackground from "./ParallaxBackground";
 
 const Header = () => {
   return (
     <>
-      <HeaderBackground />
+      <ParallaxBackground />
       <HeaderContainer
         container
         direction="column"
@@ -27,7 +27,7 @@ const Header = () => {
             interdum dapibus mauris eget maximus. Suspendisse potenti.
           </Typography>
         </BottomSection>
-        <FadeBottomBackground />
+        <FadeBackground position={{ top: "80vh" }} />
       </HeaderContainer>
     </>
   );

@@ -4,7 +4,8 @@ import { Menu } from "@mui/material";
 import { ListItemIcon } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Typography } from "@mui/material";
-import MobileButton from "./mobileNavMenu/MobileButton";
+import MobileButton from "../MobileButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 
 const MobileNavMenu = ({ pages, isTouchScreen }) => {
@@ -24,7 +25,9 @@ const MobileNavMenu = ({ pages, isTouchScreen }) => {
         alignItems: { xs: "center", md: "none" },
       }}
     >
-      <MobileButton onClick={handleOpenMenu} />
+      <MobileButton onClick={handleOpenMenu}>
+        <MenuIcon />
+      </MobileButton>
       <Menu
         elevation={16}
         variant="blue"
