@@ -2,11 +2,16 @@ import ContentSample from "./mainContent/ContentSample";
 import ContentContainer from "./mainContent/ContentContainer";
 import PresentationContainer from "./mainContent/PresentationContainer";
 import PresentationItem from "./mainContent/PresentationItem";
+import ParallaxBackground from "./ParallaxBackground";
+import FadeBackground from "./FadeBackground";
 
 import nuts from "images/nuts.jpg";
 import driedFruits from "images/driedFruits.jpg";
-import Grid from "@mui/material/Grid";
+import { Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import Carousel from "./mainContent/Carousel";
+import theme from "theme";
 
 const MainContent = () => {
   return (
@@ -73,7 +78,42 @@ const MainContent = () => {
           </PresentationItem>
         </PresentationContainer>
       </ContentContainer>
-      <ContentSample />
+      <ParallaxBackground sx={{ top: "270vh" }} />
+      <Box
+        sx={{
+          height: "110vh",
+          position: "relative",
+        }}
+      >
+        <FadeBackground />
+        <Grid
+          container
+          sx={{
+            height: "20vh",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="h2" sx={{ width: "100%" }}>
+            Productos destacados
+          </Typography>
+        </Grid>
+        <Grid
+          container
+          sx={{
+            height: "70vh",
+            background: theme.palette.background.default,
+            opacity: "90%",
+          }}
+        >
+          <Carousel>
+            <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
+            <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
+            <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
+          </Carousel>
+        </Grid>
+      </Box>
+      <ContentSample>FOOTER</ContentSample>
     </>
   );
 };
