@@ -1,9 +1,10 @@
 import { styled } from "@mui/material/styles";
+import theme from "theme";
 
 const ContentSample = styled("div")({
-  backgroundColor: "#504133",
+  backgroundColor: theme.palette.background.dark,
   zIndex: "1",
-  height: "6000px",
+  height: "500px",
 });
 
 export default ContentSample;
