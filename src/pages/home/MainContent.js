@@ -98,20 +98,136 @@ const MainContent = () => {
             Productos destacados
           </Typography>
         </Grid>
-        <Grid
-          container
+        <Box
           sx={{
             height: "70vh",
-            background: theme.palette.background.default,
-            opacity: "90%",
+            background: theme.palette.background.defaultTraslucid,
           }}
         >
-          <Carousel>
-            <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
-            <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
-            <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
+          <Carousel /*show={3}*/>
+            <div
+              style={{
+                padding: 25,
+                boxSizing: "border-box",
+                maxHeight: "70vh",
+              }}
+            >
+              <img
+                src="https://via.placeholder.com/300x300"
+                alt="placeholder"
+                style={{
+                  height: "auto",
+                  maxWidth: "100%",
+                }}
+              />
+              <div
+                style={{
+                  background: "green",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                  height: "auto",
+                  maxWidth: "300px",
+                }}
+              >
+                <h2>Producto N</h2>
+                <p style={{ fontSize: "1.3rem" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  interdum dapibus mauris eget maximus. Suspendisse potenti.
+                </p>
+              </div>
+            </div>
+            <div
+              style={{
+                padding: 25,
+                boxSizing: "border-box",
+                maxHeight: "70vh",
+              }}
+            >
+              <img
+                src="https://via.placeholder.com/300x300"
+                alt="placeholder"
+                style={{
+                  height: "auto",
+                  maxWidth: "100%",
+                }}
+              />
+              <div
+                style={{
+                  background: "green",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                  maxWidth: "300px",
+                }}
+              >
+                <h2>Producto N</h2>
+                <p style={{ fontSize: "1.3rem" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  interdum dapibus mauris eget maximus. Suspendisse potenti.
+                </p>
+              </div>
+            </div>
+            <div
+              style={{
+                padding: 25,
+                boxSizing: "border-box",
+                maxHeight: "70vh",
+              }}
+            >
+              <img
+                src="https://via.placeholder.com/300x300"
+                alt="placeholder"
+                style={{
+                  height: "auto",
+                  maxWidth: "100%",
+                }}
+              />
+              <div
+                style={{
+                  background: "green",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                  maxWidth: "300px",
+                }}
+              >
+                <h2>Producto N</h2>
+                <p style={{ fontSize: "1.3rem" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  interdum dapibus mauris eget maximus. Suspendisse potenti.
+                </p>
+              </div>
+            </div>
+            <div
+              style={{
+                padding: 25,
+                boxSizing: "border-box",
+                maxHeight: "70vh",
+              }}
+            >
+              <img
+                src="https://via.placeholder.com/300x300"
+                alt="placeholder"
+                style={{
+                  height: "auto",
+                  maxWidth: "100%",
+                }}
+              />
+              <div
+                style={{
+                  background: "green",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                  maxWidth: "300px",
+                }}
+              >
+                <h2>Producto N</h2>
+                <p style={{ fontSize: "1.3rem" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  interdum dapibus mauris eget maximus. Suspendisse potenti.
+                </p>
+              </div>
+            </div>
           </Carousel>
-        </Grid>
+        </Box>
       </Box>
       <ContentSample>FOOTER</ContentSample>
     </>
