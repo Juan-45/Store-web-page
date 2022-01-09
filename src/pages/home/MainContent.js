@@ -131,8 +131,7 @@ const MainContent = () => {
               >
                 <h2>Producto N</h2>
                 <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  interdum dapibus mauris eget maximus. Suspendisse potenti.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
               </div>
             </div>
@@ -161,8 +160,7 @@ const MainContent = () => {
               >
                 <h2>Producto N</h2>
                 <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  interdum dapibus mauris eget maximus. Suspendisse potenti.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
               </div>
             </div>
@@ -191,8 +189,7 @@ const MainContent = () => {
               >
                 <h2>Producto N</h2>
                 <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  interdum dapibus mauris eget maximus. Suspendisse potenti.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
               </div>
             </div>
@@ -221,8 +218,7 @@ const MainContent = () => {
               >
                 <h2>Producto N</h2>
                 <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  interdum dapibus mauris eget maximus. Suspendisse potenti.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
               </div>
             </div>
