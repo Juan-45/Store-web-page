@@ -23,11 +23,6 @@ const Carousel = ({ children }) => {
 
   console.log(isOnXS);
 
-  const handleTouchStart = (e) => {
-    const touchDown = e.touches[0].clientX;
-    setTouchPosition(touchDown);
-  };
-
   const goForwardHandler = () => {
     if (currentIndex < length - show) {
       setCurrentIndex((prevState) => prevState + 1);
@@ -38,6 +33,11 @@ const Carousel = ({ children }) => {
     if (currentIndex > 0) {
       setCurrentIndex((prevState) => prevState - 1);
     }
+  };
+
+  const handleTouchStart = (e) => {
+    const touchDown = e.touches[0].clientX;
+    setTouchPosition(touchDown);
   };
 
   const handleTouchMove = (e) => {
@@ -137,7 +137,13 @@ const Carousel = ({ children }) => {
               </ButtonContainer>
             )}
             <Box
-              sx={{ overflow: "hidden", width: "100%", minWidth: "100px" }}
+              id="test----------------------------"
+              sx={{
+                overflow: "hidden",
+                width: "100%",
+                height: "100%",
+                minWidth: "100px",
+              }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
             >
