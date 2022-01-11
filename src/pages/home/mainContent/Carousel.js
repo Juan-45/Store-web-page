@@ -4,7 +4,7 @@ import { Grid } from "@mui/material";
 import MobileButton from "../MobileButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useMediaQuery } from "@mui/material";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
 //import MobileStepper from "@mui/material/MobileStepper";
@@ -14,6 +14,15 @@ const Carousel = ({ children }) => {
   const [length, setLength] = useState(children.length);
   const [touchPosition, setTouchPosition] = useState(null);
   const [show, setShow] = useState(1);
+  const [translationSettings, setTranslationSettings] = useState({
+    translationPorcentage: 0,
+    numberOfCompleteTranslations: 0,
+  });
+  const [currentTraslateXValue, setCurrentTraslateXValue] = useState(0);
+  const [shouldDisplayForwardButton, setShouldDisplayForwardButton] =
+    useState(true);
+  const [stepsAmount, setStepsAmount] = useState(0);
+
   const { isTouchScreen } = useCheckTouchScreens();
 
   const isOnXS = useMediaQuery("(min-width:0px)");
@@ -24,8 +33,36 @@ const Carousel = ({ children }) => {
 
   const isOnXL = useMediaQuery("(min-width:1920px)");
 
+  const getTranslationSettings = useCallback((lengthVal, showVal) => {
+    const getNumberOfCompleteTranslations = (lengthVal, showVal) => {
+      const rest = lengthVal - showVal;
+      const quotient = rest / showVal;
+      return Math.trunc(quotient);
+    };
+
+    const getSamplesAmount = (translationAmount) => {
+      const FIRST_SAMPLE = 1;
+      return translationAmount + FIRST_SAMPLE;
+    };
+
+    const numberOfCompleteTranslations = getNumberOfCompleteTranslations(
+      lengthVal,
+      showVal
+    );
+
+    const remainingItems =
+      lengthVal - getSamplesAmount(numberOfCompleteTranslations) * showVal;
+
+    const translationPorcentage = (remainingItems / showVal) * 100;
+
+    return {
+      translationPorcentage,
+      numberOfCompleteTranslations,
+    };
+  }, []);
+
   const goForwardHandler = () => {
-    if (currentIndex < length - show) {
+    if (currentIndex < translationSettings.numberOfCompleteTranslations + 1) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -72,13 +109,14 @@ const Carousel = ({ children }) => {
   const CarouselContent = useMemo(
     () =>
       styled(Box, {
-        shouldForwardProp: (prop) => prop !== "show" && prop !== "currentIndex",
-      })(({ show, currentIndex }) => ({
+        shouldForwardProp: (prop) =>
+          prop !== "show" && prop !== "currentTraslateXValue",
+      })(({ show, currentTraslateXValue }) => ({
         display: "flex",
         msOverflowStyle: "none",
         scrollbarWidth: "none",
         transition: "all 600ms ease-in-out",
-        transform: `translateX(-${currentIndex * (100 / show)}%)`,
+        transform: `translateX(-${currentTraslateXValue}%)`,
         "&::-webkit-scrollbar": {
           display: "none",
         },
@@ -94,6 +132,13 @@ const Carousel = ({ children }) => {
       })),
     []
   );
+
+  console.log("movements", translationSettings.numberOfCompleteTranslations);
+  console.log("porcentaje", translationSettings.translationPorcentage);
+  console.log("currentIndex", currentIndex);
+  console.log("should display button", shouldDisplayForwardButton);
+  console.log("steps", stepsAmount);
+  // console.log(`translateX(-${currentIndex * currentTraslateXValue}%)`);
 
   // Set the length to match current children from props
   useEffect(() => {
@@ -117,6 +162,45 @@ const Carousel = ({ children }) => {
       setCurrentIndex(0);
     }
   }, [isOnXS, isOnSM, isOnLG, isOnXL]);
+  useEffect(() => {
+    const translationSettings = getTranslationSettings(length, show);
+    const { numberOfCompleteTranslations, translationPorcentage } =
+      translationSettings;
+
+    const FIRST_SAMPLE = 1;
+
+    const isFinalTranslation =
+      currentIndex === numberOfCompleteTranslations + FIRST_SAMPLE;
+
+    if (currentIndex <= numberOfCompleteTranslations) {
+      const currentTraslateXValue = currentIndex * 100;
+      setCurrentTraslateXValue(currentTraslateXValue);
+    } else if (isFinalTranslation) {
+      const finalTraslateXValue =
+        numberOfCompleteTranslations * 100 + translationPorcentage;
+      setCurrentTraslateXValue(finalTraslateXValue);
+    }
+
+    setTranslationSettings(getTranslationSettings(length, show));
+  }, [length, show, getTranslationSettings, currentIndex]);
+  useEffect(() => {
+    const { numberOfCompleteTranslations, translationPorcentage } =
+      translationSettings;
+    let forwardButtonCondition;
+    let steps;
+
+    if (translationPorcentage === 0) {
+      steps = numberOfCompleteTranslations;
+      forwardButtonCondition = currentIndex < steps;
+      setStepsAmount(steps);
+    } else {
+      steps = numberOfCompleteTranslations + 1;
+      forwardButtonCondition = currentIndex < steps;
+      setStepsAmount(steps);
+    }
+
+    setShouldDisplayForwardButton(forwardButtonCondition);
+  }, [currentIndex, translationSettings]);
 
   return (
     <Grid container justifyContent="center">
@@ -157,7 +241,8 @@ const Carousel = ({ children }) => {
             >
               <CarouselContent
                 show={show}
-                currentIndex={currentIndex}
+                currentTraslateXValue={currentTraslateXValue}
+                // currentIndex={currentIndex}
                 /*  sx={{
                   transform: {
                     xs: `translateX(-${currentIndex * 100}%)`,
@@ -170,7 +255,7 @@ const Carousel = ({ children }) => {
                 {children}
               </CarouselContent>
             </Box>
-            {currentIndex < length - show && !isTouchScreen ? (
+            {shouldDisplayForwardButton && !isTouchScreen ? (
               <ButtonContainer
                 sx={{
                   right: "17px",
