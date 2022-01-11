@@ -152,6 +152,21 @@ theme.components = {
       },
     },
   },
+
+  MuiMobileStepper: {
+    styleOverrides: {
+      root: {
+        background: "none",
+        justifyContent: "center",
+        maxWidth: "100%",
+        marginTop: "25px",
+      },
+      dot: {
+        width: "12px",
+        height: "12px",
+      },
+    },
+  },
 };
 
 export default theme;
