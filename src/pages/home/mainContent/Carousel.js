@@ -78,6 +78,19 @@ const Carousel = ({ children }) => {
         "&::-webkit-scrollbar": {
           display: "none",
         },
+
+        "& > *": {
+          display: "flex",
+          justifyContent: "center",
+          width: {
+            xs: "100%",
+            sm: "50%",
+            lg: `${100 / 3}%`,
+            xl: "25%",
+          },
+          flexShrink: "0",
+          flexGrow: "0",
+        },
       }),
     []
   );
@@ -159,25 +172,7 @@ const Carousel = ({ children }) => {
                   },
                 }}
               >
-                {children.map((item) => (
-                  <Box
-                    key={`CarouselItem-${Math.random()}`}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      width: {
-                        xs: "100%",
-                        sm: "50%",
-                        lg: `${100 / 3}%`,
-                        xl: "25%",
-                      },
-                      flexShrink: "0",
-                      flexGrow: "0",
-                    }}
-                  >
-                    {item}
-                  </Box>
-                ))}
+                {children}
               </CarouselContent>
             </Box>
             {currentIndex < length - show && (
