@@ -21,8 +21,6 @@ const Carousel = ({ children }) => {
 
   const isOnXL = useMediaQuery("(min-width:1920px)");
 
-  console.log(isOnXS);
-
   const goForwardHandler = () => {
     if (currentIndex < length - show) {
       setCurrentIndex((prevState) => prevState + 1);
@@ -70,7 +68,9 @@ const Carousel = ({ children }) => {
 
   const CarouselContent = useMemo(
     () =>
-      styled(Box)({
+      styled(Box, {
+        shouldForwardProp: (prop) => prop !== "show",
+      })(({ show }) => ({
         display: "flex",
         msOverflowStyle: "none",
         scrollbarWidth: "none",
@@ -78,7 +78,16 @@ const Carousel = ({ children }) => {
         "&::-webkit-scrollbar": {
           display: "none",
         },
-      }),
+        "& > *": {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          width: `${100 / show}%`,
+          flexShrink: "0",
+          flexGrow: "0",
+        },
+      })),
     []
   );
   console.log("cantidad de items:", show);
@@ -137,7 +146,6 @@ const Carousel = ({ children }) => {
               </ButtonContainer>
             )}
             <Box
-              id="test----------------------------"
               sx={{
                 overflow: "hidden",
                 width: "100%",
@@ -148,7 +156,7 @@ const Carousel = ({ children }) => {
               onTouchMove={handleTouchMove}
             >
               <CarouselContent
-                //show={show}
+                show={show}
                 currentIndex={currentIndex}
                 sx={{
                   transform: {
