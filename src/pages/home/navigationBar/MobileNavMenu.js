@@ -12,7 +12,7 @@ const MobileNavMenu = ({ pages, isTouchScreen }) => {
   const [elementPosition, setElementPosition] = useState();
   const handleOpenMenu = (e) => setElementPosition(e.currentTarget);
   const handleCloseMenu = () => setElementPosition(false);
-  console.log(isTouchScreen);
+
   return (
     <Grid
       container
