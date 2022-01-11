@@ -6,12 +6,14 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState, useEffect, useMemo } from "react";
 import { useMediaQuery } from "@mui/material";
+import useCheckTouchScreens from "hooks/useCheckTouchScreens";
 
 const Carousel = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
   const [touchPosition, setTouchPosition] = useState(null);
   const [show, setShow] = useState(1);
+  const { isTouchScreen } = useCheckTouchScreens();
 
   const isOnXS = useMediaQuery("(min-width:0px)");
 
@@ -90,11 +92,7 @@ const Carousel = ({ children }) => {
       })),
     []
   );
-  console.log("cantidad de items:", show);
-  console.log("isOnXS", isOnXS);
-  console.log("isOnSM", isOnSM);
-  console.log("isOnLG", isOnLG);
-  console.log("isOnXL", isOnXL);
+
   // Set the length to match current children from props
   useEffect(() => {
     setLength(children.length);
@@ -131,20 +129,20 @@ const Carousel = ({ children }) => {
               paddingX: "68px",
             }}
           >
-            {currentIndex > 0 && (
+            {currentIndex > 0 && !isTouchScreen ? (
               <ButtonContainer
                 sx={{
                   left: "17px",
-                  "@media (hover: none) and (pointer: coarse)": {
+                  /* "@media (hover: none) and (pointer: coarse)": {
                     display: "none",
-                  },
+                  },*/
                 }}
               >
                 <MobileButton onClick={goBackHandler}>
                   <ArrowBackIosNewIcon />
                 </MobileButton>
               </ButtonContainer>
-            )}
+            ) : null}
             <Box
               sx={{
                 overflow: "hidden",
@@ -167,41 +165,23 @@ const Carousel = ({ children }) => {
                   },
                 }}
               >
-                {children.map((item) => (
-                  <Box
-                    key={`CarouselItem-${Math.random()}`}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      width: {
-                        xs: "100%",
-                        sm: "50%",
-                        lg: `${100 / 3}%`,
-                        xl: "25%",
-                      },
-                      flexShrink: "0",
-                      flexGrow: "0",
-                    }}
-                  >
-                    {item}
-                  </Box>
-                ))}
+                {children}
               </CarouselContent>
             </Box>
-            {currentIndex < length - show && (
+            {currentIndex < length - show && !isTouchScreen ? (
               <ButtonContainer
                 sx={{
                   right: "17px",
-                  "@media (hover: none) and (pointer: coarse)": {
+                  /* "@media (hover: none) and (pointer: coarse)": {
                     display: "none",
-                  },
+                  },*/
                 }}
               >
                 <MobileButton onClick={goForwardHandler}>
                   <ArrowForwardIosIcon />
                 </MobileButton>
               </ButtonContainer>
-            )}
+            ) : null}
           </Box>
         </Box>
       </Grid>
