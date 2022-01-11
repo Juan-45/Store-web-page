@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useMediaQuery } from "@mui/material";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
-//import MobileStepper from "@mui/material/MobileStepper";
+import MobileStepper from "@mui/material/MobileStepper";
 
 const Carousel = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,6 +24,8 @@ const Carousel = ({ children }) => {
   const [stepsAmount, setStepsAmount] = useState(0);
 
   const { isTouchScreen } = useCheckTouchScreens();
+  const FIRST_SAMPLE = 1;
+  const FRACTIONAL_SAMPLE = 1;
 
   const isOnXS = useMediaQuery("(min-width:0px)");
 
@@ -41,7 +43,6 @@ const Carousel = ({ children }) => {
     };
 
     const getSamplesAmount = (translationAmount) => {
-      const FIRST_SAMPLE = 1;
       return translationAmount + FIRST_SAMPLE;
     };
 
@@ -167,8 +168,6 @@ const Carousel = ({ children }) => {
     const { numberOfCompleteTranslations, translationPorcentage } =
       translationSettings;
 
-    const FIRST_SAMPLE = 1;
-
     const isFinalTranslation =
       currentIndex === numberOfCompleteTranslations + FIRST_SAMPLE;
 
@@ -190,12 +189,13 @@ const Carousel = ({ children }) => {
     let steps;
 
     if (translationPorcentage === 0) {
-      steps = numberOfCompleteTranslations;
+      steps = numberOfCompleteTranslations + FIRST_SAMPLE;
       forwardButtonCondition = currentIndex < steps;
       setStepsAmount(steps);
     } else {
-      steps = numberOfCompleteTranslations + 1;
-      forwardButtonCondition = currentIndex < steps;
+      steps = numberOfCompleteTranslations + FIRST_SAMPLE + FRACTIONAL_SAMPLE;
+      forwardButtonCondition =
+        currentIndex < numberOfCompleteTranslations + FIRST_SAMPLE;
       setStepsAmount(steps);
     }
 
@@ -270,13 +270,13 @@ const Carousel = ({ children }) => {
               </ButtonContainer>
             ) : null}
           </Box>
-          {/*    <MobileStepper
+          <MobileStepper
             variant="dots"
-            steps={length}
+            steps={stepsAmount}
             position="static"
             activeStep={currentIndex}
             sx={{ maxWidth: 400, flexGrow: 1 }}
-   />*/}
+          />
         </Box>
       </Grid>
     </Grid>
