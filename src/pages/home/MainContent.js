@@ -129,7 +129,7 @@ const MainContent = () => {
                   maxWidth: "300px",
                 }}
               >
-                <h2>Producto N</h2>
+                <h2>Producto N 1</h2>
                 <p style={{ fontSize: "1.3rem" }}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
@@ -158,7 +158,7 @@ const MainContent = () => {
                   maxWidth: "300px",
                 }}
               >
-                <h2>Producto N</h2>
+                <h2>Producto N 2</h2>
                 <p style={{ fontSize: "1.3rem" }}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
@@ -187,7 +187,7 @@ const MainContent = () => {
                   maxWidth: "300px",
                 }}
               >
-                <h2>Producto N</h2>
+                <h2>Producto N 3</h2>
                 <p style={{ fontSize: "1.3rem" }}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
@@ -216,7 +216,123 @@ const MainContent = () => {
                   maxWidth: "300px",
                 }}
               >
-                <h2>Producto N</h2>
+                <h2>Producto N 4</h2>
+                <p style={{ fontSize: "1.3rem" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+            </div>
+            <div
+              style={{
+                padding: 25,
+                boxSizing: "border-box",
+                maxHeight: "70vh",
+              }}
+            >
+              <img
+                src="https://via.placeholder.com/300x300"
+                alt="placeholder"
+                style={{
+                  height: "auto",
+                  maxWidth: "100%",
+                }}
+              />
+              <div
+                style={{
+                  background: "green",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                  maxWidth: "300px",
+                }}
+              >
+                <h2>Producto N 5</h2>
+                <p style={{ fontSize: "1.3rem" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+            </div>
+            <div
+              style={{
+                padding: 25,
+                boxSizing: "border-box",
+                maxHeight: "70vh",
+              }}
+            >
+              <img
+                src="https://via.placeholder.com/300x300"
+                alt="placeholder"
+                style={{
+                  height: "auto",
+                  maxWidth: "100%",
+                }}
+              />
+              <div
+                style={{
+                  background: "green",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                  maxWidth: "300px",
+                }}
+              >
+                <h2>Producto N 6</h2>
+                <p style={{ fontSize: "1.3rem" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+            </div>
+            <div
+              style={{
+                padding: 25,
+                boxSizing: "border-box",
+                maxHeight: "70vh",
+              }}
+            >
+              <img
+                src="https://via.placeholder.com/300x300"
+                alt="placeholder"
+                style={{
+                  height: "auto",
+                  maxWidth: "100%",
+                }}
+              />
+              <div
+                style={{
+                  background: "green",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                  maxWidth: "300px",
+                }}
+              >
+                <h2>Producto N 7</h2>
+                <p style={{ fontSize: "1.3rem" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+            </div>
+            <div
+              style={{
+                padding: 25,
+                boxSizing: "border-box",
+                maxHeight: "70vh",
+              }}
+            >
+              <img
+                src="https://via.placeholder.com/300x300"
+                alt="placeholder"
+                style={{
+                  height: "auto",
+                  maxWidth: "100%",
+                }}
+              />
+              <div
+                style={{
+                  background: "green",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                  maxWidth: "300px",
+                }}
+              >
+                <h2>Producto N 8</h2>
                 <p style={{ fontSize: "1.3rem" }}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
