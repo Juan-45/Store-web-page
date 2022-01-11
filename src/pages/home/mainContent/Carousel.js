@@ -183,7 +183,7 @@ const Carousel = ({ children }) => {
 
     if (translationPorcentage === 0) {
       steps = numberOfCompleteTranslations + FIRST_SAMPLE;
-      forwardButtonCondition = currentIndex < steps;
+      forwardButtonCondition = currentIndex < numberOfCompleteTranslations;
       setStepsAmount(steps);
     } else {
       steps = numberOfCompleteTranslations + FIRST_SAMPLE + FRACTIONAL_SAMPLE;
