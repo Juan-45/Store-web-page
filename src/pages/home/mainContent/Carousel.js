@@ -7,6 +7,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState, useEffect, useMemo } from "react";
 import { useMediaQuery } from "@mui/material";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
+//import MobileStepper from "@mui/material/MobileStepper";
 
 const Carousel = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,12 +72,13 @@ const Carousel = ({ children }) => {
   const CarouselContent = useMemo(
     () =>
       styled(Box, {
-        shouldForwardProp: (prop) => prop !== "show",
-      })(({ show }) => ({
+        shouldForwardProp: (prop) => prop !== "show" && prop !== "currentIndex",
+      })(({ show, currentIndex }) => ({
         display: "flex",
         msOverflowStyle: "none",
         scrollbarWidth: "none",
         transition: "all 600ms ease-in-out",
+        transform: `translateX(-${currentIndex * (100 / show)}%)`,
         "&::-webkit-scrollbar": {
           display: "none",
         },
@@ -156,14 +158,14 @@ const Carousel = ({ children }) => {
               <CarouselContent
                 show={show}
                 currentIndex={currentIndex}
-                sx={{
+                /*  sx={{
                   transform: {
                     xs: `translateX(-${currentIndex * 100}%)`,
                     sm: `translateX(-${currentIndex * 50}%)`,
                     lg: `translateX(-${currentIndex * (100 / 3)}%)`,
                     xl: `translateX(-${currentIndex * 25}%)`,
                   },
-                }}
+                }}*/
               >
                 {children}
               </CarouselContent>
@@ -183,6 +185,13 @@ const Carousel = ({ children }) => {
               </ButtonContainer>
             ) : null}
           </Box>
+          {/*    <MobileStepper
+            variant="dots"
+            steps={length}
+            position="static"
+            activeStep={currentIndex}
+            sx={{ maxWidth: 400, flexGrow: 1 }}
+   />*/}
         </Box>
       </Grid>
     </Grid>
