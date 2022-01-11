@@ -70,7 +70,9 @@ const Carousel = ({ children }) => {
 
   const CarouselContent = useMemo(
     () =>
-      styled(Box)({
+      styled(Box, {
+        shouldForwardProp: (prop) => prop !== "show",
+      })(({ show }) => ({
         display: "flex",
         msOverflowStyle: "none",
         scrollbarWidth: "none",
@@ -78,27 +80,26 @@ const Carousel = ({ children }) => {
         "&::-webkit-scrollbar": {
           display: "none",
         },
-
         "& > *": {
           display: "flex",
           justifyContent: "center",
-          width: {
-            xs: "100%",
-            sm: "50%",
-            lg: `${100 / 3}%`,
-            xl: "25%",
-          },
+          alignItems: "center",
+          flexDirection: "column",
+          width: `${100 / show}%`,
           flexShrink: "0",
           flexGrow: "0",
         },
-      }),
+      })),
     []
   );
-  console.log("cantidad de items:", show);
+
+  console.log("show", show);
+  console.log(100 / show);
+  /*console.log("cantidad de items:", show);
   console.log("isOnXS", isOnXS);
   console.log("isOnSM", isOnSM);
   console.log("isOnLG", isOnLG);
-  console.log("isOnXL", isOnXL);
+  console.log("isOnXL", isOnXL);*/
   // Set the length to match current children from props
   useEffect(() => {
     setLength(children.length);
@@ -161,7 +162,7 @@ const Carousel = ({ children }) => {
               onTouchMove={handleTouchMove}
             >
               <CarouselContent
-                //show={show}
+                show={show}
                 currentIndex={currentIndex}
                 sx={{
                   transform: {
