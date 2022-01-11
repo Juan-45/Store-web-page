@@ -21,8 +21,6 @@ const Carousel = ({ children }) => {
 
   const isOnXL = useMediaQuery("(min-width:1920px)");
 
-  console.log(isOnXS);
-
   const goForwardHandler = () => {
     if (currentIndex < length - show) {
       setCurrentIndex((prevState) => prevState + 1);
@@ -93,13 +91,6 @@ const Carousel = ({ children }) => {
     []
   );
 
-  console.log("show", show);
-  console.log(100 / show);
-  /*console.log("cantidad de items:", show);
-  console.log("isOnXS", isOnXS);
-  console.log("isOnSM", isOnSM);
-  console.log("isOnLG", isOnLG);
-  console.log("isOnXL", isOnXL);*/
   // Set the length to match current children from props
   useEffect(() => {
     setLength(children.length);
@@ -151,7 +142,6 @@ const Carousel = ({ children }) => {
               </ButtonContainer>
             )}
             <Box
-              id="test----------------------------"
               sx={{
                 overflow: "hidden",
                 width: "100%",
