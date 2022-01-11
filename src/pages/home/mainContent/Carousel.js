@@ -134,13 +134,6 @@ const Carousel = ({ children }) => {
     []
   );
 
-  console.log("movements", translationSettings.numberOfCompleteTranslations);
-  console.log("porcentaje", translationSettings.translationPorcentage);
-  console.log("currentIndex", currentIndex);
-  console.log("should display button", shouldDisplayForwardButton);
-  console.log("steps", stepsAmount);
-  // console.log(`translateX(-${currentIndex * currentTraslateXValue}%)`);
-
   // Set the length to match current children from props
   useEffect(() => {
     setLength(children.length);
@@ -219,9 +212,6 @@ const Carousel = ({ children }) => {
               <ButtonContainer
                 sx={{
                   left: "17px",
-                  /* "@media (hover: none) and (pointer: coarse)": {
-                    display: "none",
-                  },*/
                 }}
               >
                 <MobileButton onClick={goBackHandler}>
@@ -242,15 +232,6 @@ const Carousel = ({ children }) => {
               <CarouselContent
                 show={show}
                 currentTraslateXValue={currentTraslateXValue}
-                // currentIndex={currentIndex}
-                /*  sx={{
-                  transform: {
-                    xs: `translateX(-${currentIndex * 100}%)`,
-                    sm: `translateX(-${currentIndex * 50}%)`,
-                    lg: `translateX(-${currentIndex * (100 / 3)}%)`,
-                    xl: `translateX(-${currentIndex * 25}%)`,
-                  },
-                }}*/
               >
                 {children}
               </CarouselContent>
@@ -259,9 +240,6 @@ const Carousel = ({ children }) => {
               <ButtonContainer
                 sx={{
                   right: "17px",
-                  /* "@media (hover: none) and (pointer: coarse)": {
-                    display: "none",
-                  },*/
                 }}
               >
                 <MobileButton onClick={goForwardHandler}>
@@ -275,7 +253,6 @@ const Carousel = ({ children }) => {
             steps={stepsAmount}
             position="static"
             activeStep={currentIndex}
-            sx={{ maxWidth: 400, flexGrow: 1 }}
           />
         </Box>
       </Grid>
