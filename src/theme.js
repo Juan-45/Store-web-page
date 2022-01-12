@@ -160,6 +160,7 @@ theme.components = {
         justifyContent: "center",
         maxWidth: "100%",
         marginTop: "25px",
+        marginBottom: '25px',
       },
       dot: {
         width: "12px",

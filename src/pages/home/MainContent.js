@@ -81,7 +81,6 @@ const MainContent = () => {
       <ParallaxBackground sx={{ top: "270vh" }} />
       <Box
         sx={{
-          height: "110vh",
           position: "relative",
         }}
       >
@@ -100,16 +99,15 @@ const MainContent = () => {
         </Grid>
         <Box
           sx={{
-            height: "70vh",
             background: theme.palette.background.defaultTraslucid,
           }}
         >
-          <Carousel /*show={3}*/>
+          <Carousel >
             <div
               style={{
                 padding: 25,
                 boxSizing: "border-box",
-                maxHeight: "70vh",
+                height: "fit-content",
               }}
             >
               <img
@@ -139,7 +137,7 @@ const MainContent = () => {
               style={{
                 padding: 25,
                 boxSizing: "border-box",
-                maxHeight: "70vh",
+                height: "fit-content",
               }}
             >
               <img
@@ -168,7 +166,7 @@ const MainContent = () => {
               style={{
                 padding: 25,
                 boxSizing: "border-box",
-                maxHeight: "70vh",
+                height: "fit-content",
               }}
             >
               <img
@@ -197,7 +195,7 @@ const MainContent = () => {
               style={{
                 padding: 25,
                 boxSizing: "border-box",
-                maxHeight: "70vh",
+                height: "fit-content",
               }}
             >
               <img
@@ -226,7 +224,7 @@ const MainContent = () => {
               style={{
                 padding: 25,
                 boxSizing: "border-box",
-                maxHeight: "70vh",
+                height: "fit-content",
               }}
             >
               <img
@@ -255,7 +253,7 @@ const MainContent = () => {
               style={{
                 padding: 25,
                 boxSizing: "border-box",
-                maxHeight: "70vh",
+                height: "fit-content",
               }}
             >
               <img
@@ -284,7 +282,7 @@ const MainContent = () => {
               style={{
                 padding: 25,
                 boxSizing: "border-box",
-                maxHeight: "70vh",
+                height: "fit-content",
               }}
             >
               <img
@@ -313,7 +311,7 @@ const MainContent = () => {
               style={{
                 padding: 25,
                 boxSizing: "border-box",
-                maxHeight: "70vh",
+                height: "fit-content",
               }}
             >
               <img
