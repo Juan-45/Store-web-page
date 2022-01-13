@@ -6,6 +6,7 @@ import ForwardButton from "./carousel/ForwardButton";
 import CarouselContent from "./carousel/CarouselContent";
 import useCarousel from "./carousel/useCarousel";
 import useRefCallback from "hooks/useRefCallback";
+import { useCallback } from "react";
 
 const Carousel = ({ children }) => {
   const {
@@ -21,23 +22,18 @@ const Carousel = ({ children }) => {
     goBackHandler,
   } = useCarousel(children.length);
 
-  const add = (node) => {
+  const add = useCallback((node) => {
     const nodeList = node.firstChild.childNodes;
-
     nodeList.forEach((element) => {
-      element.addEventListener("click", console.log("dot clicked"));
-      return element.removeEventListener("click", console.log("dot clicked"));
+      element.addEventListener("click", () => console.log("dot clicked"));
     });
-  };
+  }, []);
 
-  /* const cleanUp = (currentRef) => {
-    const nodeList = currentRef.firstChild.childNodes;
-    nodeList.forEach((element) => {
-   
-    });
-  };
-*/
-  const [ref] = useRefCallback(add);
+  const cleanUp = useCallback((currentRef) => {
+    currentRef = null;
+  }, []);
+
+  const [ref] = useRefCallback(add, cleanUp);
 
   return (
     <Container>
