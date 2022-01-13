@@ -104,7 +104,7 @@ const MainContent = () => {
             background: theme.palette.background.defaultTraslucid,
           }}
         >
-          <Carousel /*show={3}*/>
+          <Carousel>
             <div
               style={{
                 padding: 25,
