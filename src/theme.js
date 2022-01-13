@@ -160,10 +160,16 @@ theme.components = {
         justifyContent: "center",
         maxWidth: "100%",
         marginTop: "25px",
+        marginBottom: '25px',
+        padding: '0px'
       },
       dot: {
-        width: "12px",
-        height: "12px",
+        width: "15px",
+        height: "15px",
+        margin: '0px 15px',
+        '&:hover':{
+          background: theme.palette.primary.dark
+        }
       },
     },
   },

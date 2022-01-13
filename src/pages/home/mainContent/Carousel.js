@@ -5,6 +5,7 @@ import BackButton from "./carousel/BackButton";
 import ForwardButton from "./carousel/ForwardButton";
 import CarouselContent from "./carousel/CarouselContent";
 import useCarousel from "./carousel/useCarousel";
+import useRefCallback from "hooks/useRefCallback";
 
 const Carousel = ({ children }) => {
   const {
@@ -19,6 +20,24 @@ const Carousel = ({ children }) => {
     goForwardHandler,
     goBackHandler,
   } = useCarousel(children.length);
+
+  const add = (node) => {
+    const nodeList = node.firstChild.childNodes;
+
+    nodeList.forEach((element) => {
+      element.addEventListener("click", console.log("dot clicked"));
+      return element.removeEventListener("click", console.log("dot clicked"));
+    });
+  };
+
+  /* const cleanUp = (currentRef) => {
+    const nodeList = currentRef.firstChild.childNodes;
+    nodeList.forEach((element) => {
+   
+    });
+  };
+*/
+  const [ref] = useRefCallback(add);
 
   return (
     <Container>
@@ -60,6 +79,7 @@ const Carousel = ({ children }) => {
         steps={stepsAmount}
         position="static"
         activeStep={currentIndex}
+        ref={ref}
       />
     </Container>
   );
