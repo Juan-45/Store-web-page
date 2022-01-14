@@ -159,17 +159,16 @@ theme.components = {
         background: "none",
         justifyContent: "center",
         maxWidth: "100%",
-        marginTop: "25px",
-        marginBottom: '25px',
-        padding: '0px'
+        margin: "25px 0px",
+        padding: "0px",
       },
       dot: {
         width: "15px",
         height: "15px",
-        margin: '0px 15px',
-        '&:hover':{
-          background: theme.palette.primary.dark
-        }
+        margin: "0px 15px",
+        "&:hover": {
+          background: theme.palette.primary.dark,
+        },
       },
     },
   },
