@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/Store-web-page/static/css/main.fe6a1fac.css",
-    "main.js": "/Store-web-page/static/js/main.d8b39b11.js",
+    "main.js": "/Store-web-page/static/js/main.c2f2759a.js",
     "static/js/787.5009c48a.chunk.js": "/Store-web-page/static/js/787.5009c48a.chunk.js",
     "static/media/driedFruits.jpg": "/Store-web-page/static/media/driedFruits.1e00239bc85cb6da22cb.jpg",
     "static/media/nuts.jpg": "/Store-web-page/static/media/nuts.ac678965d89ed28ea915.jpg",
     "static/media/wood.jpg": "/Store-web-page/static/media/wood.c8428172a49f92e80ae1.jpg",
     "index.html": "/Store-web-page/index.html",
     "main.fe6a1fac.css.map": "/Store-web-page/static/css/main.fe6a1fac.css.map",
-    "main.d8b39b11.js.map": "/Store-web-page/static/js/main.d8b39b11.js.map",
+    "main.c2f2759a.js.map": "/Store-web-page/static/js/main.c2f2759a.js.map",
     "787.5009c48a.chunk.js.map": "/Store-web-page/static/js/787.5009c48a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fe6a1fac.css",
-    "static/js/main.d8b39b11.js"
+    "static/js/main.c2f2759a.js"
   ]
 }
