@@ -17,8 +17,7 @@ const Header = () => {
       >
         <TopSection container justifyContent="center" alignContent="center">
           <Typography variant="h1" align="center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            interdum dapibus mauris eget maximus.
+            Lorem ipsum dolor sit amet, consectetur.
           </Typography>
         </TopSection>
         <BottomSection container justifyContent="center" alignContent="center">

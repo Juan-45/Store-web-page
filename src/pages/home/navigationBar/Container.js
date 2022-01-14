@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material/";
-import { Typography } from "@mui/material";
 import PaperWrapper from "./container/PaperWrapper";
 
 const Container = ({ children, shouldDisplay, isTouchScreen }) => {
@@ -33,9 +32,7 @@ const Container = ({ children, shouldDisplay, isTouchScreen }) => {
             justifyContent="center"
             alignItems="center"
             sx={{ height: "6vh", paddingTop: { xs: "13px", md: "0px" } }}
-          >
-            <Typography variant="h5">Lorem ipsum dolor sit amet</Typography>
-          </Grid>
+          ></Grid>
         </Grid>
       </Grid>
     </PaperWrapper>
