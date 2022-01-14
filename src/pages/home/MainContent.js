@@ -4,7 +4,6 @@ import PresentationContainer from "./mainContent/PresentationContainer";
 import PresentationItem from "./mainContent/PresentationItem";
 import ParallaxBackground from "./ParallaxBackground";
 import FadeBackground from "./FadeBackground";
-import { Paper } from "@mui/material";
 
 import nuts from "images/nuts.jpg";
 import driedFruits from "images/driedFruits.jpg";
@@ -88,12 +87,9 @@ const MainContent = () => {
             Productos destacados
           </Typography>
         </Grid>
-        <Paper
-          elevation={16}
-          variant="darkShadow"
-          square={true}
+        <Box
           sx={{
-            background: theme.palette.background.defaultTraslucid,
+            background: theme.palette.background.default,
           }}
         >
           <Carousel>
@@ -331,7 +327,7 @@ const MainContent = () => {
               </div>
             </div>
           </Carousel>
-        </Paper>
+        </Box>
       </Box>
       <ContentSample>FOOTER</ContentSample>
     </>
