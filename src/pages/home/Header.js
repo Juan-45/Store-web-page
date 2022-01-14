@@ -12,7 +12,7 @@ const Header = () => {
       <HeaderContainer
         container
         direction="column"
-        justifyContent="flex-start"
+        justifyContent="flex-end"
         alignItems="center"
       >
         <TopSection container justifyContent="center" alignContent="center">
