@@ -26,7 +26,11 @@ const Header = () => {
             interdum dapibus mauris eget.
           </Typography>
         </BottomSection>
-        <FadeBackground position={{ top: "75vh" }} />
+        <FadeBackground
+          position={{
+            top: "80vh", //75vh solo en landscape
+          }}
+        />
       </HeaderContainer>
     </>
   );
