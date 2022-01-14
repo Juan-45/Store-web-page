@@ -1,10 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useMediaQuery } from "@mui/material";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
 
 const useCarousel = (childrenLength) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [length, setLength] = useState(childrenLength);
   const [touchPosition, setTouchPosition] = useState(null);
   const [show, setShow] = useState(1);
   const [translationSettings, setTranslationSettings] = useState({
@@ -25,35 +24,7 @@ const useCarousel = (childrenLength) => {
   const isOnSM = useMediaQuery("(min-width:800px)");
 
   const isOnLG = useMediaQuery("(min-width:1366px)");
-
   const isOnXL = useMediaQuery("(min-width:1920px)");
-
-  const getTranslationSettings = useCallback((lengthVal, showVal) => {
-    const getNumberOfCompleteTranslations = (lengthVal, showVal) => {
-      const rest = lengthVal - showVal;
-      const quotient = rest / showVal;
-      return Math.trunc(quotient);
-    };
-
-    const getSamplesAmount = (translationAmount) => {
-      return translationAmount + FIRST_SAMPLE;
-    };
-
-    const numberOfCompleteTranslations = getNumberOfCompleteTranslations(
-      lengthVal,
-      showVal
-    );
-
-    const remainingItems =
-      lengthVal - getSamplesAmount(numberOfCompleteTranslations) * showVal;
-
-    const translationPorcentage = (remainingItems / showVal) * 100;
-
-    return {
-      translationPorcentage,
-      numberOfCompleteTranslations,
-    };
-  }, []);
 
   const goForwardHandler = () => {
     if (currentIndex < translationSettings.numberOfCompleteTranslations + 1) {
@@ -93,11 +64,6 @@ const useCarousel = (childrenLength) => {
     setTouchPosition(null);
   };
 
-  // Set the length to match current children from props
-  useEffect(() => {
-    setLength(childrenLength);
-  }, [childrenLength]);
-
   useEffect(() => {
     if (isOnXS) {
       setShow(1);
@@ -115,47 +81,82 @@ const useCarousel = (childrenLength) => {
       setShow(4);
       setCurrentIndex(0);
     }
-  }, [isOnXS, isOnSM, isOnLG, isOnXL]);
+  }, [isOnSM, isOnXL, isOnXS, isOnLG]);
 
   useEffect(() => {
-    const translationSettings = getTranslationSettings(length, show);
+    const getTranslationSettings = (lengthVal, showVal) => {
+      const getNumberOfCompleteTranslations = (lengthVal, showVal) => {
+        const rest = lengthVal - showVal;
+        const quotient = rest / showVal;
+        return Math.trunc(quotient);
+      };
+
+      const getSamplesAmount = (translationAmount) => {
+        return translationAmount + FIRST_SAMPLE;
+      };
+
+      const numberOfCompleteTranslations = getNumberOfCompleteTranslations(
+        lengthVal,
+        showVal
+      );
+
+      const remainingItems =
+        lengthVal - getSamplesAmount(numberOfCompleteTranslations) * showVal;
+
+      const translationPorcentage = (remainingItems / showVal) * 100;
+
+      return {
+        translationPorcentage,
+        numberOfCompleteTranslations,
+      };
+    };
+
+    const manageTraslateXValue = (settings) => {
+      const { translationSettings, FIRST_SAMPLE, currentIndex } = settings;
+      const { numberOfCompleteTranslations, translationPorcentage } =
+        translationSettings;
+
+      const isFinalTranslation =
+        currentIndex === numberOfCompleteTranslations + FIRST_SAMPLE;
+
+      if (currentIndex <= numberOfCompleteTranslations) {
+        const currentTraslateXValue = currentIndex * 100;
+        setCurrentTraslateXValue(currentTraslateXValue);
+      } else if (isFinalTranslation) {
+        const finalTraslateXValue =
+          numberOfCompleteTranslations * 100 + translationPorcentage;
+        setCurrentTraslateXValue(finalTraslateXValue);
+      }
+    };
+    const translationSettings = getTranslationSettings(childrenLength, show);
+
+    setTranslationSettings(translationSettings);
+
+    manageTraslateXValue({
+      translationSettings,
+      FIRST_SAMPLE,
+      currentIndex,
+    });
+
     const { numberOfCompleteTranslations, translationPorcentage } =
       translationSettings;
-
-    const isFinalTranslation =
-      currentIndex === numberOfCompleteTranslations + FIRST_SAMPLE;
-
-    if (currentIndex <= numberOfCompleteTranslations) {
-      const currentTraslateXValue = currentIndex * 100;
-      setCurrentTraslateXValue(currentTraslateXValue);
-    } else if (isFinalTranslation) {
-      const finalTraslateXValue =
-        numberOfCompleteTranslations * 100 + translationPorcentage;
-      setCurrentTraslateXValue(finalTraslateXValue);
-    }
-
-    setTranslationSettings(getTranslationSettings(length, show));
-  }, [length, show, getTranslationSettings, currentIndex]);
-
-  useEffect(() => {
-    const { numberOfCompleteTranslations, translationPorcentage } =
-      translationSettings;
-    let forwardButtonCondition;
-    let steps;
 
     if (translationPorcentage === 0) {
-      steps = numberOfCompleteTranslations + FIRST_SAMPLE;
-      forwardButtonCondition = currentIndex < numberOfCompleteTranslations;
-      setStepsAmount(steps);
+      setStepsAmount(numberOfCompleteTranslations + FIRST_SAMPLE);
+      setShouldDisplayForwardButton(
+        currentIndex < numberOfCompleteTranslations
+      );
     } else {
-      steps = numberOfCompleteTranslations + FIRST_SAMPLE + FRACTIONAL_SAMPLE;
-      forwardButtonCondition =
-        currentIndex < numberOfCompleteTranslations + FIRST_SAMPLE;
-      setStepsAmount(steps);
+      setStepsAmount(
+        numberOfCompleteTranslations + FIRST_SAMPLE + FRACTIONAL_SAMPLE
+      );
+      setShouldDisplayForwardButton(
+        currentIndex < numberOfCompleteTranslations + FIRST_SAMPLE
+      );
     }
+  }, [show, currentIndex, childrenLength]);
 
-    setShouldDisplayForwardButton(forwardButtonCondition);
-  }, [currentIndex, translationSettings]);
+  console.log("useCarousel re-render", stepsAmount);
 
   return {
     currentIndex,
