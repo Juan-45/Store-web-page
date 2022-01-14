@@ -94,7 +94,6 @@ const MainContent = () => {
           square={true}
           sx={{
             background: theme.palette.background.defaultTraslucid,
-            marginBottom: "20vh",
           }}
         >
           <Carousel>
