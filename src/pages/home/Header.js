@@ -16,17 +16,17 @@ const Header = () => {
         alignItems="center"
       >
         <TopSection container justifyContent="center" alignContent="center">
-          <Typography variant="h1" align="center">
+          <Typography variant="h2" align="center">
             Lorem ipsum dolor sit amet, consectetur.
           </Typography>
         </TopSection>
         <BottomSection container justifyContent="center" alignContent="center">
-          <Typography paragraph={true} align="center">
+          <Typography paragraph={true} align="center" sx={{ margin: "0px" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            interdum dapibus mauris eget maximus. Suspendisse potenti.
+            interdum dapibus mauris eget.
           </Typography>
         </BottomSection>
-        <FadeBackground position={{ top: "80vh" }} />
+        <FadeBackground position={{ top: "75vh" }} />
       </HeaderContainer>
     </>
   );

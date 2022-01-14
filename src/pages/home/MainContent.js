@@ -4,6 +4,7 @@ import PresentationContainer from "./mainContent/PresentationContainer";
 import PresentationItem from "./mainContent/PresentationItem";
 import ParallaxBackground from "./ParallaxBackground";
 import FadeBackground from "./FadeBackground";
+import { Paper } from "@mui/material";
 
 import nuts from "images/nuts.jpg";
 import driedFruits from "images/driedFruits.jpg";
@@ -16,12 +17,7 @@ import theme from "theme";
 const MainContent = () => {
   return (
     <>
-      <ContentContainer
-        container
-        alignItems="flex-start"
-        img={nuts}
-        spacing={0}
-      >
+      <ContentContainer container img={nuts} spacing={0}>
         <PresentationContainer container item sm={12} md={6}>
           <PresentationItem elevation={16} variant="darkShadow">
             <Grid
@@ -46,12 +42,7 @@ const MainContent = () => {
           </PresentationItem>
         </PresentationContainer>
       </ContentContainer>
-      <ContentContainer
-        container
-        justifyContent="flex-end"
-        alignItems="flex-start"
-        img={driedFruits}
-      >
+      <ContentContainer container justifyContent="flex-end" img={driedFruits}>
         <PresentationContainer container item sm={12} md={6}>
           <PresentationItem elevation={16} variant="darkShadow">
             <Grid
@@ -93,13 +84,17 @@ const MainContent = () => {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h2" sx={{ width: "100%" }}>
+          <Typography variant="h3" sx={{ width: "100%" }}>
             Productos destacados
           </Typography>
         </Grid>
-        <Box
+        <Paper
+          elevation={16}
+          variant="darkShadow"
+          square={true}
           sx={{
             background: theme.palette.background.defaultTraslucid,
+            marginBottom: "20vh",
           }}
         >
           <Carousel>
@@ -337,7 +332,7 @@ const MainContent = () => {
               </div>
             </div>
           </Carousel>
-        </Box>
+        </Paper>
       </Box>
       <ContentSample>FOOTER</ContentSample>
     </>

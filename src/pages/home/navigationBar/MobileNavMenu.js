@@ -19,7 +19,7 @@ const MobileNavMenu = ({ pages, isTouchScreen }) => {
       item
       sx={{
         paddingTop: "10px",
-        height: "6vh",
+        height: "fit-content",
         width: "fit-content",
         display: { xs: "flex", md: "none" },
         alignItems: { xs: "center", md: "none" },

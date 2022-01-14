@@ -20,19 +20,14 @@ const Container = ({ children, shouldDisplay, isTouchScreen }) => {
               alignItems: {
                 xs: "flex-start",
               },
-              height: {
-                md: "13vh",
+              height: "fit-content",
+              paddingBottom: {
+                xs: "13px",
               },
             }}
           >
             {children}
           </Grid>
-          <Grid
-            container
-            justifyContent="center"
-            alignItems="center"
-            sx={{ height: "6vh", paddingTop: { xs: "13px", md: "0px" } }}
-          ></Grid>
         </Grid>
       </Grid>
     </PaperWrapper>

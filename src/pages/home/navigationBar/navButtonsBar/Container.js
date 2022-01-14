@@ -5,7 +5,8 @@ const Container = ({ children }) => {
   const CustomGrid = styled(Grid)(({ theme }) => ({
     width: "100%",
     boxShadow: theme.shadows[16],
-    height: "6vh",
+    height: "fit-content",
+    margin: "13px 0px",
   }));
 
   return (
@@ -13,7 +14,7 @@ const Container = ({ children }) => {
       container
       sx={{
         display: { xs: "none", md: "flex" },
-        alignItems: { xs: "none", md: "stretch" },
+        alignItems: { xs: "none", md: "center" },
       }}
     >
       {children}

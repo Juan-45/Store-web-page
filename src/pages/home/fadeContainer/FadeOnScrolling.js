@@ -6,7 +6,7 @@ const FadeOnScrolling = ({ currentOpacityValue, position }) => {
     shouldForwardProp: (prop) => prop !== "currentOpacityValue",
   })(({ currentOpacityValue, position }) => ({
     width: "100vw",
-    height: "20vh",
+    height: "25vh",
     backgroundColor: "#000000a1",
     opacity: currentOpacityValue,
     position: "relative",
