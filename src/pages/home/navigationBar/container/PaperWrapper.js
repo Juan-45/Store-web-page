@@ -31,7 +31,7 @@ const PaperWrapper = ({ children, shouldDisplay, isTouchScreen }) => {
       square={true}
       isTouchScreen={isTouchScreen}
       sx={{
-        maxHeight: { xs: "14vh", md: "20vh" },
+        height: "fit-content",
       }}
     >
       {children}
