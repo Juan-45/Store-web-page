@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useMediaQuery } from "@mui/material";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
+import useRefCallback from "hooks/useRefCallback";
+import { useCallback } from "react";
 
 const useCarousel = (childrenLength) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,14 +17,44 @@ const useCarousel = (childrenLength) => {
     useState(true);
   const [stepsAmount, setStepsAmount] = useState(0);
 
+  const handleOnClick = useCallback((event) => {
+    setCurrentIndex(event.target.name);
+  }, []);
+
+  console.log(currentIndex);
+  const add = useCallback(
+    (node) => {
+      const childNodes = node.firstChild.childNodes;
+      for (let i = 0; i < childNodes.length; i++) {
+        childNodes[i].addEventListener("click", handleOnClick, false);
+        childNodes[i].name = i;
+      }
+    },
+    [handleOnClick]
+  );
+
+  const cleanUp = useCallback(
+    (currentRef) => {
+      const childNodesReferenced = currentRef.firstChild.childNodes;
+      for (let i = 0; i < childNodesReferenced.length; i++) {
+        childNodesReferenced[i].removeEventListener(
+          "click",
+          handleOnClick,
+          false
+        );
+      }
+    },
+    [handleOnClick]
+  );
+
+  const [ref] = useRefCallback(add, cleanUp);
+
   const { isTouchScreen } = useCheckTouchScreens();
   const FIRST_SAMPLE = 1;
   const FRACTIONAL_SAMPLE = 1;
 
   const isOnXS = useMediaQuery("(min-width:0px)");
-
   const isOnSM = useMediaQuery("(min-width:800px)");
-
   const isOnLG = useMediaQuery("(min-width:1366px)");
   const isOnXL = useMediaQuery("(min-width:1920px)");
 
@@ -156,8 +188,6 @@ const useCarousel = (childrenLength) => {
     }
   }, [show, currentIndex, childrenLength]);
 
-  console.log("useCarousel re-render", stepsAmount);
-
   return {
     currentIndex,
     show,
@@ -169,6 +199,7 @@ const useCarousel = (childrenLength) => {
     handleTouchMove,
     goForwardHandler,
     goBackHandler,
+    ref,
   };
 };
 
