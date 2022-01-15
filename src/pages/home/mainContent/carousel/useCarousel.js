@@ -21,7 +21,6 @@ const useCarousel = (childrenLength) => {
     setCurrentIndex(event.target.name);
   }, []);
 
-  console.log(currentIndex);
   const add = useCallback(
     (node) => {
       const childNodes = node.firstChild.childNodes;
