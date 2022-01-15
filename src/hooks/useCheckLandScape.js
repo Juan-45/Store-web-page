@@ -4,13 +4,17 @@ const useCheckLandScape = () => {
   const [isOnLandScape, setIsOnLandScape] = useState(false);
 
   useEffect(() => {
-    const handleScreenRotation = (event) => {
-      const currentRotationAngle = event.currentTarget.angle;
-      if (currentRotationAngle === 0) {
+    const updateStateOnCurrentOrientation = (angle) => {
+      if (angle === 0) {
         setIsOnLandScape(false);
-      } else if (currentRotationAngle === 90 || currentRotationAngle === -90) {
+      } else if (angle === 90 || angle === -90) {
         setIsOnLandScape(true);
       }
+    };
+
+    const handleScreenRotation = (event) => {
+      const currentRotationAngle = event.currentTarget.angle;
+      updateStateOnCurrentOrientation(currentRotationAngle);
     };
 
     window.screen.orientation.addEventListener(
@@ -18,6 +22,8 @@ const useCheckLandScape = () => {
       handleScreenRotation,
       false
     );
+    const initialOrientation = window.screen.orientation.angle;
+    updateStateOnCurrentOrientation(initialOrientation);
   }, []);
 
   return { isOnLandScape };
