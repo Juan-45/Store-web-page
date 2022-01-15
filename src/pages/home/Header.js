@@ -4,18 +4,11 @@ import HeaderContainer from "./header/HeaderContainer";
 import TopSection from "./header/TopSection";
 import BottomSection from "./header/BottomSection";
 import ParallaxBackground from "./ParallaxBackground";
-import { useEffect } from "react";
-//import useCheckLandScape from "hooks/useCheckLandScape";
+import useCheckLandScape from "hooks/useCheckLandScape";
 
 const Header = () => {
-  // useCheckLandScape();
-  useEffect(() => {
-    window.document.addEventListener(
-      "orientationchange",
-      () => alert(window.orientation),
-      false
-    );
-  }, []);
+  const { isOnLandScape } = useCheckLandScape();
+
   return (
     <>
       <ParallaxBackground />
@@ -25,22 +18,39 @@ const Header = () => {
         justifyContent="flex-end"
         alignItems="center"
       >
-        <TopSection container justifyContent="center" alignContent="center">
+        <TopSection
+          container
+          justifyContent="center"
+          alignContent="center"
+          isOnLandScape={isOnLandScape}
+        >
           <Typography variant="h2" align="center">
             Lorem ipsum dolor sit amet, consectetur.
           </Typography>
           <p>{}</p>
         </TopSection>
-        <BottomSection container justifyContent="center" alignContent="center">
+        <BottomSection
+          container
+          justifyContent="center"
+          alignContent="center"
+          isOnLandScape={isOnLandScape}
+        >
           <Typography paragraph={true} align="center" sx={{ margin: "0px" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
             interdum dapibus mauris eget.
           </Typography>
         </BottomSection>
         <FadeBackground
-          position={{
-            top: "80vh", //75vh solo en landscape
-          }}
+          isOnLandScape={isOnLandScape}
+          position={
+            isOnLandScape
+              ? {
+                  top: "75vh",
+                }
+              : {
+                  top: "80vh",
+                }
+          }
         />
       </HeaderContainer>
     </>

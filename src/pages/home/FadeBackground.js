@@ -1,12 +1,16 @@
-import ObservedContainer from "./fadeContainer/ObservedContainer";
-import FadeOnScrolling from "./fadeContainer/FadeOnScrolling";
+import ObservedContainer from "./fadeBackground/ObservedContainer";
+import FadeOnScrolling from "./fadeBackground/FadeOnScrolling";
 import useFade from "hooks/useFade";
 
-const FadeBackground = ({ position }) => {
+const FadeBackground = ({ position, isOnLandScape }) => {
   const { opacity, ref } = useFade();
   return (
     <ObservedContainer ref={ref}>
-      <FadeOnScrolling currentOpacityValue={opacity} position={position} />
+      <FadeOnScrolling
+        currentOpacityValue={opacity}
+        position={position}
+        isOnLandScape={isOnLandScape}
+      />
     </ObservedContainer>
   );
 };
