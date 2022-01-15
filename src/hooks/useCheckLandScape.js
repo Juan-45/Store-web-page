@@ -1,17 +1,13 @@
-import { useState, useEffect } from "react";
+import { /*useState, */ useEffect } from "react";
 
 const useCheckLandScape = () => {
-  const [isOnLandScape, setIsOnLandScape] = useState();
-
   useEffect(() => {
     window.document.addEventListener(
-      "orientationChange",
-      () => setIsOnLandScape(true),
+      "orientationchange",
+      () => alert(window.orientation),
       false
     );
   }, []);
-
-  return { isOnLandScape };
 };
 
 export default useCheckLandScape;
