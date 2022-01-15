@@ -4,10 +4,18 @@ import HeaderContainer from "./header/HeaderContainer";
 import TopSection from "./header/TopSection";
 import BottomSection from "./header/BottomSection";
 import ParallaxBackground from "./ParallaxBackground";
-import useCheckLandScape from "hooks/useCheckLandScape";
+import { useEffect } from "react";
+//import useCheckLandScape from "hooks/useCheckLandScape";
 
 const Header = () => {
-  useCheckLandScape();
+  // useCheckLandScape();
+  useEffect(() => {
+    window.document.addEventListener(
+      "orientationchange",
+      () => alert(window.orientation),
+      false
+    );
+  }, []);
   return (
     <>
       <ParallaxBackground />
