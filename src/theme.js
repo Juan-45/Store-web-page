@@ -166,9 +166,6 @@ theme.components = {
         width: "15px",
         height: "15px",
         margin: "0px 15px",
-        "&:hover": {
-          background: theme.palette.primary.dark,
-        },
         boxShadow:
           "0px 8px 10px -5px rgb(0 0 0 / 30%), 0px 16px 24px 2px rgb(0 0 0 / 21%), 0px 6px 30px 5px rgb(0 0 0 / 18%)",
       },

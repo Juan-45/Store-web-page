@@ -5,6 +5,7 @@ import BackButton from "./carousel/BackButton";
 import ForwardButton from "./carousel/ForwardButton";
 import CarouselContent from "./carousel/CarouselContent";
 import useCarousel from "./carousel/useCarousel";
+import theme from "theme";
 
 const Carousel = ({ children }) => {
   const {
@@ -62,6 +63,15 @@ const Carousel = ({ children }) => {
         position="static"
         activeStep={currentIndex}
         ref={ref}
+        sx={
+          !isTouchScreen
+            ? {
+                "& .MuiMobileStepper-dot:hover": {
+                  background: theme.palette.primary.dark,
+                },
+              }
+            : {}
+        }
       />
     </Container>
   );
