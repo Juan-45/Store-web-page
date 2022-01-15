@@ -1,12 +1,12 @@
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
-const FadeOnScrolling = ({ currentOpacityValue, position }) => {
+const FadeOnScrolling = ({ currentOpacityValue, position, isOnLandScape }) => {
   const Root = styled(Paper, {
     shouldForwardProp: (prop) => prop !== "currentOpacityValue",
   })(({ currentOpacityValue, position }) => ({
     width: "100vw",
-    height: "25vh",
+    height: isOnLandScape ? "25vh" : "20vh",
     backgroundColor: "#000000a1",
     opacity: currentOpacityValue,
     position: "relative",
@@ -23,6 +23,7 @@ const FadeOnScrolling = ({ currentOpacityValue, position }) => {
       elevation={16}
       variant="darkShadow"
       position={position}
+      isOnLandScape={isOnLandScape}
     />
   );
 };
