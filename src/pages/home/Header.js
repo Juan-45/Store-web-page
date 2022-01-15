@@ -4,8 +4,10 @@ import HeaderContainer from "./header/HeaderContainer";
 import TopSection from "./header/TopSection";
 import BottomSection from "./header/BottomSection";
 import ParallaxBackground from "./ParallaxBackground";
+import useCheckLandScape from "hooks/useCheckLandScape";
 
 const Header = () => {
+  const { isOnLandScape } = useCheckLandScape();
   return (
     <>
       <ParallaxBackground />
@@ -17,7 +19,9 @@ const Header = () => {
       >
         <TopSection container justifyContent="center" alignContent="center">
           <Typography variant="h2" align="center">
-            Lorem ipsum dolor sit amet, consectetur.
+            {"Lorem ipsum dolor sit amet, consectetur." + isOnLandScape
+              ? "LANDSCAPE ACTIVATED"
+              : "LANDSCAPE ES FALSO"}
           </Typography>
         </TopSection>
         <BottomSection container justifyContent="center" alignContent="center">
