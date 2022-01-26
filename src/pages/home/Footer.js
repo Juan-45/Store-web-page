@@ -19,7 +19,7 @@ const Footer = () => {
         <Typography gutterBottom={true} fontFamily="Niconne" variant="h2">
           Contáctanos
         </Typography>
-        <Grid justifyContent="space-evenly" wrap="nowrap">
+        <Grid container justifyContent="space-evenly" wrap="nowrap">
           <IconButton disableRipple color="primary">
             <FacebookIcon fontSize="large" />
           </IconButton>
