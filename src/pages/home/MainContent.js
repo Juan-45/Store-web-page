@@ -1,4 +1,3 @@
-import ContentSample from "./mainContent/ContentSample";
 import ContentContainer from "./mainContent/ContentContainer";
 import PresentationContainer from "./mainContent/PresentationContainer";
 import PresentationItem from "./mainContent/PresentationItem";
@@ -329,7 +328,6 @@ const MainContent = () => {
           </Carousel>
         </Box>
       </Box>
-      <ContentSample>FOOTER</ContentSample>
     </>
   );
 };
