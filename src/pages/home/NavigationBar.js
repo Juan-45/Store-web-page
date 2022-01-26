@@ -3,6 +3,7 @@ import Container from "./navigationBar/Container";
 import NavButtonsBar from "./navigationBar/NavButtonsBar";
 import AutoSearch from "./navigationBar/AutoSearch";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
+import useNavigationBar from "./navigationBar/useNavigationBar";
 
 const pages = [
   "Contactos",
@@ -24,11 +25,17 @@ const foods = [
 
 const NavigationBar = ({ shouldDisplay }) => {
   const { isTouchScreen } = useCheckTouchScreens();
+  const { shouldRemoveComponent } = useNavigationBar(shouldDisplay);
+
   return (
     <Container shouldDisplay={shouldDisplay} isTouchScreen={isTouchScreen}>
-      <NavButtonsBar pages={pages} />
-      <MobileNavMenu pages={pages} isTouchScreen={isTouchScreen} />
-      <AutoSearch autocompleteData={foods} />
+      {shouldRemoveComponent
+        ? null
+        : [
+            <NavButtonsBar pages={pages} />,
+            <MobileNavMenu pages={pages} isTouchScreen={isTouchScreen} />,
+            <AutoSearch autocompleteData={foods} />,
+          ]}
     </Container>
   );
 };
