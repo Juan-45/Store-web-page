@@ -12,6 +12,7 @@ import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Carousel from "./mainContent/Carousel";
 import theme from "theme";
+import ProductCard from "./mainContent/ProductCard";
 
 const MainContent = () => {
   return (
@@ -93,239 +94,45 @@ const MainContent = () => {
           }}
         >
           <Carousel>
-            <div
-              style={{
-                padding: 25,
-                boxSizing: "border-box",
-                height: "fit-content",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/300x300"
-                alt="placeholder"
-                style={{
-                  height: "auto",
-                  maxWidth: "100%",
-                }}
-              />
-              <div
-                style={{
-                  background: "green",
-                  boxSizing: "border-box",
-                  padding: "15px",
-                  height: "auto",
-                  maxWidth: "300px",
-                }}
-              >
-                <h2>Producto N 1</h2>
-                <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-            <div
-              style={{
-                padding: 25,
-                boxSizing: "border-box",
-                height: "fit-content",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/300x300"
-                alt="placeholder"
-                style={{
-                  height: "auto",
-                  maxWidth: "100%",
-                }}
-              />
-              <div
-                style={{
-                  background: "green",
-                  boxSizing: "border-box",
-                  padding: "15px",
-                  maxWidth: "300px",
-                }}
-              >
-                <h2>Producto N 2</h2>
-                <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-            <div
-              style={{
-                padding: 25,
-                boxSizing: "border-box",
-                height: "fit-content",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/300x300"
-                alt="placeholder"
-                style={{
-                  height: "auto",
-                  maxWidth: "100%",
-                }}
-              />
-              <div
-                style={{
-                  background: "green",
-                  boxSizing: "border-box",
-                  padding: "15px",
-                  maxWidth: "300px",
-                }}
-              >
-                <h2>Producto N 3</h2>
-                <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-            <div
-              style={{
-                padding: 25,
-                boxSizing: "border-box",
-                height: "fit-content",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/300x300"
-                alt="placeholder"
-                style={{
-                  height: "auto",
-                  maxWidth: "100%",
-                }}
-              />
-              <div
-                style={{
-                  background: "green",
-                  boxSizing: "border-box",
-                  padding: "15px",
-                  maxWidth: "300px",
-                }}
-              >
-                <h2>Producto N 4</h2>
-                <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-            <div
-              style={{
-                padding: 25,
-                boxSizing: "border-box",
-                height: "fit-content",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/300x300"
-                alt="placeholder"
-                style={{
-                  height: "auto",
-                  maxWidth: "100%",
-                }}
-              />
-              <div
-                style={{
-                  background: "green",
-                  boxSizing: "border-box",
-                  padding: "15px",
-                  maxWidth: "300px",
-                }}
-              >
-                <h2>Producto N 5</h2>
-                <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-            <div
-              style={{
-                padding: 25,
-                boxSizing: "border-box",
-                height: "fit-content",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/300x300"
-                alt="placeholder"
-                style={{
-                  height: "auto",
-                  maxWidth: "100%",
-                }}
-              />
-              <div
-                style={{
-                  background: "green",
-                  boxSizing: "border-box",
-                  padding: "15px",
-                  maxWidth: "300px",
-                }}
-              >
-                <h2>Producto N 6</h2>
-                <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-            <div
-              style={{
-                padding: 25,
-                boxSizing: "border-box",
-                height: "fit-content",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/300x300"
-                alt="placeholder"
-                style={{
-                  height: "auto",
-                  maxWidth: "100%",
-                }}
-              />
-              <div
-                style={{
-                  background: "green",
-                  boxSizing: "border-box",
-                  padding: "15px",
-                  maxWidth: "300px",
-                }}
-              >
-                <h2>Producto N 7</h2>
-                <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-            <div
-              style={{
-                padding: 25,
-                boxSizing: "border-box",
-                height: "fit-content",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/300x300"
-                alt="placeholder"
-                style={{
-                  height: "auto",
-                  maxWidth: "100%",
-                }}
-              />
-              <div
-                style={{
-                  background: "green",
-                  boxSizing: "border-box",
-                  padding: "15px",
-                  maxWidth: "300px",
-                }}
-              >
-                <h2>Producto N 8</h2>
-                <p style={{ fontSize: "1.3rem" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
+            {[
+              {
+                title: "Producto N 1",
+                price: "$ 254,00",
+              },
+              {
+                title: "Producto N 2",
+                price: "$ 678,70",
+                minimum: "2",
+              },
+              {
+                title: "Producto N 3",
+                price: "$ 247,70",
+              },
+              {
+                title: "Producto N 4",
+                price: "$ 587,00",
+                minimum: "2",
+              },
+              {
+                title: "Producto N 5",
+                price: "$ 200,00",
+              },
+              {
+                title: "Producto N 6",
+                price: "$ 278,00",
+              },
+              {
+                title: "Producto N 7",
+                price: "$ 890,00",
+              },
+              {
+                title: "Producto N 8",
+                price: "$ 1.115,40",
+                minimum: "2",
+              },
+            ].map((item) => {
+              return <ProductCard productData={item} />;
+            })}
           </Carousel>
         </Box>
       </Box>
