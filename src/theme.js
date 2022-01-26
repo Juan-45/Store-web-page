@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import "Niconne.css";
 
 const theme = createTheme({
   palette: {
@@ -30,6 +31,8 @@ const theme = createTheme({
     },
   },
 });
+
+theme.typography.fontFamily = [...theme.typography.fontFamily, "Niconne"];
 
 //Name of the component (MuiTypography)
 //Name of the slot (root, h1, h2, etc)
