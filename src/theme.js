@@ -7,20 +7,27 @@ const theme = createTheme({
       light: "#4faeff",
       dark: "#0062b5",
     },
+    secondary: {
+      main: "#636363",
+      dark: "#3c3c3c",
+    },
 
     text: {
       primary: "#ffffff",
     },
 
     background: {
+      dark: "#2d2d2d",
       default: "#747474",
+      defaultTraslucid: "#747474e6",
+      light: "#f2f2f2",
     },
   },
 
   breakpoints: {
     values: {
       xs: 0,
-      sm: 600,
+      sm: 800,
       md: 960, //smartphonePortrait
       lg: 1366,
       xl: 1920, //desktop
@@ -146,6 +153,25 @@ theme.components = {
       },
       input: {
         paddingTop: "16px",
+      },
+    },
+  },
+
+  MuiMobileStepper: {
+    styleOverrides: {
+      root: {
+        background: "none",
+        justifyContent: "center",
+        maxWidth: "100%",
+        margin: "25px 0px",
+        padding: "0px",
+      },
+      dot: {
+        width: "15px",
+        height: "15px",
+        margin: "0px 15px",
+        boxShadow:
+          "0px 8px 10px -5px rgb(0 0 0 / 30%), 0px 16px 24px 2px rgb(0 0 0 / 21%), 0px 6px 30px 5px rgb(0 0 0 / 18%)",
       },
     },
   },

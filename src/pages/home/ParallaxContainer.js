@@ -1,5 +1,4 @@
 import { styled } from "@mui/material/styles";
-import { memo } from "react";
 
 const ParallaxContainer = styled("div")({
   perspective: "1px",
@@ -9,4 +8,4 @@ const ParallaxContainer = styled("div")({
   overflowY: "auto",
 });
 
-export default memo(ParallaxContainer);
+export default ParallaxContainer;

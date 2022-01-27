@@ -6,6 +6,7 @@ const ObservedContainer = ({ children }, ref) => {
     height: "100vh",
     position: "absolute",
     top: "0",
+    zIndex: "-1",
   });
 
   return <Root ref={ref}>{children}</Root>;

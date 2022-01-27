@@ -1,33 +1,57 @@
 import { Typography } from "@mui/material";
-import FadeBottomBackground from "./header/FadeBottomBackground";
+import FadeBackground from "./FadeBackground";
 import HeaderContainer from "./header/HeaderContainer";
 import TopSection from "./header/TopSection";
 import BottomSection from "./header/BottomSection";
-import HeaderBackground from "./header/HeaderBackground";
+import ParallaxBackground from "./ParallaxBackground";
+import useCheckLandScape from "hooks/useCheckLandScape";
 
 const Header = () => {
+  const { isOnLandScape } = useCheckLandScape();
+
   return (
     <>
-      <HeaderBackground />
+      <ParallaxBackground />
       <HeaderContainer
         container
         direction="column"
-        justifyContent="flex-start"
+        justifyContent="flex-end"
         alignItems="center"
       >
-        <TopSection container justifyContent="center" alignContent="center">
-          <Typography variant="h1" align="center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            interdum dapibus mauris eget maximus.
+        <TopSection
+          container
+          justifyContent="center"
+          alignContent="center"
+          isOnLandScape={isOnLandScape}
+        >
+          <Typography variant="h2" align="center">
+            Lorem ipsum dolor sit amet, consectetur.
           </Typography>
+          <p>{}</p>
         </TopSection>
-        <BottomSection container justifyContent="center" alignContent="center">
-          <Typography paragraph={true} align="center">
+        <BottomSection
+          container
+          justifyContent="center"
+          alignContent="center"
+          isOnLandScape={isOnLandScape}
+        >
+          <Typography paragraph={true} align="center" sx={{ margin: "0px" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            interdum dapibus mauris eget maximus. Suspendisse potenti.
+            interdum dapibus mauris eget.
           </Typography>
         </BottomSection>
-        <FadeBottomBackground />
+        <FadeBackground
+          isOnLandScape={isOnLandScape}
+          position={
+            isOnLandScape
+              ? {
+                  top: "75vh",
+                }
+              : {
+                  top: "80vh",
+                }
+          }
+        />
       </HeaderContainer>
     </>
   );

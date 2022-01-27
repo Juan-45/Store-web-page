@@ -16,7 +16,7 @@ const PaperWrapper = ({ children, shouldDisplay, isTouchScreen }) => {
         left: "0",
         zIndex: "2",
         width: isTouchScreen ? "100%" : "calc(100% - 16px)",
-        opacity: "95%",
+        opacity: "98%",
         transition: "opacity 0.4s ease",
         background: theme.palette.background.default,
       })),
@@ -31,7 +31,7 @@ const PaperWrapper = ({ children, shouldDisplay, isTouchScreen }) => {
       square={true}
       isTouchScreen={isTouchScreen}
       sx={{
-        maxHeight: { xs: "14vh", md: "20vh" },
+        height: "fit-content",
       }}
     >
       {children}

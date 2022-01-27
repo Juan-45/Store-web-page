@@ -1,8 +1,7 @@
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import MenuIcon from "@mui/icons-material/Menu";
 
-const MobileButton = (props) => {
+const MobileButton = ({ children, ...props }) => {
   const CustomIconButton = styled(IconButton)(({ theme }) => ({
     background: theme.palette.primary.main,
     boxShadow: theme.shadows[16],
@@ -12,8 +11,8 @@ const MobileButton = (props) => {
   }));
 
   return (
-    <CustomIconButton size="medium" color="inherit" {...props}>
-      <MenuIcon />
+    <CustomIconButton size="small" color="inherit" {...props}>
+      {children}
     </CustomIconButton>
   );
 };
