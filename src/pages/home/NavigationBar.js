@@ -32,9 +32,13 @@ const NavigationBar = ({ shouldDisplay }) => {
       {shouldRemoveComponent
         ? null
         : [
-            <NavButtonsBar pages={pages} />,
-            <MobileNavMenu pages={pages} isTouchScreen={isTouchScreen} />,
-            <AutoSearch autocompleteData={foods} />,
+            <NavButtonsBar pages={pages} key="NavButtonsBar" />,
+            <MobileNavMenu
+              pages={pages}
+              isTouchScreen={isTouchScreen}
+              key="MobileNavMenu"
+            />,
+            <AutoSearch autocompleteData={foods} key="AutoSearch" />,
           ]}
     </Container>
   );
