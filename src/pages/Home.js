@@ -3,6 +3,7 @@ import ParallaxContainer from "./home/ParallaxContainer";
 import MainContent from "./home/MainContent";
 import NavigationBar from "./home/NavigationBar";
 import useDisplayOnScroll from "hooks/useDisplayOnScroll";
+import Footer from "./home/Footer";
 
 const Home = () => {
   const { shouldDisplay, scrollHandler } = useDisplayOnScroll();
@@ -12,6 +13,7 @@ const Home = () => {
       <ParallaxContainer onScroll={scrollHandler}>
         <Header />
         <MainContent />
+        <Footer />
       </ParallaxContainer>
     </>
   );
