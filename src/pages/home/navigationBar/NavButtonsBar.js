@@ -14,7 +14,6 @@ const NavButtonsBar = ({ navSettings }) => (
         boxShadow: theme.shadows[16],
         flexWrap: "nowrap",
         width: "unset",
-        //  marginRight: "40px",
       }}
     >
       {navSettings.map((item) => (
