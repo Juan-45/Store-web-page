@@ -17,7 +17,7 @@ const Footer = () => {
     >
       <Box>
         <Typography gutterBottom={true} fontFamily="Niconne" variant="h2">
-          Contáctanos
+          Contáctanos en nuestras redes
         </Typography>
         <Grid container justifyContent="space-evenly" wrap="nowrap">
           <IconButton disableRipple color="primary">
