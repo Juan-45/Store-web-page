@@ -7,11 +7,19 @@ import { Typography } from "@mui/material";
 import MobileButton from "../MobileButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const MobileNavMenu = ({ pages, isTouchScreen }) => {
+const MobileNavMenu = ({ navSettings, isTouchScreen }) => {
   const [elementPosition, setElementPosition] = useState();
+  const navigate = useNavigate();
+
   const handleOpenMenu = (e) => setElementPosition(e.currentTarget);
   const handleCloseMenu = () => setElementPosition(false);
+
+  const getOnClickHandler = (currentSettings) => () => {
+    navigate(currentSettings["path"]);
+    setElementPosition(false);
+  };
 
   return (
     <Grid
@@ -42,12 +50,12 @@ const MobileNavMenu = ({ pages, isTouchScreen }) => {
           },
         }}
       >
-        {pages.map((page) => (
-          <MenuItem key={page} onClick={handleCloseMenu}>
+        {navSettings.map((item) => (
+          <MenuItem key={item.label} onClick={getOnClickHandler(item)}>
             <ListItemIcon>
               <ArrowForwardIosIcon />
             </ListItemIcon>
-            <Typography textAlign="center">{page}</Typography>
+            <Typography textAlign="center">{item.label}</Typography>
           </MenuItem>
         ))}
       </Menu>

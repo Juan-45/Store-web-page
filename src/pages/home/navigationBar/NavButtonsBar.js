@@ -1,10 +1,10 @@
 import Container from "./navButtonsBar/Container";
 import NavButton from "./navButtonsBar/NavButton";
 
-const NavButtonsBar = ({ pages }) => (
+const NavButtonsBar = ({ navSettings }) => (
   <Container>
-    {pages.map((page) => (
-      <NavButton pageTitle={page} key={page} />
+    {navSettings.map((item) => (
+      <NavButton buttonSettings={item} key={item.label} />
     ))}
   </Container>
 );
