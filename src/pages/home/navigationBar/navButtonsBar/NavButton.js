@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 const NavButton = ({ buttonSettings }) => {
   const CustomButton = styled(Button)(({ theme }) => ({
     color: theme.palette.text.primary,
-    width: "20%",
+    width: "15%",
     borderRadius: "0",
+    flexShrink: "0",
+    flexBasis: "content",
   }));
 
   const navigate = useNavigate();

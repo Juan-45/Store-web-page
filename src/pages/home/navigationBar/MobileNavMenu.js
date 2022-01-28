@@ -6,6 +6,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Typography } from "@mui/material";
 import MobileButton from "../MobileButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import SideButtons from "./SideButtons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +27,7 @@ const MobileNavMenu = ({ navSettings, isTouchScreen }) => {
       container
       item
       sx={{
-        paddingTop: "10px",
+        paddingTop: "13px",
         height: "fit-content",
         width: "fit-content",
         display: { xs: "flex", md: "none" },
@@ -36,6 +37,7 @@ const MobileNavMenu = ({ navSettings, isTouchScreen }) => {
       <MobileButton onClick={handleOpenMenu}>
         <MenuIcon />
       </MobileButton>
+      <SideButtons sx={{ marginLeft: "15px" }} />
       <Menu
         elevation={16}
         variant="blue"

@@ -9,7 +9,9 @@ const AutoSearch = ({ autocompleteData }) => {
       item
       sx={{
         paddingTop: { xs: "13px", md: "0px" },
-        width: { xs: "80%", md: "100%" },
+        width: { xs: "initial", md: "75%" },
+        minWidth: { xs: "70%", md: "unset" },
+        flexGrow: "1",
       }}
     >
       <Autocomplete
