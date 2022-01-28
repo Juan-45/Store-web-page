@@ -5,12 +5,12 @@ import AutoSearch from "./navigationBar/AutoSearch";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
 import useNavigationBar from "./navigationBar/useNavigationBar";
 
-const pages = [
-  "Contactos",
-  "Suscríbete",
-  "Nosotros",
-  "Sucursales",
-  "Productos",
+const navSettings = [
+  { label: "Contacto", path: "contact" },
+  { label: "Suscríbete", path: "signup" },
+  { label: "Nosotros", path: "about" },
+  { label: "Sucursales", path: "storepickup" },
+  { label: "Productos", path: "products" },
 ];
 
 const foods = [
@@ -32,9 +32,9 @@ const NavigationBar = ({ shouldDisplay }) => {
       {shouldRemoveComponent
         ? null
         : [
-            <NavButtonsBar pages={pages} key="NavButtonsBar" />,
+            <NavButtonsBar navSettings={navSettings} key="NavButtonsBar" />,
             <MobileNavMenu
-              pages={pages}
+              navSettings={navSettings}
               isTouchScreen={isTouchScreen}
               key="MobileNavMenu"
             />,

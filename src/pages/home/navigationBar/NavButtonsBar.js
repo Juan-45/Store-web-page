@@ -1,11 +1,25 @@
 import Container from "./navButtonsBar/Container";
 import NavButton from "./navButtonsBar/NavButton";
+import { Grid } from "@mui/material/";
+import theme from "theme";
+import SideButtons from "./SideButtons";
 
-const NavButtonsBar = ({ pages }) => (
+const NavButtonsBar = ({ navSettings }) => (
   <Container>
-    {pages.map((page) => (
-      <NavButton pageTitle={page} key={page} />
-    ))}
+    <SideButtons />
+    <Grid
+      container
+      alignItems="center"
+      sx={{
+        boxShadow: theme.shadows[16],
+        flexWrap: "nowrap",
+        width: "unset",
+      }}
+    >
+      {navSettings.map((item) => (
+        <NavButton buttonSettings={item} key={item.label} />
+      ))}
+    </Grid>
   </Container>
 );
 

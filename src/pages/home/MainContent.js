@@ -3,6 +3,7 @@ import PresentationContainer from "./mainContent/PresentationContainer";
 import PresentationItem from "./mainContent/PresentationItem";
 import ParallaxBackground from "./ParallaxBackground";
 import FadeBackground from "./FadeBackground";
+import Header from "./Header";
 
 import nuts from "images/nuts.jpg";
 import driedFruits from "images/driedFruits.jpg";
@@ -16,6 +17,7 @@ import ProductCard from "./mainContent/ProductCard";
 const MainContent = () => {
   return (
     <>
+      <Header />
       <ContentContainer container img={nuts} spacing={0}>
         <PresentationContainer container item sm={12} md={6}>
           <PresentationItem elevation={16} variant="darkShadow">
@@ -130,7 +132,7 @@ const MainContent = () => {
                 minimum: "2",
               },
             ].map((item) => {
-              return <ProductCard productData={item} />;
+              return <ProductCard productData={item} key={item.title} />;
             })}
           </Carousel>
         </Box>
