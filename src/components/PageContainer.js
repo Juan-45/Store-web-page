@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import theme from "theme";
 
 const PageContainer = ({ children }) => {
@@ -14,7 +14,14 @@ const PageContainer = ({ children }) => {
       }}
     >
       <Grid item xs={10} md={9} lg={6} xl={5} sx={{ height: "inherit" }}>
-        {children}
+        <Box
+          sx={{
+            height: "inherit",
+            paddingTop: { xs: "156px", md: "158.5px" },
+          }}
+        >
+          {children}
+        </Box>
       </Grid>
     </Grid>
   );
