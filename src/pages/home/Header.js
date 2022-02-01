@@ -27,7 +27,6 @@ const Header = () => {
           <Typography variant="h2" align="center">
             Lorem ipsum dolor sit amet, consectetur.
           </Typography>
-          <p>{}</p>
         </TopSection>
         <BottomSection
           container
