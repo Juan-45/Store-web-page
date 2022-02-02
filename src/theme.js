@@ -48,6 +48,10 @@ theme.palette = {
     ...theme.palette.error,
     traslucid: "#ef535045", //RGBA => A= 0.27
   },
+  success: {
+    ...theme.palette.success,
+    traslucid: "#2e7d3245",
+  },
 };
 
 //Name of the component (MuiTypography)
