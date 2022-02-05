@@ -1,10 +1,12 @@
-import { Box, Grid, Typography, TextField, Button } from "@mui/material";
-import { Alert } from "@mui/material";
-import theme from "theme";
-import Input from "components/Input";
+import { Box, Grid, Button } from "@mui/material";
+import TextArea from "components/TextArea";
+import useFormHandlers from "./form/useFormHandlers";
+import PageTitle from "components/PageTitle";
+import PersonalDetailsForm from "./form/PersonalDetailsForm";
+import FormStatusMessage from "components/FormStatusMessage";
 
 const Form = ({
-  values,
+  shouldReset,
   errors,
   touched,
   isValid,
@@ -13,7 +15,24 @@ const Form = ({
   handleSubmit,
   handleChange,
   handleBlur,
+  setShouldReset,
+  setIsSubmitted,
+  setTouched,
 }) => {
+  const {
+    debouncedSurnameHandler,
+    debouncedNameHandler,
+    debouncedEmailHandler,
+    debouncedPhoneHandler,
+    debouncedCommentHandler,
+  } = useFormHandlers({
+    setShouldReset,
+    setIsSubmitted,
+    handleChange,
+    setTouched,
+    touched,
+  });
+
   const inputsErrorsSettings = {
     surname: touched.surname && errors.surname,
     name: touched.name && errors.name,
@@ -22,68 +41,23 @@ const Form = ({
     comment: touched.comment && errors.comment,
   };
 
+  const handlers = {
+    debouncedSurnameHandler,
+    debouncedNameHandler,
+    debouncedEmailHandler,
+    debouncedPhoneHandler,
+  };
+
   return (
     <Box component={"form"} method="POST" action="" onSubmit={handleSubmit}>
       <Grid container alignItems="flex-start">
-        <Grid item xs={12} sx={{ marginBottom: "25px" }}>
-          <Typography
-            variant="h3"
-            gutterBottom
-            align="left"
-            sx={{
-              paddingLeft: "25px",
-              paddingBottom: "5px",
-              borderBottom: "2px solid",
-              borderBottomColor: theme.palette.ternary.main,
-            }}
-          >
-            Contacto
-          </Typography>
-        </Grid>
-        <Grid container item xs={12} md={6} wrap="wrap">
-          <Grid
-            container
-            direction="column"
-            alignItems="flex-start"
-            sx={{ width: { xs: "80%", md: "330px" } }}
-          >
-            <Input
-              label="Apellido"
-              required
-              value={values.surname}
-              onChange={handleChange("surname")}
-              onBlur={handleBlur("surname")}
-              error={inputsErrorsSettings.surname}
-              helperText={inputsErrorsSettings.surname}
-            />
-            <Input
-              label="Nombre"
-              required
-              value={values.name}
-              onChange={handleChange("name")}
-              onBlur={handleBlur("name")}
-              error={inputsErrorsSettings.name}
-              helperText={inputsErrorsSettings.name}
-            />
-            <Input
-              label="E-Mail"
-              required
-              value={values.email}
-              onChange={handleChange("email")}
-              onBlur={handleBlur("email")}
-              error={inputsErrorsSettings.email}
-              helperText={inputsErrorsSettings.email}
-            />
-            <Input
-              label="Teléfono"
-              value={values.phone}
-              onChange={handleChange("phone")}
-              onBlur={handleBlur("phone")}
-              error={inputsErrorsSettings.phone}
-              helperText={inputsErrorsSettings.phone}
-            />
-          </Grid>
-        </Grid>
+        <PageTitle text={"Contacto"} />
+        <PersonalDetailsForm
+          inputsErrorsSettings={inputsErrorsSettings}
+          handleBlur={handleBlur}
+          shouldReset={shouldReset}
+          handlers={handlers}
+        />
         <Grid item xs={12} md={6}>
           <Box
             sx={{
@@ -91,54 +65,24 @@ const Form = ({
               marginBottom: "20px",
             }}
           >
-            <TextField
+            <TextArea
               label="Comentario"
               required
-              multiline
-              minRows={6}
-              value={values.comment}
-              onChange={handleChange("comment")}
+              name="comment"
+              onChange={debouncedCommentHandler}
               onBlur={handleBlur("comment")}
               error={inputsErrorsSettings.comment}
               helperText={inputsErrorsSettings.comment}
-              sx={{
-                "& > .MuiFilledInput-root :first-child": {
-                  paddingTop: "0px",
-                },
-              }}
+              shouldReset={shouldReset}
             />
           </Box>
         </Grid>
-        {isValid ? null : (
-          <Alert
-            severity="error"
-            variant="outlined"
-            sx={{
-              width: { xs: "80%", md: "100%" },
-              boxSizing: "border-box",
-              background: theme.palette.error.traslucid,
-              boxShadow: theme.shadows[16],
-              marginBottom: "20px",
-            }}
-          >
-            Resuelva los errores en el formulario antes de continuar.
-          </Alert>
-        )}
-        {isSubmitted && isValid ? (
-          <Alert
-            severity="success"
-            variant="outlined"
-            sx={{
-              width: { xs: "80%", md: "100%" },
-              boxSizing: "border-box",
-              background: theme.palette.success.traslucid,
-              boxShadow: theme.shadows[16],
-              marginBottom: "20px",
-            }}
-          >
-            El mensaje fue enviado con éxito.
-          </Alert>
-        ) : null}
+        <FormStatusMessage
+          isValid={isValid}
+          isSubmitted={isSubmitted}
+          errorMessage="Complete los campos requeridos(*) y/o resuelva los errores en el formulario."
+          successMessage="El mensaje fue enviado con éxito."
+        />
         <Grid item xs={12} alignContent="flex-start">
           <Button type="submit" disabled={isSubmitting}>
             Enviar
