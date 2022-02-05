@@ -5,10 +5,10 @@ import Form from "./contact/Form";
 import { useState } from "react";
 
 //TODO remove pop-up error message onsubmitting
-//TODO add debounce
-//TODO set inputs responsive width using flex shrink grow and basis
+
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [shouldReset, setShouldReset] = useState(false);
 
   const phoneRegex =
     /^\(?([0-9]{3}[0-9]?){1}\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -27,6 +27,7 @@ const Contact = () => {
   });
 
   const handleSubmitting = (value, error) => {
+    setShouldReset(true);
     error.resetForm();
     setIsSubmitted(true);
     console.log("values", value);
@@ -47,7 +48,6 @@ const Contact = () => {
         validationSchema={validationSchema}
       >
         {({
-          values,
           errors,
           touched,
           isValid,
@@ -56,28 +56,22 @@ const Contact = () => {
           handleChange,
           handleBlur,
           setTouched,
-        }) => {
-          //This work for the Chrome's autofill bug
-          const onChangeHandler = (name) => (event) => {
-            setIsSubmitted(false);
-            handleChange(name)(event.target.value);
-            setTouched({ ...touched, [name]: true }, true);
-          };
-
-          return (
-            <Form
-              values={values}
-              errors={errors}
-              touched={touched}
-              isValid={isValid}
-              isSubmitting={isSubmitting}
-              handleSubmit={handleSubmit}
-              handleChange={onChangeHandler}
-              handleBlur={handleBlur}
-              isSubmitted={isSubmitted}
-            />
-          );
-        }}
+        }) => (
+          <Form
+            shouldReset={shouldReset}
+            setShouldReset={setShouldReset}
+            isSubmitted={isSubmitted}
+            setIsSubmitted={setIsSubmitted}
+            setTouched={setTouched}
+            errors={errors}
+            touched={touched}
+            isValid={isValid}
+            isSubmitting={isSubmitting}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+          />
+        )}
       </Formik>
     </PageContainer>
   );
