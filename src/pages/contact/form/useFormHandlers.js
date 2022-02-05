@@ -11,6 +11,7 @@ const useFormHandlers = ({
     setShouldReset(false);
     setIsSubmitted(false);
     handleChange(name)(event.target.value);
+    //This work for the Chrome's autofill bug
     setTouched({ ...touched, [name]: true }, true);
   };
 
