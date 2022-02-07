@@ -42,6 +42,18 @@ const theme = createTheme({
 
 theme.typography.fontFamily = [...theme.typography.fontFamily, "Niconne"];
 
+theme.palette = {
+  ...theme.palette,
+  error: {
+    ...theme.palette.error,
+    traslucid: "#ef535045", //RGBA => A= 0.27
+  },
+  success: {
+    ...theme.palette.success,
+    traslucid: "#2e7d3245",
+  },
+};
+
 //Name of the component (MuiTypography)
 //Name of the slot (root, h1, h2, etc)
 theme.components = {
@@ -178,7 +190,7 @@ theme.components = {
         },
       },
       input: {
-        paddingTop: "16px",
+        paddingTop: "18px",
       },
     },
   },

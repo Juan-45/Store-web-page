@@ -16,7 +16,12 @@ const Footer = () => {
       justifyContent="space-evenly"
     >
       <Box>
-        <Typography gutterBottom={true} fontFamily="Niconne" variant="h2">
+        <Typography
+          gutterBottom={true}
+          fontFamily="Niconne"
+          variant="h2"
+          align="center"
+        >
           Contáctanos en nuestras redes
         </Typography>
         <Grid container justifyContent="space-evenly" wrap="nowrap">
