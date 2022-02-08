@@ -9,23 +9,16 @@ const AutoSearch = ({ autocompleteData }) => {
       item
       sx={{
         paddingTop: { xs: "13px", md: "0px" },
-        width: { xs: "initial", md: "75%" },
-        minWidth: { xs: "70%", md: "unset" },
+        width: { xs: "70%", md: "75%" },
         flexGrow: "1",
       }}
     >
       <Autocomplete
-        fullWidth
-        size="small"
         options={autocompleteData}
         autoComplete
         PopperComponent={CustomPopper}
         renderInput={(params) => (
-          <SearchInput
-            placeholder="Buscar productos"
-            variant="filled"
-            {...params}
-          />
+          <SearchInput placeholder="Buscar productos" {...params} />
         )}
       />
     </Grid>
