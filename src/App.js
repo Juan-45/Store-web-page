@@ -22,6 +22,7 @@ function App() {
         alignItems="center"
         sx={{ color: "white" }}
       >
+
         <BrowserRouter>
           <Routes>
             <Route path="/Store-web-page" element={<Home />}>
