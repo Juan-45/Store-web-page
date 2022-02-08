@@ -1,4 +1,3 @@
-import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "theme";
 import Home from "pages/Home";
@@ -8,6 +7,7 @@ import About from "pages/About";
 import SignUp from "pages/SignUp";
 import StorePickUp from "pages/StorePickUp";
 import Products from "pages/Products";
+import { Grid } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //TODO comprobar layout en laptop
@@ -16,7 +16,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        sx={{ color: "white" }}
+      >
+
         <BrowserRouter>
           <Routes>
             <Route path="/Store-web-page" element={<Home />}>
@@ -43,7 +49,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      </div>
+      </Grid>
     </ThemeProvider>
   );
 }

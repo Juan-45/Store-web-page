@@ -12,9 +12,13 @@ const theme = createTheme({
       main: "#636363",
       dark: "#3c3c3c",
     },
+    ternary: {
+      main: "#6db733",
+    },
 
     text: {
       primary: "#ffffff",
+      secondary: "#444444",
     },
 
     background: {
@@ -38,9 +42,67 @@ const theme = createTheme({
 
 theme.typography.fontFamily = [...theme.typography.fontFamily, "Niconne"];
 
+theme.palette = {
+  ...theme.palette,
+  error: {
+    ...theme.palette.error,
+    traslucid: "#ef535045", //RGBA => A= 0.27
+  },
+  success: {
+    ...theme.palette.success,
+    traslucid: "#2e7d3245",
+  },
+};
+
 //Name of the component (MuiTypography)
 //Name of the slot (root, h1, h2, etc)
 theme.components = {
+  MuiTextField: {
+    defaultProps: {
+      variant: "filled",
+      size: "small",
+      fullWidth: true,
+    },
+  },
+
+  MuiButton: {
+    defaultProps: {
+      variant: "contained",
+    },
+    styleOverrides: {
+      root: {
+        boxShadow: theme.shadows[16],
+      },
+    },
+  },
+
+  MuiMenu: {
+    variants: [
+      {
+        props: { variant: "blue" },
+        style: {
+          "& .MuiMenu-paper": {
+            borderRadius: "0",
+            background: theme.palette.primary.main,
+            width: "100vw",
+            position: "fixed",
+            top: "0 !important",
+            left: "0 !important",
+            right: "0 !important",
+          },
+
+          "& .MuiMenuItem-root": {
+            paddingTop: "16px",
+            paddingBottom: "16px",
+          },
+          "& .MuiMenuItem-root:hover": {
+            background: theme.palette.primary.dark,
+          },
+        },
+      },
+    ],
+  },
+
   MuiPaper: {
     variants: [
       {
@@ -103,33 +165,6 @@ theme.components = {
     },
   },
 
-  MuiMenu: {
-    variants: [
-      {
-        props: { variant: "blue" },
-        style: {
-          "& .MuiMenu-paper": {
-            borderRadius: "0",
-            background: theme.palette.primary.main,
-            width: "100vw",
-            position: "fixed",
-            top: "0 !important",
-            left: "0 !important",
-            right: "0 !important",
-          },
-
-          "& .MuiMenuItem-root": {
-            paddingTop: "16px",
-            paddingBottom: "16px",
-          },
-          "& .MuiMenuItem-root:hover": {
-            background: theme.palette.primary.dark,
-          },
-        },
-      },
-    ],
-  },
-
   MuiAutocomplete: {
     styleOverrides: {
       root: {
@@ -155,7 +190,7 @@ theme.components = {
         },
       },
       input: {
-        paddingTop: "16px",
+        paddingTop: "18px",
       },
     },
   },

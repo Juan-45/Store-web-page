@@ -5,7 +5,7 @@ import theme from "theme";
 const Container = styled(Grid)({
   backgroundColor: theme.palette.background.dark,
   zIndex: "1",
-  height: "50vh",
+  height: "400px",
   padding: "40px",
   boxSizing: "border-box",
 });

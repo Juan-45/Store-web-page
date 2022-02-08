@@ -85,7 +85,7 @@ const MainContent = () => {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h3" sx={{ width: "100%" }}>
+          <Typography variant="h3" sx={{ width: "100%" }} align="center">
             Productos destacados
           </Typography>
         </Grid>
