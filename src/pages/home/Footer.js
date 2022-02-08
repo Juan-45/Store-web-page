@@ -15,7 +15,7 @@ const Footer = () => {
       alignItems="center"
       justifyContent="space-evenly"
     >
-      <Box>
+      <Box sx={{ marginBottom: "20px" }}>
         <Typography
           gutterBottom={true}
           fontFamily="Niconne"
@@ -38,11 +38,9 @@ const Footer = () => {
       </Box>
 
       <Box>
-        <Typography gutterBottom={true}>
-          Casa central, Av. Pellegrini 2100
-        </Typography>
-        <Typography gutterBottom={true}>Info@lorem.com.ar</Typography>
-        <Typography gutterBottom={true}>‎+54 9 341 2543-8547</Typography>
+        <Typography gutterBottom>Casa central, Av. Pellegrini 2100</Typography>
+        <Typography gutterBottom>Info@lorem.com.ar</Typography>
+        <Typography gutterBottom>‎+54 9 341 2543-8547</Typography>
       </Box>
     </Container>
   );
