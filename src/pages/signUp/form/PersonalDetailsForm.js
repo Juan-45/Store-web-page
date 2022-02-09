@@ -1,5 +1,6 @@
 import Input from "components/Input";
 import SubFormContainer from "components/SubFormContainer";
+import Subtitle from "components/Subtitle";
 
 const PersonalDetailsForm = ({
   inputsErrorsSettings,
@@ -7,15 +8,11 @@ const PersonalDetailsForm = ({
   shouldReset,
   handlers,
 }) => {
-  const {
-    debouncedSurnameHandler,
-    debouncedNameHandler,
-    debouncedEmailHandler,
-    debouncedPhoneHandler,
-  } = handlers;
-
+  const { debouncedSurnameHandler, debouncedNameHandler, debouncedIdHandler } =
+    handlers;
   return (
     <SubFormContainer>
+      <Subtitle>Información Personal</Subtitle>
       <Input
         label="Apellido"
         required
@@ -35,20 +32,12 @@ const PersonalDetailsForm = ({
         shouldReset={shouldReset}
       />
       <Input
-        label="E-Mail"
+        label="DNI"
         required
-        onChange={debouncedEmailHandler}
-        onBlur={handleBlur("email")}
-        error={inputsErrorsSettings.email}
-        helperText={inputsErrorsSettings.email}
-        shouldReset={shouldReset}
-      />
-      <Input
-        label="Teléfono"
-        onChange={debouncedPhoneHandler}
-        onBlur={handleBlur("phone")}
-        error={inputsErrorsSettings.phone}
-        helperText={inputsErrorsSettings.phone}
+        onChange={debouncedIdHandler}
+        onBlur={handleBlur("id")}
+        error={inputsErrorsSettings.id}
+        helperText={inputsErrorsSettings.id}
         shouldReset={shouldReset}
       />
     </SubFormContainer>
