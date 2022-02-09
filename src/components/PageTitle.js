@@ -1,13 +1,12 @@
 import { Typography, Grid } from "@mui/material";
 import theme from "theme";
 
-const PageTitle = ({ text }) => {
+const PageTitle = ({ children }) => {
   //SPECS Should be wrapper in a Grid container
   return (
-    <Grid item xs={12} sx={{ marginBottom: "25px" }}>
+    <Grid item xs={12} sx={{ marginBottom: "30px" }}>
       <Typography
         variant="h3"
-        gutterBottom
         align="left"
         sx={{
           paddingLeft: "25px",
@@ -16,7 +15,7 @@ const PageTitle = ({ text }) => {
           borderBottomColor: theme.palette.ternary.main,
         }}
       >
-        {text}
+        {children}
       </Typography>
     </Grid>
   );
