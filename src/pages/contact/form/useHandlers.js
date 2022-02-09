@@ -1,6 +1,6 @@
 import { useDebouncedCallback } from "use-debounce";
 
-const useFormHandlers = ({
+const useHandlers = ({
   setShouldReset,
   setIsSubmitted,
   handleChange,
@@ -64,4 +64,4 @@ const useFormHandlers = ({
   };
 };
 
-export default useFormHandlers;
+export default useHandlers;
