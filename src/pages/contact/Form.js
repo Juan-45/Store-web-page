@@ -1,9 +1,10 @@
 import { Box, Grid, Button } from "@mui/material";
 import TextArea from "components/TextArea";
-import useFormHandlers from "./form/useFormHandlers";
+import useHandlers from "./form/useHandlers";
 import PageTitle from "components/PageTitle";
 import PersonalDetailsForm from "./form/PersonalDetailsForm";
 import FormStatusMessage from "components/FormStatusMessage";
+import SubFormContainer from "components/SubFormContainer";
 
 const Form = ({
   shouldReset,
@@ -25,7 +26,7 @@ const Form = ({
     debouncedEmailHandler,
     debouncedPhoneHandler,
     debouncedCommentHandler,
-  } = useFormHandlers({
+  } = useHandlers({
     setShouldReset,
     setIsSubmitted,
     handleChange,
@@ -51,32 +52,24 @@ const Form = ({
   return (
     <Box component={"form"} method="POST" action="" onSubmit={handleSubmit}>
       <Grid container alignItems="flex-start">
-        <PageTitle text={"Contacto"} />
+        <PageTitle>Contacto</PageTitle>
         <PersonalDetailsForm
           inputsErrorsSettings={inputsErrorsSettings}
           handleBlur={handleBlur}
           shouldReset={shouldReset}
           handlers={handlers}
         />
-        <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              width: { xs: "80%", md: "330px" },
-              marginBottom: "20px",
-            }}
-          >
-            <TextArea
-              label="Comentario"
-              required
-              name="comment"
-              onChange={debouncedCommentHandler}
-              onBlur={handleBlur("comment")}
-              error={inputsErrorsSettings.comment}
-              helperText={inputsErrorsSettings.comment}
-              shouldReset={shouldReset}
-            />
-          </Box>
-        </Grid>
+        <SubFormContainer>
+          <TextArea
+            label="Comentario"
+            required
+            onChange={debouncedCommentHandler}
+            onBlur={handleBlur("comment")}
+            error={inputsErrorsSettings.comment}
+            helperText={inputsErrorsSettings.comment}
+            shouldReset={shouldReset}
+          />
+        </SubFormContainer>
         <FormStatusMessage
           isValid={isValid}
           isSubmitted={isSubmitted}
