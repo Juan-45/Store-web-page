@@ -7,7 +7,7 @@ import useNavigationBar from "./navigationBar/useNavigationBar";
 
 const navSettings = [
   { label: "Contacto", path: "contact" },
-  { label: "Suscríbete", path: "signup" },
+  { label: "Crear Cuenta", path: "signup" },
   { label: "Nosotros", path: "about" },
   { label: "Sucursales", path: "storepickup" },
   { label: "Productos", path: "products" },
