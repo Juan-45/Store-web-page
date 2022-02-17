@@ -14,6 +14,7 @@ const PasswordInput = ({
   onChange,
   shouldReset,
   label,
+  required,
   helperText,
   error,
   ...props
@@ -46,7 +47,7 @@ const PasswordInput = ({
         error={error}
         sx={{ top: "-3px" }}
       >
-        {label}
+        {required ? `${label} *` : label}
       </InputLabel>
       <FilledInput
         id="filled-adornment-password"
