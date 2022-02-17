@@ -9,20 +9,37 @@ const SignUp = () => {
   const [shouldReset, setShouldReset] = useState(false);
 
   const idRegex = /^([1-9]{1}[0-9]?){1}[.]?([0-9]{3})[.]?([0-9]{3})$/;
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]+$/;
+
+  const errorMessages = {
+    emailInvalidFormat: "Formato válido abc@ejemplo.com",
+    idInvalidFormat: "Formato válido 11.111.111 o sin puntos",
+    required: "Campo requerido",
+    minLength: "Debe tener un minimo de seis caracteres",
+    maxLength: "Debe tener como máximo diez caracteres",
+    rePasswordDoesNotMatch: "No coincide con la contraseña ingresada",
+    passwordInvalid:
+      "La contraseña debe tener minúsculas, mayúsculas y números, sin caracteres especiales",
+  };
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email("Formato válido abc@ejemplo.com")
-      .required("Campo requerido"),
-    surname: Yup.string().required("Campo requerido"),
-    name: Yup.string().required("Campo requerido"),
-    password: Yup.string().required("Campo requerido"),
-    rePassword: Yup.string().required("Campo requerido"),
+      .email(errorMessages.emailInvalidFormat)
+      .required(errorMessages.required),
+    surname: Yup.string().required(errorMessages.required),
+    name: Yup.string().required(errorMessages.required),
+    password: Yup.string()
+      .matches(passwordRegex, errorMessages.passwordInvalid)
+      .required(errorMessages.required)
+      .min(6, errorMessages.minLength)
+      .max(10, errorMessages.maxLength),
+    rePassword: Yup.string()
+      .required(errorMessages.required)
+      .oneOf([Yup.ref("password"), null], errorMessages.rePasswordDoesNotMatch),
     id: Yup.string()
-      .matches(idRegex, "Formato válido 11.111.111 o sin puntos")
-      .required("Campo requerido"),
+      .matches(idRegex, errorMessages.idInvalidFormat)
+      .required(errorMessages.required),
   });
-  //TODO set password & rePassword validation
 
   const handleSubmitting = (value, error) => {
     setShouldReset(true);
