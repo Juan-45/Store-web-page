@@ -5,7 +5,6 @@ import Form from "./contact/Form";
 import { useState } from "react";
 
 //TODO remove pop-up error message onsubmitting
-
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [shouldReset, setShouldReset] = useState(false);
@@ -13,17 +12,20 @@ const Contact = () => {
   const phoneRegex =
     /^\(?([0-9]{3}[0-9]?){1}\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
+  const errorMessages = {
+    emailInvalidFormat: "Formato válido abc@ejemplo.com",
+    required: "Campo requerido",
+    phoneInvalid: "Ingrese característica con 0 y número sin 15",
+  };
+
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email("Formato válido abc@ejemplo.com")
-      .required("Campo requerido"),
-    surname: Yup.string().required("Campo requerido"),
-    name: Yup.string().required("Campo requerido"),
-    comment: Yup.string().required("Campo requerido"),
-    phone: Yup.string().matches(
-      phoneRegex,
-      "Ingrese característica con 0 y/o número sin 15 en caso de celulares"
-    ),
+      .email(errorMessages.emailInvalidFormat)
+      .required(errorMessages.required),
+    surname: Yup.string().required(errorMessages.required),
+    name: Yup.string().required(errorMessages.required),
+    comment: Yup.string().required(errorMessages.required),
+    phone: Yup.string().matches(phoneRegex, errorMessages.phoneInvalid),
   });
 
   const handleSubmitting = (value, error) => {
