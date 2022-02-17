@@ -1,6 +1,6 @@
 import { useDebouncedCallback } from "use-debounce";
 
-const useFormHandlers = ({
+const useHandlers = ({
   setShouldReset,
   setIsSubmitted,
   handleChange,
@@ -39,16 +39,20 @@ const useFormHandlers = ({
     }
   );
 
-  const debouncedPhoneHandler = useDebouncedCallback(
-    onChangeHandler("phone"),
+  const debouncedIdHandler = useDebouncedCallback(onChangeHandler("id"), 250, {
+    trailing: true,
+  });
+
+  const debouncedPasswordHandler = useDebouncedCallback(
+    onChangeHandler("password"),
     250,
     {
       trailing: true,
     }
   );
 
-  const debouncedCommentHandler = useDebouncedCallback(
-    onChangeHandler("comment"),
+  const debouncedRePasswordHandler = useDebouncedCallback(
+    onChangeHandler("rePassword"),
     250,
     {
       trailing: true,
@@ -59,9 +63,10 @@ const useFormHandlers = ({
     debouncedSurnameHandler,
     debouncedNameHandler,
     debouncedEmailHandler,
-    debouncedPhoneHandler,
-    debouncedCommentHandler,
+    debouncedIdHandler,
+    debouncedPasswordHandler,
+    debouncedRePasswordHandler,
   };
 };
 
-export default useFormHandlers;
+export default useHandlers;

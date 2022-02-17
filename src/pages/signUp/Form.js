@@ -1,10 +1,9 @@
-import { Box, Grid, Button } from "@mui/material";
-import TextArea from "components/TextArea";
-import useHandlers from "./form/useHandlers";
-import PageTitle from "components/PageTitle";
-import PersonalDetailsForm from "./form/PersonalDetailsForm";
 import FormStatusMessage from "components/FormStatusMessage";
-import SubFormContainer from "components/SubFormContainer";
+import PersonalDetailsForm from "pages/signUp/form/PersonalDetailsForm";
+import AccountDetailsForm from "pages/signUp/form/AccountDetailsForm";
+import PageTitle from "components/PageTitle";
+import { Grid, Button, Box } from "@mui/material";
+import useHandlers from "./form/useHandlers";
 
 const Form = ({
   shouldReset,
@@ -24,8 +23,9 @@ const Form = ({
     debouncedSurnameHandler,
     debouncedNameHandler,
     debouncedEmailHandler,
-    debouncedPhoneHandler,
-    debouncedCommentHandler,
+    debouncedIdHandler,
+    debouncedPasswordHandler,
+    debouncedRePasswordHandler,
   } = useHandlers({
     setShouldReset,
     setIsSubmitted,
@@ -37,44 +37,45 @@ const Form = ({
   const inputsErrorsSettings = {
     surname: touched.surname && errors.surname,
     name: touched.name && errors.name,
-    phone: touched.phone && errors.phone,
+    id: touched.id && errors.id,
     email: touched.email && errors.email,
-    comment: touched.comment && errors.comment,
+    password: touched.password && errors.password,
+    rePassword: touched.rePassword && errors.rePassword,
   };
 
-  const handlers = {
+  const personalDetailsHandlers = {
     debouncedSurnameHandler,
     debouncedNameHandler,
+    debouncedIdHandler,
+  };
+
+  const accountDetailsHandlers = {
     debouncedEmailHandler,
-    debouncedPhoneHandler,
+    debouncedPasswordHandler,
+    debouncedRePasswordHandler,
   };
 
   return (
     <Box component={"form"} method="POST" action="" onSubmit={handleSubmit}>
       <Grid container alignItems="flex-start">
-        <PageTitle>Contacto</PageTitle>
+        <PageTitle>Crear cuenta</PageTitle>
         <PersonalDetailsForm
           inputsErrorsSettings={inputsErrorsSettings}
           handleBlur={handleBlur}
           shouldReset={shouldReset}
-          handlers={handlers}
+          handlers={personalDetailsHandlers}
         />
-        <SubFormContainer>
-          <TextArea
-            label="Comentario"
-            required
-            onChange={debouncedCommentHandler}
-            onBlur={handleBlur("comment")}
-            error={inputsErrorsSettings.comment}
-            helperText={inputsErrorsSettings.comment}
-            shouldReset={shouldReset}
-          />
-        </SubFormContainer>
+        <AccountDetailsForm
+          inputsErrorsSettings={inputsErrorsSettings}
+          handleBlur={handleBlur}
+          shouldReset={shouldReset}
+          handlers={accountDetailsHandlers}
+        />
         <FormStatusMessage
           isValid={isValid}
           isSubmitted={isSubmitted}
           errorMessage="Complete los campos requeridos(*) y/o resuelva los errores en el formulario."
-          successMessage="El mensaje fue enviado con éxito."
+          successMessage="Registro exitoso."
         />
         <Grid item xs={12} alignContent="flex-start">
           <Button type="submit" disabled={isSubmitting}>
