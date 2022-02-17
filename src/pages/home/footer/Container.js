@@ -7,6 +7,7 @@ const Container = styled(Grid)({
   zIndex: "1",
   padding: "40px",
   boxSizing: "border-box",
+  minHeight: "500px",
 });
 
 export default Container;
