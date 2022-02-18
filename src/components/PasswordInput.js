@@ -17,6 +17,7 @@ const PasswordInput = ({
   required,
   helperText,
   error,
+  id,
   ...props
 }) => {
   const [value, setValue] = useState("");
@@ -43,14 +44,14 @@ const PasswordInput = ({
       sx={{ minWidth: "100%", marginBottom: "20px" }}
     >
       <InputLabel
-        htmlFor="filled-adornment-password"
+        htmlFor={`filled-adornment-password- ${id}`}
         error={error}
         sx={{ top: "-3px" }}
       >
         {required ? `${label} *` : label}
       </InputLabel>
       <FilledInput
-        id="filled-adornment-password"
+        id={`filled-adornment-password- ${id}`}
         value={value}
         type={showPassword ? "text" : "password"}
         error={error}
