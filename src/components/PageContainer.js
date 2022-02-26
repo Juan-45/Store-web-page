@@ -13,7 +13,7 @@ const PageContainer = ({ children }) => {
         minHeight: "100vh",
       }}
     >
-      <Grid item xs={10} md={9} lg={6} xl={5}>
+      <Grid item xs={11} md={9} lg={8} xl={5}>
         <Box
           sx={{
             paddingTop: { xs: "156px", md: "158.5px" },

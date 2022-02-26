@@ -34,6 +34,7 @@ const PersonalDetailsForm = ({
         error={inputsErrorsSettings.password}
         helperText={inputsErrorsSettings.password}
         shouldReset={shouldReset}
+        id="password"
       />
       <PasswordInput
         label="Repetir contraseña"
@@ -43,6 +44,7 @@ const PersonalDetailsForm = ({
         error={inputsErrorsSettings.rePassword}
         helperText={inputsErrorsSettings.rePassword}
         shouldReset={shouldReset}
+        id="rePassword"
       />
     </SubFormContainer>
   );

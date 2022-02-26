@@ -13,7 +13,7 @@ const SignUp = () => {
 
   const errorMessages = {
     emailInvalidFormat: "Formato válido abc@ejemplo.com",
-    idInvalidFormat: "Formato válido 11.111.111 o sin puntos",
+    idInvalidFormat: "Formato válido 11.111.111",
     required: "Campo requerido",
     minLength: "Debe tener un minimo de seis caracteres",
     maxLength: "Debe tener como máximo diez caracteres",
