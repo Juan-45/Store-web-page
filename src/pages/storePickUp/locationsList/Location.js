@@ -25,6 +25,14 @@ const Location = ({ locationSettings }) => {
     });
   };
 
+  const handleLocation = () => {
+    setOpen(true);
+    setAlertSettings({
+      title: "Localización seleccionada",
+      text: `En la ventana de Google Maps se centrará el mapa en la ubicación: ${address}`,
+    });
+  };
+
   return (
     <>
       <Alert
@@ -46,6 +54,7 @@ const Location = ({ locationSettings }) => {
         container
         alignItems="flex-start"
         direction="column"
+        onClick={handleLocation}
       >
         <Grid
           container
