@@ -3,24 +3,30 @@ import "Niconne.css";
 
 const theme = createTheme({
   palette: {
+    //blue
     primary: {
       main: "#0089ff",
       light: "#4faeff",
       dark: "#0062b5",
     },
+    //gray
     secondary: {
       main: "#636363",
       dark: "#3c3c3c",
+      light: "#e2e2e2",
+      hover: "#c4c4c4",
     },
+    //green
     ternary: {
       main: "#6db733",
+      light: "#c0d0b3",
     },
 
     text: {
       primary: "#ffffff",
       secondary: "#444444",
     },
-
+    //darker grey
     background: {
       dark: "#2d2d2d",
       default: "#747474",
@@ -37,6 +43,10 @@ const theme = createTheme({
       lg: 1366,
       xl: 1920, //desktop
     },
+  },
+
+  borders: {
+    main: "1px solid #0089ff80",
   },
 });
 
@@ -72,6 +82,9 @@ theme.components = {
     styleOverrides: {
       root: {
         boxShadow: theme.shadows[16],
+      },
+      outlined: {
+        boxShadow: "unset",
       },
     },
   },
@@ -160,6 +173,16 @@ theme.components = {
 
         [theme.breakpoints.up("xl")]: {
           fontSize: "1.4rem",
+        },
+      },
+
+      body2: {
+        [theme.breakpoints.up("xs")]: {
+          fontSize: "1rem",
+        },
+
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "1.225rem",
         },
       },
     },

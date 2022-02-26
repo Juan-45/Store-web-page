@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 //TODO comprobar layout en laptop
 //TODO set all imports from MUI to {}
 //TODO Store-web-page should be /home
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -22,7 +23,6 @@ function App() {
         alignItems="center"
         sx={{ color: "white" }}
       >
-
         <BrowserRouter>
           <Routes>
             <Route path="/Store-web-page" element={<Home />}>
