@@ -1,14 +1,18 @@
 import AutoSearch from "./productsNavBar/AutoSearch";
 import { ButtonGroup, Button, Grid } from "@mui/material";
 
+//TODO add menu for each item
 const ProductsNavBar = ({ products, categories }) => (
   <Grid
     container
     justifyContent="space-between"
     alignItems="flex-start"
-    sx={{ marginTop: "10px" }}
+    sx={{ marginTop: "10px", flexBasis: { xs: "420px", sm: "initial" } }}
   >
-    <ButtonGroup variant="contained">
+    <ButtonGroup
+      variant="contained"
+      sx={{ display: { xs: "none", sm: "inline-flex" }, marginBottom: "10px" }}
+    >
       {categories.map((category) => (
         <Button
           name={category.name}
