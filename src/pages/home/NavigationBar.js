@@ -1,9 +1,10 @@
 import MobileNavMenu from "./navigationBar/MobileNavMenu";
 import Container from "./navigationBar/Container";
 import NavButtonsBar from "./navigationBar/NavButtonsBar";
-import AutoSearch from "./navigationBar/AutoSearch";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
 import useNavigationBar from "./navigationBar/useNavigationBar";
+import { Route, Routes } from "react-router-dom";
+import ProductsNavBar from "./navigationBar/ProductsNavBar";
 
 const navSettings = [
   { label: "Contacto", path: "contact" },
@@ -13,7 +14,7 @@ const navSettings = [
   { label: "Productos", path: "products" },
 ];
 
-const foods = [
+const products = [
   { label: "Mermelada de Naranja X 460 g" },
   { label: "Mermelada de Frutilla X 460 g" },
   { label: "Mermelada de Durazno X 460 g" },
@@ -21,6 +22,16 @@ const foods = [
   { label: "Yerba Mate Libre de Gluten x 500 gr." },
   { label: "Arroz Integral Yamani x 1,25 kg" },
   { label: "Copos Integrales (Trigo, Maíz, Avena, Arroz) x 3 kg" },
+];
+
+const categories = [
+  { label: "Mix de frutas", name: "fruit mix" },
+  { label: "Celíacos", name: "celiac" },
+  { label: "Fruta seca", name: "dried fruit" },
+  { label: "Gourmet", name: "gourmet" },
+  { label: "Desayuno", name: "breakfast" },
+  { label: "Especias", name: "spices" },
+  { label: "Mas categorías", name: "moreCategories" },
 ];
 
 const NavigationBar = ({ shouldDisplay }) => {
@@ -38,7 +49,14 @@ const NavigationBar = ({ shouldDisplay }) => {
               isTouchScreen={isTouchScreen}
               key="MobileNavMenu"
             />,
-            <AutoSearch autocompleteData={foods} key="AutoSearch" />,
+            <Routes key="AutoSearch">
+              <Route
+                path="products"
+                element={
+                  <ProductsNavBar products={products} categories={categories} />
+                }
+              />
+            </Routes>,
           ]}
     </Container>
   );
