@@ -12,7 +12,10 @@ const LocationsList = ({ locationSettings, ...props }) => (
     {...props}
   >
     {locationSettings.map((currentLocationSettings) => (
-      <Location locationSettings={currentLocationSettings} />
+      <Location
+        locationSettings={currentLocationSettings}
+        key={currentLocationSettings.key}
+      />
     ))}
   </GenericContainer>
 );

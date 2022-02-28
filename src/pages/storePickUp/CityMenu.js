@@ -8,7 +8,7 @@ const CityMenu = ({ cities, handleClick }) => (
     <Title />
     <ButtonContainer>
       {cities.map((city) => (
-        <CityButton name={city.name} onClick={handleClick}>
+        <CityButton name={city.name} onClick={handleClick} key={city.name}>
           {city.label}
         </CityButton>
       ))}
