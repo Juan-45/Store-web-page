@@ -3,14 +3,14 @@ import { Autocomplete } from "@mui/material/";
 import SearchInput from "./autoSearch/SearchInput";
 import { Grid } from "@mui/material/";
 
-const AutoSearch = ({ autocompleteData }) => {
+const AutoSearch = ({ autocompleteData, sx }) => {
   return (
     <Grid
       item
       sx={{
-        paddingTop: { xs: "13px", md: "0px" },
-        width: { xs: "70%", md: "75%" },
-        flexGrow: "1",
+        flexGrow: "0",
+        flexBasis: "420px",
+        ...sx,
       }}
     >
       <Autocomplete
