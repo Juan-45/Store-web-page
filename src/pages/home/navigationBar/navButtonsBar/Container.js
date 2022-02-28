@@ -12,9 +12,9 @@ const Container = ({ children }) => {
       container
       wrap="nowrap"
       sx={{
-        display: { xs: "none", md: "flex" },
-        alignItems: { xs: "none", md: "center" },
-        justifyContent: { xs: "initial", md: "center" },
+        display: { xs: "none", sm: "flex" },
+        alignItems: { xs: "none", sm: "center" },
+        justifyContent: { xs: "initial", sm: "space-between" },
       }}
     >
       {children}

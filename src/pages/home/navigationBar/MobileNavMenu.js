@@ -30,8 +30,8 @@ const MobileNavMenu = ({ navSettings, isTouchScreen }) => {
         paddingTop: "13px",
         height: "fit-content",
         width: "fit-content",
-        display: { xs: "flex", md: "none" },
-        alignItems: { xs: "center", md: "none" },
+        display: { xs: "flex", sm: "none" },
+        alignItems: { xs: "center", sm: "none" },
       }}
     >
       <MobileButton onClick={handleOpenMenu}>
