@@ -236,6 +236,14 @@ theme.components = {
       },
     },
   },
+
+  MuiButtonGroup: {
+    styleOverrides: {
+      root: {
+        boxShadow: theme.shadows[16],
+      },
+    },
+  },
 };
 
 export default theme;
