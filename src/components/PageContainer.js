@@ -1,7 +1,7 @@
 import { Grid, Box } from "@mui/material";
 import theme from "theme";
 
-const PageContainer = ({ children }) => {
+const PageContainer = ({ children, sx }) => {
   return (
     <Grid
       container
@@ -16,8 +16,9 @@ const PageContainer = ({ children }) => {
       <Grid item xs={11} md={9} lg={8} xl={5}>
         <Box
           sx={{
-            paddingTop: { xs: "156px", md: "158.5px" },
+            paddingTop: "150px",
             paddingBottom: "200px",
+            ...sx,
           }}
         >
           {children}
