@@ -1,11 +1,11 @@
-import { Box } from "@mui/material";
-import { Typography } from "@mui/material";
+import PageContainer from "components/PageContainer";
+import PageTitle from "components/PageTitle";
 
 const Products = () => {
   return (
-    <Box sx={{ height: "100vh", background: "gray", paddingTop: "50vh" }}>
-      <Typography variant="h1">Productos</Typography>
-    </Box>
+    <PageContainer sx={{ paddingTop: { xs: "150px", sm: "230px" } }}>
+      <PageTitle>Busca nuestros productos</PageTitle>
+    </PageContainer>
   );
 };
 
