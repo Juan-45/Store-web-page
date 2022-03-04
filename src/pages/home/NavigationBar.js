@@ -25,9 +25,9 @@ const products = [
 ];
 
 const categories = [
-  { label: "Mix de frutas", name: "fruit mix" },
+  { label: "Mix de frutas", name: "fruitMix" },
   { label: "Celíacos", name: "celiac" },
-  { label: "Fruta seca", name: "dried fruit" },
+  { label: "Fruta seca", name: "driedFruit" },
   { label: "Gourmet", name: "gourmet" },
   { label: "Desayuno", name: "breakfast" },
   { label: "Especias", name: "spices" },
