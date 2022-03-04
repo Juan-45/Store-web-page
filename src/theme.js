@@ -113,6 +113,21 @@ theme.components = {
           },
         },
       },
+
+      {
+        props: { variant: "navMenu" },
+        style: {
+          pointerEvents: "none",
+          "& .MuiMenu-paper": {
+            borderRadius: "0",
+            background: theme.palette.primary.light,
+            pointerEvents: "auto",
+          },
+          "& .MuiMenuItem-root:hover": {
+            background: theme.palette.primary.main,
+          },
+        },
+      },
     ],
   },
 
