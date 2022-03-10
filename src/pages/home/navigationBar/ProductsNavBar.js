@@ -5,32 +5,25 @@ import {
   Grid,
   MenuItem,
   Menu,
-  // ListItemIcon,
   Typography,
 } from "@mui/material";
-//import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import useOutsideClickListener from "hooks/useOutsideClickListener";
+import useMenu from "hooks/useMenu";
 
-//TODO add menu for each item
-//TODO add open on hover
-const ProductsNavBar = ({ products, categories }) => {
-  const [elementPosition, setElementPosition] = useState();
+const ProductsNavBar = ({ products, categories, subCategories }) => {
+  const { setElementPosition, elementPosition, handleCloseMenu } = useMenu();
+  const [currentSubCategory, setCurrentSubCategory] = useState("mixDeFruta");
+  const wrapperRef = useRef(null);
+  const closeMenu = () => setElementPosition(false);
+
+  useOutsideClickListener(wrapperRef, closeMenu);
   // const navigate = useNavigate();
-
-  const navSettings = [
-    { label: "Contacto Contacto" },
-    { label: "Crear Cuenta" },
-    { label: "Nosotros" },
-    { label: "Sucursales" },
-    { label: "Productos" },
-  ];
 
   const handleOpenMenu = (e) => {
     setElementPosition(e.currentTarget);
-
-    console.log(e.currentTarget);
+    setCurrentSubCategory(e.currentTarget.name);
   };
-  const handleCloseMenu = () => setElementPosition(false);
 
   const getOnClickHandler = () => {
     // navigate(currentSettings["path"]);
@@ -50,6 +43,7 @@ const ProductsNavBar = ({ products, categories }) => {
           display: { xs: "none", sm: "inline-flex" },
           marginBottom: "10px",
         }}
+        ref={wrapperRef}
       >
         {categories.map((category) => (
           <Button
@@ -57,32 +51,27 @@ const ProductsNavBar = ({ products, categories }) => {
             key={category.name}
             size="small"
             sx={{ borderRadius: "0", flexShrink: "0", flexBasis: "content" }}
-            onClick={handleOpenMenu}
+            onMouseEnter={handleOpenMenu}
           >
             {category.label}
           </Button>
         ))}
       </ButtonGroup>
-
       <Menu
         elevation={16}
         anchorEl={elementPosition}
         keepMounted
         open={Boolean(elementPosition)}
-        onClose={handleCloseMenu}
+        variant="navMenu"
+        onMouseLeave={handleCloseMenu}
       >
-        {navSettings.map((item) => (
+        {subCategories[`${currentSubCategory}`].map((item) => (
           <MenuItem key={item.label} onClick={getOnClickHandler}>
-            {/* <ListItemIcon>
-              <ArrowForwardIosIcon />
-           </ListItemIcon>*/}
             <Typography textAlign="center">{item.label}</Typography>
           </MenuItem>
         ))}
       </Menu>
-
       <AutoSearch autocompleteData={products} />
-      {/*TODO add Menu like navigationBar for categories on smartphones screens*/}
     </Grid>
   );
 };
