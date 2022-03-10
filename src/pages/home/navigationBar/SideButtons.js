@@ -1,5 +1,5 @@
 import HomeIcon from "@mui/icons-material/Home";
-import MobileButton from "../MobileButton";
+import MobileButton from "components/MobileButton";
 import PersonIcon from "@mui/icons-material/Person";
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
