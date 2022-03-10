@@ -1,5 +1,5 @@
 import ButtonContainer from "./ButtonContainer";
-import MobileButton from "../../MobileButton";
+import MobileButton from "components/MobileButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const BackButton = ({ goBackHandler, ...props }) => {

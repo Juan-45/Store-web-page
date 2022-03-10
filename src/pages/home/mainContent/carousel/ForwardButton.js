@@ -1,5 +1,5 @@
 import ButtonContainer from "./ButtonContainer";
-import MobileButton from "../../MobileButton";
+import MobileButton from "components/MobileButton";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const ForwardButton = ({ goForwardHandler, ...props }) => {
