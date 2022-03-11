@@ -24,7 +24,7 @@ const PermanentButtons = () => {
     <>
       <Message
         open={open}
-        alertSettings={messageSettings}
+        messageSettings={messageSettings}
         handleClose={handleClose}
       />
       <Container>

@@ -35,6 +35,7 @@ const MobileNavigation = ({ isTouchScreen, navSettings }) => {
           <CustomMenuItem
             onClickHandler={getOnClickHandler(item)}
             label={item.label}
+            key={item.label}
           />
         ))}
       </CustomMenu>

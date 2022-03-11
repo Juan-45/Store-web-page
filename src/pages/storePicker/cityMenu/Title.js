@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import theme from "theme";
 
-const Title = () => (
+const Title = ({ children }) => (
   <Box
     sx={{
       width: "100%",
@@ -17,7 +17,7 @@ const Title = () => (
         background: theme.palette.primary.light,
       }}
     >
-      <Typography variant="h6">Elige una ciudad</Typography>
+      <Typography variant="h6">{children}</Typography>
     </Box>
   </Box>
 );

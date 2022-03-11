@@ -73,6 +73,9 @@ theme.components = {
       size: "small",
       fullWidth: true,
     },
+    styleOverrides: {
+      root: { marginBottom: "20px" },
+    },
   },
 
   MuiButtonGroup: {
@@ -124,7 +127,6 @@ theme.components = {
           },
         },
       },
-
       {
         props: { variant: "navMenu" },
         style: {
@@ -216,7 +218,6 @@ theme.components = {
           fontSize: "1.4rem",
         },
       },
-
       body2: {
         [theme.breakpoints.up("xs")]: {
           fontSize: "1rem",
@@ -242,7 +243,6 @@ theme.components = {
   MuiFilledInput: {
     styleOverrides: {
       root: {
-        marginBottom: "20px",
         color: "black",
         boxShadow: theme.shadows[16],
         background: theme.palette.primary.light,
@@ -275,6 +275,21 @@ theme.components = {
         margin: "0px 15px",
         boxShadow:
           "0px 8px 10px -5px rgb(0 0 0 / 30%), 0px 16px 24px 2px rgb(0 0 0 / 21%), 0px 6px 30px 5px rgb(0 0 0 / 18%)",
+      },
+    },
+  },
+
+  MuiDialogTitle: {
+    styleOverrides: {
+      root: {
+        [theme.breakpoints.up("xs")]: {
+          fontSize: "1.75rem",
+        },
+
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "2rem",
+        },
+        color: theme.palette.text.secondary,
       },
     },
   },

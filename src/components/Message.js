@@ -7,8 +7,9 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-const Message = ({ open, handleClose, alertSettings }) => {
-  const { title, text } = alertSettings;
+const Message = ({ open, handleClose, messageSettings }) => {
+  console.log(messageSettings);
+  const { title, text } = messageSettings;
 
   return (
     <Dialog open={open} onClose={handleClose}>

@@ -1,12 +1,15 @@
 import PageContainer from "components/PageContainer";
 import GenericTitle from "components/GenericTitle";
-import { Grid } from "@mui/material";
-import CityMenu from "./storePickUp/CityMenu";
-import GoogleMapsContainer from "./storePickUp/GoogleMapsContainer";
-import LocationsList from "./storePickUp/LocationsList";
+import CityMenu from "./storePicker/CityMenu";
+import GoogleMapsContainer from "./storePicker/GoogleMapsContainer";
+import LocationsList from "./storePicker/LocationsList";
+import {
+  InterfaceContainer,
+  InterfaceSubContainer,
+} from "./storePicker/CustomComponents";
 import { useState } from "react";
 
-const StorePickUp = () => {
+const StorePicker = () => {
   const [currentCity, setCurrentCity] = useState("pergamino");
 
   const locationSettings = {
@@ -127,7 +130,7 @@ const StorePickUp = () => {
   return (
     <PageContainer>
       <GenericTitle>Encuentra nuestras sucursales</GenericTitle>
-      <Grid container direction="column" rowGap="20px">
+      <InterfaceContainer>
         <CityMenu
           handleClick={handleClick}
           cities={[
@@ -137,28 +140,13 @@ const StorePickUp = () => {
             { label: "Buenos Aires", name: "buenosAires" },
           ]}
         />
-        <Grid
-          container
-          columns="16"
-          direction="row-reverse"
-          alignItems="flex-start"
-          columnGap="20px"
-          rowGap="20px"
-          sx={{
-            flexWrap: { xs: "wrap", sm: "nowrap" },
-          }}
-        >
-          <GoogleMapsContainer item xs={16} sm={11} />
-          <LocationsList
-            item
-            xs={16}
-            sm={5}
-            locationSettings={locationSettings[currentCity]}
-          />
-        </Grid>
-      </Grid>
+        <InterfaceSubContainer>
+          <GoogleMapsContainer />
+          <LocationsList locationSettings={locationSettings[currentCity]} />
+        </InterfaceSubContainer>
+      </InterfaceContainer>
     </PageContainer>
   );
 };
 
-export default StorePickUp;
+export default StorePicker;

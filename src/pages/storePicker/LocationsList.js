@@ -1,7 +1,7 @@
 import GenericContainer from "components/GenericContainer";
 import Location from "./locationsList/Location";
 
-const LocationsList = ({ locationSettings, ...props }) => (
+const LocationsList = ({ locationSettings }) => (
   <GenericContainer
     sx={{
       minHeight: "500px",
@@ -9,7 +9,9 @@ const LocationsList = ({ locationSettings, ...props }) => (
       p: "10px",
       overflowY: "scroll",
     }}
-    {...props}
+    item
+    xs={16}
+    sm={5}
   >
     {locationSettings.map((currentLocationSettings) => (
       <Location

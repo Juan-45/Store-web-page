@@ -18,13 +18,7 @@ const AboutUs = () => {
         nec pharetra lobortis, erat urna bibendum erat, ac feugiat dolor tortor
         ac felis. Donec a gravida massa.
       </CompanyDescription>
-      <PhotoContainer>
-        <img
-          src={frontStore}
-          alt="store"
-          style={{ filter: "sepia(30%)", width: "100%" }}
-        />
-      </PhotoContainer>
+      <PhotoContainer src={frontStore} />
       <GenericTitle>Nuestra Historia</GenericTitle>
       <CompanyHistory>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum

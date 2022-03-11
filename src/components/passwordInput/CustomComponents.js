@@ -10,7 +10,11 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const CustomFormControl = ({ children, ...props }) => (
-  <FormControl variant="filled" sx={{ minWidth: "100%" }} {...props}>
+  <FormControl
+    variant="filled"
+    sx={{ minWidth: "100%", marginBottom: "20px" }}
+    {...props}
+  >
     {children}
   </FormControl>
 );

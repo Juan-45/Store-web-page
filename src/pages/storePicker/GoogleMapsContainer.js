@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 import GenericContainer from "components/GenericContainer";
 
-const GoogleMapsContainer = ({ ...props }) => (
+const GoogleMapsContainer = () => (
   <GenericContainer
     sx={{
       p: "10px",
@@ -10,7 +10,9 @@ const GoogleMapsContainer = ({ ...props }) => (
     container
     justifyContent="center"
     alignItems="center"
-    {...props}
+    item
+    xs={16}
+    sm={11}
   >
     <Box
       sx={{

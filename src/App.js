@@ -5,7 +5,7 @@ import MainContent from "pages/home/MainContent";
 import Contact from "pages/Contact";
 import AboutUs from "pages/AboutUs";
 import SignUp from "pages/SignUp";
-import StorePickUp from "pages/StorePickUp";
+import StorePicker from "pages/StorePicker";
 import Products from "pages/Products";
 import Container from "app/Container";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -25,7 +25,7 @@ function App() {
               <Route path="contact" element={<Contact />} />
               <Route path="signup" element={<SignUp />} />
               <Route path="aboutUs" element={<AboutUs />} />
-              <Route path="storepickup" element={<StorePickUp />} />
+              <Route path="storePicker" element={<StorePicker />} />
               <Route path="products" element={<Products />} />
               <Route
                 path="*"

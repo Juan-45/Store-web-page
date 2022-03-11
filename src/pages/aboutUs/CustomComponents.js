@@ -16,8 +16,14 @@ const CompanyName = ({ children }) => (
   </Typography>
 );
 
-const PhotoContainer = ({ children }) => (
-  <Box sx={{ marginBottom: "40px" }}>{children}</Box>
+const PhotoContainer = ({ src }) => (
+  <Box sx={{ marginBottom: "40px" }}>
+    <img
+      src={src}
+      alt="store"
+      style={{ filter: "sepia(30%)", width: "100%" }}
+    />
+  </Box>
 );
 
 export { CompanyDescription, CompanyHistory, CompanyName, PhotoContainer };

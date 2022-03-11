@@ -9,15 +9,17 @@ const Location = ({ locationSettings }) => {
   const { messageSettings, setOpen, setMessageSettings, open, handleClose } =
     useMessage();
 
-  const handleStreetView = () => {
+  const handleStreetView = (e) => {
+    e.stopPropagation();
     setOpen(true);
     setMessageSettings({
       title: "Vista en Google StreetView",
-      text: `La ventana de Google Map mostrará una vista en StreetView de la ubicación: ${address}`,
+      text: `Se mostrará una vista en StreetView de la ubicación: ${address}`,
     });
   };
 
-  const handleGPS = () => {
+  const handleGPS = (e) => {
+    e.stopPropagation();
     setOpen(true);
     setMessageSettings({
       title: "Ventana GPS",
@@ -25,11 +27,11 @@ const Location = ({ locationSettings }) => {
     });
   };
 
-  const handleLocation = () => {
+  const handleLocation = (e) => {
     setOpen(true);
     setMessageSettings({
       title: "Localización seleccionada",
-      text: `En la ventana de Google Maps se centrará el mapa en la ubicación: ${address}`,
+      text: `Se centrará el mapa en la ubicación: ${address}`,
     });
   };
 
@@ -37,7 +39,7 @@ const Location = ({ locationSettings }) => {
     <>
       <Message
         open={open}
-        alertSettings={messageSettings}
+        messageSettings={messageSettings}
         handleClose={handleClose}
       />
       <Grid

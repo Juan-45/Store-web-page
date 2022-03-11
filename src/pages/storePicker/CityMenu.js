@@ -1,11 +1,11 @@
-import GenericContainer from "components/GenericContainer";
+import Container from "./cityMenu/Container";
 import Title from "./cityMenu/Title";
 import CityButton from "./cityMenu/CityButton";
 import ButtonContainer from "./cityMenu/ButtonsContainer";
 
 const CityMenu = ({ cities, handleClick }) => (
-  <GenericContainer container direction="column" alignItems="flex-start">
-    <Title />
+  <Container>
+    <Title>Elige una ciudad</Title>
     <ButtonContainer>
       {cities.map((city) => (
         <CityButton name={city.name} onClick={handleClick} key={city.name}>
@@ -13,7 +13,7 @@ const CityMenu = ({ cities, handleClick }) => (
         </CityButton>
       ))}
     </ButtonContainer>
-  </GenericContainer>
+  </Container>
 );
 
 export default CityMenu;

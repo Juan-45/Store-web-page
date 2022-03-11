@@ -1,5 +1,3 @@
-/*import { Alert } from "@mui/material";
-import theme from "theme";*/
 import CustomAlert from "./formStatusMessage/CustomAlert";
 
 const FormStatusMessage = ({
@@ -8,6 +6,8 @@ const FormStatusMessage = ({
   errorMessage,
   successMessage,
 }) => {
+  console.log(isValid, isSubmitted);
+
   return (
     <>
       {isValid ? null : (

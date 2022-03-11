@@ -12,7 +12,7 @@ const navSettings = [
   { label: "Contacto", path: "contact" },
   { label: "Crear Cuenta", path: "signup" },
   { label: "Nosotros", path: "aboutUs" },
-  { label: "Sucursales", path: "storepickup" },
+  { label: "Sucursales", path: "storePicker" },
   { label: "Productos", path: "products" },
 ];
 
@@ -118,15 +118,14 @@ const NavigationBar = ({ shouldDisplay }) => {
       {shouldRemoveComponent
         ? null
         : [
-            <SubContainer>
+            <SubContainer key="NavButtonsBar">
               <PermanentButtons />
-              <NavButtonsBar navSettings={navSettings} key="NavButtonsBar" />
+              <NavButtonsBar navSettings={navSettings} />
               <MobileNavMenu
                 navSettings={navSettings}
                 subCategories={subCategories}
                 categories={categories}
                 isTouchScreen={isTouchScreen}
-                key="MobileNavMenu"
               />
             </SubContainer>,
             <Routes key="ProductsNavBar">
