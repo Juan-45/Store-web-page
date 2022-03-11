@@ -1,12 +1,11 @@
 import AutoSearch from "./productsNavBar/AutoSearch";
 import {
-  ButtonGroup,
-  Button,
-  Grid,
-  MenuItem,
-  Menu,
-  Typography,
-} from "@mui/material";
+  Container,
+  ButtonGroupContainer,
+  CustomButton,
+  MenuItemText,
+} from "./productsNavBar/CustomComponents";
+import { ButtonGroup, MenuItem, Menu } from "@mui/material";
 import { useState, useRef } from "react";
 import useOutsideClickListener from "hooks/useOutsideClickListener";
 import useMenu from "hooks/useMenu";
@@ -31,32 +30,20 @@ const ProductsNavBar = ({ products, categories, subCategories }) => {
   };
 
   return (
-    <Grid
-      container
-      justifyContent="space-between"
-      alignItems="flex-start"
-      sx={{ marginTop: "10px", flexBasis: { xs: "420px", sm: "initial" } }}
-    >
-      <ButtonGroup
-        variant="contained"
-        sx={{
-          display: { xs: "none", sm: "inline-flex" },
-          marginBottom: "10px",
-        }}
-        ref={wrapperRef}
-      >
-        {categories.map((category) => (
-          <Button
-            name={category.name}
-            key={category.name}
-            size="small"
-            sx={{ borderRadius: "0", flexShrink: "0", flexBasis: "content" }}
-            onMouseEnter={handleOpenMenu}
-          >
-            {category.label}
-          </Button>
-        ))}
-      </ButtonGroup>
+    <Container>
+      <ButtonGroupContainer>
+        <ButtonGroup ref={wrapperRef}>
+          {categories.map((category) => (
+            <CustomButton
+              name={category.name}
+              key={category.name}
+              onMouseEnter={handleOpenMenu}
+            >
+              {category.label}
+            </CustomButton>
+          ))}
+        </ButtonGroup>
+      </ButtonGroupContainer>
       <Menu
         elevation={16}
         anchorEl={elementPosition}
@@ -67,12 +54,12 @@ const ProductsNavBar = ({ products, categories, subCategories }) => {
       >
         {subCategories[`${currentSubCategory}`].map((item) => (
           <MenuItem key={item.label} onClick={getOnClickHandler}>
-            <Typography textAlign="center">{item.label}</Typography>
+            <MenuItemText>{item.label}</MenuItemText>
           </MenuItem>
         ))}
       </Menu>
       <AutoSearch autocompleteData={products} />
-    </Grid>
+    </Container>
   );
 };
 

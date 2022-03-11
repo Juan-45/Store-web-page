@@ -1,8 +1,6 @@
-import FormStatusMessage from "components/FormStatusMessage";
 import PersonalDetailsForm from "pages/signUp/form/PersonalDetailsForm";
 import AccountDetailsForm from "pages/signUp/form/AccountDetailsForm";
-import PageTitle from "components/PageTitle";
-import { Grid, Button, Box } from "@mui/material";
+import FormWrapper from "components/FormWrapper";
 import useHandlers from "./form/useHandlers";
 
 const Form = ({
@@ -56,34 +54,27 @@ const Form = ({
   };
 
   return (
-    <Box component={"form"} method="POST" action="" onSubmit={handleSubmit}>
-      <Grid container alignItems="flex-start">
-        <PageTitle>Crear cuenta</PageTitle>
-        <PersonalDetailsForm
-          inputsErrorsSettings={inputsErrorsSettings}
-          handleBlur={handleBlur}
-          shouldReset={shouldReset}
-          handlers={personalDetailsHandlers}
-        />
-        <AccountDetailsForm
-          inputsErrorsSettings={inputsErrorsSettings}
-          handleBlur={handleBlur}
-          shouldReset={shouldReset}
-          handlers={accountDetailsHandlers}
-        />
-        <FormStatusMessage
-          isValid={isValid}
-          isSubmitted={isSubmitted}
-          errorMessage="Complete los campos requeridos(*) y/o resuelva los errores en el formulario."
-          successMessage="Registro exitoso."
-        />
-        <Grid item xs={12} alignContent="flex-start">
-          <Button type="submit" disabled={isSubmitting}>
-            Enviar
-          </Button>
-        </Grid>
-      </Grid>
-    </Box>
+    <FormWrapper
+      formTitle="Crear cuenta"
+      successMessage="Registro exitoso."
+      handleSubmit={handleSubmit}
+      isValid={isValid}
+      isSubmitted={isSubmitted}
+      isSubmitting={isSubmitting}
+    >
+      <PersonalDetailsForm
+        inputsErrorsSettings={inputsErrorsSettings}
+        handleBlur={handleBlur}
+        shouldReset={shouldReset}
+        handlers={personalDetailsHandlers}
+      />
+      <AccountDetailsForm
+        inputsErrorsSettings={inputsErrorsSettings}
+        handleBlur={handleBlur}
+        shouldReset={shouldReset}
+        handlers={accountDetailsHandlers}
+      />
+    </FormWrapper>
   );
 };
 

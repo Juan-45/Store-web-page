@@ -15,11 +15,10 @@ const Container = ({ children, shouldDisplay, isTouchScreen }) => {
                 md: "column",
               },
               justifyContent: {
-                xs: "flex-start",
+                xs: "space-between",
               },
               alignItems: {
                 xs: "flex-start",
-                md: "center",
               },
               height: "fit-content",
               paddingBottom: {

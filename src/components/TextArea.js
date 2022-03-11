@@ -1,16 +1,7 @@
-import { TextField, styled } from "@mui/material";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
+import CustomTextField from "./textArea/CustomTextField";
 
 const TextArea = ({ onChange, shouldReset, ...props }) => {
-  const Root = useMemo(
-    () =>
-      styled(TextField)({
-        "& > .MuiFilledInput-root :first-child": {
-          paddingTop: "0px",
-        },
-      }),
-    []
-  );
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -24,15 +15,7 @@ const TextArea = ({ onChange, shouldReset, ...props }) => {
     }
   }, [shouldReset]);
 
-  return (
-    <Root
-      value={value}
-      onChange={handleChange}
-      multiline
-      minRows={6}
-      {...props}
-    />
-  );
+  return <CustomTextField value={value} onChange={handleChange} {...props} />;
 };
 
 export default TextArea;

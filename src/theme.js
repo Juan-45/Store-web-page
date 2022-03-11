@@ -73,6 +73,20 @@ theme.components = {
       size: "small",
       fullWidth: true,
     },
+    styleOverrides: {
+      root: { marginBottom: "20px" },
+    },
+  },
+
+  MuiButtonGroup: {
+    defaultProps: {
+      variant: "contained",
+    },
+    styleOverrides: {
+      contained: {
+        boxShadow: theme.shadows[16],
+      },
+    },
   },
 
   MuiButton: {
@@ -113,7 +127,6 @@ theme.components = {
           },
         },
       },
-
       {
         props: { variant: "navMenu" },
         style: {
@@ -138,6 +151,21 @@ theme.components = {
         style: {
           boxShadow:
             "0px 8px 10px -5px rgb(0 0 0 / 60%), 0px 16px 24px 2px rgb(0 0 0 / 42%), 0px 6px 30px 5px rgb(0 0 0 / 36%)",
+        },
+      },
+    ],
+  },
+
+  MuiIconButton: {
+    variants: [
+      {
+        props: { variant: "mobile" },
+        style: {
+          background: theme.palette.primary.main,
+          boxShadow: theme.shadows[16],
+          "&:hover": {
+            background: theme.palette.primary.dark,
+          },
         },
       },
     ],
@@ -190,7 +218,6 @@ theme.components = {
           fontSize: "1.4rem",
         },
       },
-
       body2: {
         [theme.breakpoints.up("xs")]: {
           fontSize: "1rem",
@@ -252,10 +279,17 @@ theme.components = {
     },
   },
 
-  MuiButtonGroup: {
+  MuiDialogTitle: {
     styleOverrides: {
       root: {
-        boxShadow: theme.shadows[16],
+        [theme.breakpoints.up("xs")]: {
+          fontSize: "1.75rem",
+        },
+
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "2rem",
+        },
+        color: theme.palette.text.secondary,
       },
     },
   },

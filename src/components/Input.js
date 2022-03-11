@@ -1,8 +1,7 @@
-import { TextField, styled } from "@mui/material";
-import { useState, useMemo, useEffect } from "react";
+import { TextField } from "@mui/material";
+import { useState, useEffect } from "react";
 
 const Input = ({ onChange, shouldReset, ...props }) => {
-  const Root = useMemo(() => styled(TextField)({ marginBottom: "20px" }), []);
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -16,7 +15,7 @@ const Input = ({ onChange, shouldReset, ...props }) => {
     }
   }, [shouldReset]);
 
-  return <Root value={value} onChange={handleChange} {...props} />;
+  return <TextField value={value} onChange={handleChange} {...props} />;
 };
 
 export default Input;

@@ -1,42 +1,14 @@
-import Container from "./footer/Container";
-import { Grid } from "@mui/material";
-import { Typography } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import { Box } from "@mui/material";
+import { Container, SubContainer, Title } from "./footer/CustomComponents";
+import { Typography, Box } from "@mui/material";
+import SocialNetworkButtons from "./footer/SocialNetworkButtons";
 
 const Footer = () => {
   return (
-    <Container
-      container
-      direction="column"
-      alignItems="center"
-      justifyContent="space-evenly"
-    >
-      <Box sx={{ marginBottom: "20px" }}>
-        <Typography
-          gutterBottom={true}
-          fontFamily="Niconne"
-          variant="h2"
-          align="center"
-        >
-          Contáctanos en nuestras redes
-        </Typography>
-        <Grid container justifyContent="space-evenly" wrap="nowrap">
-          <IconButton disableRipple color="primary">
-            <FacebookIcon fontSize="large" />
-          </IconButton>
-          <IconButton disableRipple color="primary">
-            <InstagramIcon fontSize="large" />
-          </IconButton>
-          <IconButton disableRipple color="primary">
-            <TwitterIcon fontSize="large" />
-          </IconButton>
-        </Grid>
-      </Box>
-
+    <Container>
+      <SubContainer>
+        <Title>Contáctanos en nuestras redes</Title>
+        <SocialNetworkButtons />
+      </SubContainer>
       <Box>
         <Typography gutterBottom>Casa central, Av. Pellegrini 2100</Typography>
         <Typography gutterBottom>Info@lorem.com.ar</Typography>

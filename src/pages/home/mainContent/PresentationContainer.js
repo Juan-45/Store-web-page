@@ -1,11 +1,21 @@
-import { styled } from "@mui/material/styles";
-import Grid from "@mui/material/Grid";
+import { Grid } from "@mui/material";
+import theme from "theme";
 
-const PresentationContainer = styled(Grid)(({ theme }) => ({
-  padding: theme.spacing(1),
-  height: "100%",
-  justifyContent: "center",
-  alignItems: "center",
-}));
+const PresentationContainer = ({ children }) => (
+  <Grid
+    container
+    item
+    sm={12}
+    md={6}
+    sx={{
+      padding: theme.spacing(1),
+      height: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    {children}
+  </Grid>
+);
 
 export default PresentationContainer;

@@ -1,14 +1,16 @@
-import { styled } from "@mui/material/styles";
 import { Paper } from "@mui/material";
-import { useMemo } from "react";
 import "./paperWrapper/PaperWrapperFade.css";
+import theme from "theme";
 
 const PaperWrapper = ({ children, shouldDisplay, isTouchScreen }) => {
-  const Wrapper = useMemo(
-    () =>
-      styled(Paper, {
-        shouldForwardProp: (prop) => prop !== "isTouchScreen",
-      })(({ theme, isTouchScreen }) => ({
+  return (
+    <Paper
+      className={shouldDisplay ? "" : "fade"}
+      elevation={16}
+      variant="darkShadow"
+      square={true}
+      sx={{
+        height: "fit-content",
         position: "fixed",
         top: "0",
         right: "0",
@@ -19,23 +21,10 @@ const PaperWrapper = ({ children, shouldDisplay, isTouchScreen }) => {
         opacity: "98%",
         transition: "opacity 0.4s ease",
         background: theme.palette.background.default,
-      })),
-    []
-  );
-
-  return (
-    <Wrapper
-      className={shouldDisplay ? "" : "fade"}
-      elevation={16}
-      variant="darkShadow"
-      square={true}
-      isTouchScreen={isTouchScreen}
-      sx={{
-        height: "fit-content",
       }}
     >
       {children}
-    </Wrapper>
+    </Paper>
   );
 };
 
