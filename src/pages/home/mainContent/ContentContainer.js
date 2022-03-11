@@ -1,19 +1,27 @@
-import { styled } from "@mui/material/styles";
-import Grid from "@mui/material/Grid";
+import { Grid } from "@mui/material";
 
-const ContentContainer = styled(Grid)(({ img }) => ({
-  //component-style
-  backgroundImage: `url(${img})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  filter: "sepia(30%)",
-  alignItems: "center",
-  //object
-  minHeight: "80vh",
-  zIndex: "1",
-  //object-wrapper
-  position: "relative",
-}));
+const ContentContainer = ({ children, img, ...props }) => (
+  <Grid
+    container
+    spacing={0}
+    sx={{
+      //component-style
+      backgroundImage: `url(${img})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      filter: "sepia(30%)",
+      alignItems: "center",
+      //object
+      minHeight: "80vh",
+      zIndex: "1",
+      //object-wrapper
+      position: "relative",
+    }}
+    {...props}
+  >
+    {children}
+  </Grid>
+);
 
 export default ContentContainer;

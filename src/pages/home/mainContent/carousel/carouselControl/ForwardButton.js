@@ -6,7 +6,7 @@ const ForwardButton = ({ goForwardHandler, ...props }) => {
   return (
     <ButtonContainer
       sx={{
-        right: "17px",
+        right: "-40px",
       }}
       {...props}
     >

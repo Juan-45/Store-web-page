@@ -3,11 +3,11 @@ import theme from "theme";
 import Home from "pages/Home";
 import MainContent from "pages/home/MainContent";
 import Contact from "pages/Contact";
-import About from "pages/About";
+import AboutUs from "pages/AboutUs";
 import SignUp from "pages/SignUp";
 import StorePickUp from "pages/StorePickUp";
 import Products from "pages/Products";
-import { Grid } from "@mui/material";
+import Container from "app/Container";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //TODO comprobar layout en laptop
@@ -17,19 +17,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        sx={{ color: "white" }}
-      >
+      <Container>
         <BrowserRouter>
           <Routes>
             <Route path="/Store-web-page/*" element={<Home />}>
               <Route path="" element={<MainContent />} />
               <Route path="contact" element={<Contact />} />
               <Route path="signup" element={<SignUp />} />
-              <Route path="about" element={<About />} />
+              <Route path="aboutUs" element={<AboutUs />} />
               <Route path="storepickup" element={<StorePickUp />} />
               <Route path="products" element={<Products />} />
               <Route
@@ -49,7 +44,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      </Grid>
+      </Container>
     </ThemeProvider>
   );
 }

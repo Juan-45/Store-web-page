@@ -1,12 +1,11 @@
-import { Typography, List, ListItemText, ListItemIcon } from "@mui/material";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Menu from "components/Menu";
+import { Typography } from "@mui/material";
+import CustomMenu from "components/CustomMenu";
 import {
   CustomMenuItem,
   CustomAccordion,
   CustomAccordionSummary,
   CustomAccordionDetails,
+  CustomList,
   CustomListItemButton,
 } from "./categoriesMenu/CustomComponents";
 
@@ -27,9 +26,7 @@ const CategoriesMenu = ({
     };
 
   return (
-    <Menu
-      elevation={16}
-      variant="blue"
+    <CustomMenu
       anchorEl={elementPosition}
       keepMounted
       open={Boolean(elementPosition)}
@@ -38,12 +35,12 @@ const CategoriesMenu = ({
     >
       {categories.map((category) => (
         <CustomMenuItem key={category.name}>
-          <CustomAccordion square={true}>
-            <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <CustomAccordion>
+            <CustomAccordionSummary>
               <Typography>{category.label}</Typography>
             </CustomAccordionSummary>
             <CustomAccordionDetails>
-              <List orientation="vertical">
+              <CustomList>
                 {subCategories[category.name].map((subCategories) => (
                   <CustomListItemButton
                     key={subCategories.label}
@@ -51,19 +48,15 @@ const CategoriesMenu = ({
                       currentCategory: category.name,
                       item: subCategories.label,
                     })}
-                  >
-                    <ListItemIcon>
-                      <ArrowForwardIosIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={subCategories.label} />
-                  </CustomListItemButton>
+                    primary={subCategories.label}
+                  />
                 ))}
-              </List>
+              </CustomList>
             </CustomAccordionDetails>
           </CustomAccordion>
         </CustomMenuItem>
       ))}
-    </Menu>
+    </CustomMenu>
   );
 };
 

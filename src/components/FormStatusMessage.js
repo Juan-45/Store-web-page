@@ -1,7 +1,8 @@
-import { Alert } from "@mui/material";
-import theme from "theme";
+/*import { Alert } from "@mui/material";
+import theme from "theme";*/
+import CustomAlert from "./formStatusMessage/CustomAlert";
 
-const StatusMessage = ({
+const FormStatusMessage = ({
   isValid,
   isSubmitted,
   errorMessage,
@@ -10,37 +11,13 @@ const StatusMessage = ({
   return (
     <>
       {isValid ? null : (
-        <Alert
-          severity="error"
-          variant="outlined"
-          sx={{
-            width: { xs: "80%", md: "100%" },
-            boxSizing: "border-box",
-            background: theme.palette.error.traslucid,
-            boxShadow: theme.shadows[16],
-            marginBottom: "20px",
-          }}
-        >
-          {errorMessage}
-        </Alert>
+        <CustomAlert severity="error">{errorMessage}</CustomAlert>
       )}
       {isSubmitted && isValid ? (
-        <Alert
-          severity="success"
-          variant="outlined"
-          sx={{
-            width: { xs: "80%", md: "100%" },
-            boxSizing: "border-box",
-            background: theme.palette.success.traslucid,
-            boxShadow: theme.shadows[16],
-            marginBottom: "20px",
-          }}
-        >
-          {successMessage}
-        </Alert>
+        <CustomAlert severity="success">{successMessage}</CustomAlert>
       ) : null}
     </>
   );
 };
 
-export default StatusMessage;
+export default FormStatusMessage;

@@ -1,7 +1,7 @@
 import FormStatusMessage from "components/FormStatusMessage";
 import PersonalDetailsForm from "pages/signUp/form/PersonalDetailsForm";
 import AccountDetailsForm from "pages/signUp/form/AccountDetailsForm";
-import PageTitle from "components/PageTitle";
+import GenericTitle from "components/GenericTitle";
 import { Grid, Button, Box } from "@mui/material";
 import useHandlers from "./form/useHandlers";
 
@@ -58,7 +58,7 @@ const Form = ({
   return (
     <Box component={"form"} method="POST" action="" onSubmit={handleSubmit}>
       <Grid container alignItems="flex-start">
-        <PageTitle>Crear cuenta</PageTitle>
+        <GenericTitle>Crear cuenta</GenericTitle>
         <PersonalDetailsForm
           inputsErrorsSettings={inputsErrorsSettings}
           handleBlur={handleBlur}

@@ -1,11 +1,7 @@
-import { Box } from "@mui/material";
-import MobileStepper from "@mui/material/MobileStepper";
 import Container from "./carousel/Container";
-import BackButton from "./carousel/BackButton";
-import ForwardButton from "./carousel/ForwardButton";
+import CarouselControl from "./carousel/CarouselControl";
 import CarouselContent from "./carousel/CarouselContent";
 import useCarousel from "./carousel/useCarousel";
-import theme from "theme";
 
 const Carousel = ({ children }) => {
   const {
@@ -24,55 +20,24 @@ const Carousel = ({ children }) => {
 
   return (
     <Container>
-      <Box
-        sx={{
-          display: "flex",
-          boxSizing: "border-box",
-          width: "100%",
-          position: "relative",
-          paddingX: "68px",
-        }}
+      <CarouselControl
+        stepsAmount={stepsAmount}
+        currentIndex={currentIndex}
+        isTouchScreen={isTouchScreen}
+        goBackHandler={goBackHandler}
+        goForwardHandler={goForwardHandler}
+        shouldDisplayForwardButton={shouldDisplayForwardButton}
+        ref={ref}
       >
-        {currentIndex > 0 && !isTouchScreen ? (
-          <BackButton goBackHandler={goBackHandler} />
-        ) : null}
-        <Box
-          sx={{
-            overflow: "hidden",
-            width: "100%",
-            height: "100%",
-            minWidth: "100px",
-          }}
+        <CarouselContent
+          show={show}
+          currentTraslateXValue={currentTraslateXValue}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
         >
-          <CarouselContent
-            show={show}
-            currentTraslateXValue={currentTraslateXValue}
-          >
-            {children}
-          </CarouselContent>
-        </Box>
-        {shouldDisplayForwardButton && !isTouchScreen ? (
-          <ForwardButton goForwardHandler={goForwardHandler} />
-        ) : null}
-      </Box>
-      <MobileStepper
-        variant="dots"
-        steps={stepsAmount}
-        position="static"
-        activeStep={currentIndex}
-        ref={ref}
-        sx={
-          !isTouchScreen
-            ? {
-                "& .MuiMobileStepper-dot:hover": {
-                  background: theme.palette.primary.dark,
-                },
-              }
-            : {}
-        }
-      />
+          {children}
+        </CarouselContent>
+      </CarouselControl>
     </Container>
   );
 };

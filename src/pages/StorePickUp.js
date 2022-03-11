@@ -1,5 +1,5 @@
 import PageContainer from "components/PageContainer";
-import PageTitle from "components/PageTitle";
+import GenericTitle from "components/GenericTitle";
 import { Grid } from "@mui/material";
 import CityMenu from "./storePickUp/CityMenu";
 import GoogleMapsContainer from "./storePickUp/GoogleMapsContainer";
@@ -126,7 +126,7 @@ const StorePickUp = () => {
 
   return (
     <PageContainer>
-      <PageTitle>Encuentra nuestras sucursales</PageTitle>
+      <GenericTitle>Encuentra nuestras sucursales</GenericTitle>
       <Grid container direction="column" rowGap="20px">
         <CityMenu
           handleClick={handleClick}

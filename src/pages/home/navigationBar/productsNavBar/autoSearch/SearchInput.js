@@ -3,6 +3,9 @@ import { TextField } from "@mui/material";
 
 const SearchInput = styled(TextField)({
   color: "black",
+  "& .MuiFilledInput-root": {
+    marginBottom: "0px",
+  },
 });
 
 export default SearchInput;

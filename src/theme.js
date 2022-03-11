@@ -75,6 +75,17 @@ theme.components = {
     },
   },
 
+  MuiButtonGroup: {
+    defaultProps: {
+      variant: "contained",
+    },
+    styleOverrides: {
+      contained: {
+        boxShadow: theme.shadows[16],
+      },
+    },
+  },
+
   MuiButton: {
     defaultProps: {
       variant: "contained",
@@ -138,6 +149,21 @@ theme.components = {
         style: {
           boxShadow:
             "0px 8px 10px -5px rgb(0 0 0 / 60%), 0px 16px 24px 2px rgb(0 0 0 / 42%), 0px 6px 30px 5px rgb(0 0 0 / 36%)",
+        },
+      },
+    ],
+  },
+
+  MuiIconButton: {
+    variants: [
+      {
+        props: { variant: "mobile" },
+        style: {
+          background: theme.palette.primary.main,
+          boxShadow: theme.shadows[16],
+          "&:hover": {
+            background: theme.palette.primary.dark,
+          },
         },
       },
     ],
@@ -216,6 +242,7 @@ theme.components = {
   MuiFilledInput: {
     styleOverrides: {
       root: {
+        marginBottom: "20px",
         color: "black",
         boxShadow: theme.shadows[16],
         background: theme.palette.primary.light,
@@ -248,14 +275,6 @@ theme.components = {
         margin: "0px 15px",
         boxShadow:
           "0px 8px 10px -5px rgb(0 0 0 / 30%), 0px 16px 24px 2px rgb(0 0 0 / 21%), 0px 6px 30px 5px rgb(0 0 0 / 18%)",
-      },
-    },
-  },
-
-  MuiButtonGroup: {
-    styleOverrides: {
-      root: {
-        boxShadow: theme.shadows[16],
       },
     },
   },

@@ -6,7 +6,7 @@ const BackButton = ({ goBackHandler, ...props }) => {
   return (
     <ButtonContainer
       sx={{
-        left: "17px",
+        left: "-40px",
       }}
       {...props}
     >

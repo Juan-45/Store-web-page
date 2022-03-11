@@ -2,9 +2,8 @@ import useMenu from "hooks/useMenu";
 import { useNavigate } from "react-router-dom";
 import MobileButton from "components/MobileButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { MenuItem, ListItemIcon, Typography } from "@mui/material";
-import Menu from "components/Menu";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import CustomMenu from "components/CustomMenu";
+import CustomMenuItem from "components/CustomMenuItem";
 
 const MobileNavigation = ({ isTouchScreen, navSettings }) => {
   const {
@@ -25,9 +24,7 @@ const MobileNavigation = ({ isTouchScreen, navSettings }) => {
       <MobileButton onClick={handleOpenMenu}>
         <MenuIcon />
       </MobileButton>
-      <Menu
-        elevation={16}
-        variant="blue"
+      <CustomMenu
         anchorEl={elementPosition}
         keepMounted
         open={Boolean(elementPosition)}
@@ -35,14 +32,12 @@ const MobileNavigation = ({ isTouchScreen, navSettings }) => {
         isTouchScreen={isTouchScreen}
       >
         {navSettings.map((item) => (
-          <MenuItem key={item.label} onClick={getOnClickHandler(item)}>
-            <ListItemIcon>
-              <ArrowForwardIosIcon />
-            </ListItemIcon>
-            <Typography textAlign="center">{item.label}</Typography>
-          </MenuItem>
+          <CustomMenuItem
+            onClickHandler={getOnClickHandler(item)}
+            label={item.label}
+          />
         ))}
-      </Menu>
+      </CustomMenu>
     </>
   );
 };

@@ -1,5 +1,4 @@
-import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
+import { styled, Box } from "@mui/material";
 
 const ButtonContainer = styled(Box)({
   position: "absolute",

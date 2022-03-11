@@ -1,8 +1,7 @@
 import { Typography, Grid } from "@mui/material";
 import theme from "theme";
 
-const PageTitle = ({ children }) => {
-  //SPECS Should be wrapper in a Grid container
+const GenericTitle = ({ children }) => {
   return (
     <Grid item xs={12} sx={{ marginBottom: "30px" }}>
       <Typography
@@ -21,4 +20,4 @@ const PageTitle = ({ children }) => {
   );
 };
 
-export default PageTitle;
+export default GenericTitle;

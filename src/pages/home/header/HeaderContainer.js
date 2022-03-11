@@ -1,10 +1,15 @@
-import { styled } from "@mui/material/styles";
-import Grid from "@mui/material/Grid";
+import { Grid } from "@mui/material";
 
-const HeaderContainer = styled(Grid)({
-  height: "100vh",
-  zIndex: "1",
-  position: "relative",
-});
+const HeaderContainer = ({ children }) => (
+  <Grid
+    container
+    direction="column"
+    justifyContent="flex-end"
+    alignItems="center"
+    sx={{ height: "100vh", zIndex: "1", position: "relative" }}
+  >
+    {children}
+  </Grid>
+);
 
 export default HeaderContainer;

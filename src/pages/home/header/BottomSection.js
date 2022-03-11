@@ -1,11 +1,16 @@
-import { styled } from "@mui/material/styles";
-import Grid from "@mui/material/Grid";
+import { Grid, Typography } from "@mui/material";
 
-const BottomSection = styled(Grid, {
-  shouldForwardProp: (prop) => prop !== "isOnLandScape",
-})(({ isOnLandScape }) => ({
-  height: isOnLandScape ? "25vh" : "20vh",
-  width: "80vw",
-}));
+const BottomSection = ({ children, isOnLandScape }) => (
+  <Grid
+    container
+    justifyContent="center"
+    alignContent="center"
+    sx={{ height: isOnLandScape ? "25vh" : "20vh", width: "80vw" }}
+  >
+    <Typography paragraph={true} align="center" sx={{ margin: "0px" }}>
+      {children}
+    </Typography>
+  </Grid>
+);
 
 export default BottomSection;

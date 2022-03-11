@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-const Alert = ({ open, handleClose, alertSettings }) => {
+const Message = ({ open, handleClose, alertSettings }) => {
   const { title, text } = alertSettings;
 
   return (
@@ -25,4 +25,4 @@ const Alert = ({ open, handleClose, alertSettings }) => {
   );
 };
 
-export default Alert;
+export default Message;

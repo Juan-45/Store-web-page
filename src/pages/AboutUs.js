@@ -1,29 +1,32 @@
-import { Typography, Box } from "@mui/material";
 import PageContainer from "components/PageContainer";
 import frontStore from "images/front-store.jpg";
-import PageTitle from "components/PageTitle";
+import GenericTitle from "components/GenericTitle";
+import {
+  CompanyDescription,
+  CompanyHistory,
+  CompanyName,
+  PhotoContainer,
+} from "./aboutUs/CustomComponents";
 
-const About = () => {
+const AboutUs = () => {
   return (
     <PageContainer>
-      <Typography variant="h2" align="center" gutterBottom>
-        Health Store
-      </Typography>
-      <Typography align="justify" sx={{ marginBottom: "40px" }}>
+      <CompanyName>Health Store</CompanyName>
+      <CompanyDescription>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum
         dapibus mauris eget maximus. Suspendisse potenti. Cras tristique, erat
         nec pharetra lobortis, erat urna bibendum erat, ac feugiat dolor tortor
         ac felis. Donec a gravida massa.
-      </Typography>
-      <Box sx={{ marginBottom: "40px" }}>
+      </CompanyDescription>
+      <PhotoContainer>
         <img
           src={frontStore}
           alt="store"
           style={{ filter: "sepia(30%)", width: "100%" }}
         />
-      </Box>
-      <PageTitle>Nuestra Historia</PageTitle>
-      <Typography align="justify">
+      </PhotoContainer>
+      <GenericTitle>Nuestra Historia</GenericTitle>
+      <CompanyHistory>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum
         dapibus mauris eget maximus. Suspendisse potenti. Cras tristique, erat
         nec pharetra lobortis, erat urna bibendum erat, ac feugiat dolor tortor
@@ -31,9 +34,9 @@ const About = () => {
         adipiscing elit. Duis interdum dapibus mauris eget maximus. Suspendisse
         potenti. Cras tristique, erat nec pharetra lobortis, erat urna bibendum
         erat, ac feugiat dolor tortor ac felis. Donec a gravida massa.
-      </Typography>
+      </CompanyHistory>
     </PageContainer>
   );
 };
 
-export default About;
+export default AboutUs;

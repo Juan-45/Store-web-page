@@ -1,17 +1,17 @@
 import { Grid, Typography, Button } from "@mui/material";
 import theme from "theme";
-import Alert from "components/Alert";
-import useAlert from "components/alert/useAlert";
+import Message from "components/Message";
+import useMessage from "components/message/useMessage";
 
 const Location = ({ locationSettings }) => {
   const { zone, address, phone } = locationSettings;
 
-  const { alertSettings, setOpen, setAlertSettings, open, handleClose } =
-    useAlert();
+  const { messageSettings, setOpen, setMessageSettings, open, handleClose } =
+    useMessage();
 
   const handleStreetView = () => {
     setOpen(true);
-    setAlertSettings({
+    setMessageSettings({
       title: "Vista en Google StreetView",
       text: `La ventana de Google Map mostrará una vista en StreetView de la ubicación: ${address}`,
     });
@@ -19,7 +19,7 @@ const Location = ({ locationSettings }) => {
 
   const handleGPS = () => {
     setOpen(true);
-    setAlertSettings({
+    setMessageSettings({
       title: "Ventana GPS",
       text: `Se abrira otra pestaña con Google GPS mostrando la ruta más corta entre la posición actual del usuario y ${address}`,
     });
@@ -27,7 +27,7 @@ const Location = ({ locationSettings }) => {
 
   const handleLocation = () => {
     setOpen(true);
-    setAlertSettings({
+    setMessageSettings({
       title: "Localización seleccionada",
       text: `En la ventana de Google Maps se centrará el mapa en la ubicación: ${address}`,
     });
@@ -35,9 +35,9 @@ const Location = ({ locationSettings }) => {
 
   return (
     <>
-      <Alert
+      <Message
         open={open}
-        alertSettings={alertSettings}
+        alertSettings={messageSettings}
         handleClose={handleClose}
       />
       <Grid

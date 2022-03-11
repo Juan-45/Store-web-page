@@ -1,4 +1,3 @@
-import SideButtons from "./SideButtons";
 import MobileBarContainer from "./mobileNavMenu/MobileBarContainer";
 import MobileNavigation from "./mobileNavMenu/MobileNavigation";
 import ProductsMobileNavigation from "./mobileNavMenu/ProductsMobileNavigation";
@@ -28,7 +27,6 @@ const MobileNavMenu = ({
           }
         />
       </Routes>
-      <SideButtons sx={{ marginLeft: "15px" }} />
     </MobileBarContainer>
   );
 };

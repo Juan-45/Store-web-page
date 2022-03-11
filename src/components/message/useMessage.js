@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const useAlert = () => {
-  const [alertSettings, setAlertSettings] = useState({
+const useMessage = () => {
+  const [messageSettings, setMessageSettings] = useState({
     title: "",
     text: "",
   });
@@ -10,12 +10,12 @@ const useAlert = () => {
   const handleClose = () => setOpen(false);
 
   return {
-    alertSettings,
+    messageSettings,
     setOpen,
-    setAlertSettings,
+    setMessageSettings,
     open,
     handleClose,
   };
 };
 
-export default useAlert;
+export default useMessage;

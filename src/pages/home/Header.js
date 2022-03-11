@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import FadeBackground from "./FadeBackground";
 import HeaderContainer from "./header/HeaderContainer";
 import TopSection from "./header/TopSection";
@@ -12,32 +11,13 @@ const Header = () => {
   return (
     <>
       <ParallaxBackground />
-      <HeaderContainer
-        container
-        direction="column"
-        justifyContent="flex-end"
-        alignItems="center"
-      >
-        <TopSection
-          container
-          justifyContent="center"
-          alignContent="center"
-          isOnLandScape={isOnLandScape}
-        >
-          <Typography variant="h2" align="center">
-            Lorem ipsum dolor sit amet, consectetur.
-          </Typography>
+      <HeaderContainer>
+        <TopSection isOnLandScape={isOnLandScape}>
+          Lorem ipsum dolor sit amet, consectetur.
         </TopSection>
-        <BottomSection
-          container
-          justifyContent="center"
-          alignContent="center"
-          isOnLandScape={isOnLandScape}
-        >
-          <Typography paragraph={true} align="center" sx={{ margin: "0px" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            interdum dapibus mauris eget.
-          </Typography>
+        <BottomSection isOnLandScape={isOnLandScape}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum
+          dapibus mauris eget.
         </BottomSection>
         <FadeBackground
           isOnLandScape={isOnLandScape}

@@ -1,5 +1,4 @@
 import ParallaxContainer from "./home/ParallaxContainer";
-
 import NavigationBar from "./home/NavigationBar";
 import useDisplayOnScroll from "hooks/useDisplayOnScroll";
 import Footer from "./home/Footer";

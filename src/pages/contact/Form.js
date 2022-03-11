@@ -1,10 +1,11 @@
-import { Box, Grid, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import TextArea from "components/TextArea";
 import useHandlers from "./form/useHandlers";
-import PageTitle from "components/PageTitle";
+import GenericTitle from "components/GenericTitle";
 import PersonalDetailsForm from "./form/PersonalDetailsForm";
 import FormStatusMessage from "components/FormStatusMessage";
 import SubFormContainer from "components/SubFormContainer";
+import { Container, ButtonContainer } from "./form/CustomComponents";
 
 const Form = ({
   shouldReset,
@@ -51,8 +52,8 @@ const Form = ({
 
   return (
     <Box component={"form"} method="POST" action="" onSubmit={handleSubmit}>
-      <Grid container alignItems="flex-start">
-        <PageTitle>Contacto</PageTitle>
+      <Container>
+        <GenericTitle>Contacto</GenericTitle>
         <PersonalDetailsForm
           inputsErrorsSettings={inputsErrorsSettings}
           handleBlur={handleBlur}
@@ -76,12 +77,12 @@ const Form = ({
           errorMessage="Complete los campos requeridos(*) y/o resuelva los errores en el formulario."
           successMessage="El mensaje fue enviado con éxito."
         />
-        <Grid item xs={12} alignContent="flex-start">
+        <ButtonContainer>
           <Button type="submit" disabled={isSubmitting}>
             Enviar
           </Button>
-        </Grid>
-      </Grid>
+        </ButtonContainer>
+      </Container>
     </Box>
   );
 };
