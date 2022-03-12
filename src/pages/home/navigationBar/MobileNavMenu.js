@@ -2,6 +2,7 @@ import MobileBarContainer from "./mobileNavMenu/MobileBarContainer";
 import MobileNavigation from "./mobileNavMenu/MobileNavigation";
 import ProductsMobileNavigation from "./mobileNavMenu/ProductsMobileNavigation";
 import { Route, Routes } from "react-router-dom";
+import { memo } from "react";
 
 const MobileNavMenu = ({
   navSettings,
@@ -31,4 +32,4 @@ const MobileNavMenu = ({
   );
 };
 
-export default MobileNavMenu;
+export default memo(MobileNavMenu);
