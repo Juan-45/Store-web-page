@@ -1,5 +1,5 @@
 import FadeBackground from "../FadeBackground";
-import Carousel from "./Carousel";
+import Carousel from "./relevantProducts/Carousel";
 import ProductCard from "./relevantProducts/ProductCard";
 import {
   Container,

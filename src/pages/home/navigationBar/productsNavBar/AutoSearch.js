@@ -2,6 +2,7 @@ import CustomPopper from "./autoSearch/CustomPopper";
 import { Autocomplete } from "@mui/material/";
 import SearchInput from "./autoSearch/SearchInput";
 import { Grid } from "@mui/material/";
+import { memo } from "react";
 
 const AutoSearch = ({ autocompleteData, sx }) => {
   return (
@@ -25,4 +26,4 @@ const AutoSearch = ({ autocompleteData, sx }) => {
   );
 };
 
-export default AutoSearch;
+export default memo(AutoSearch);

@@ -1,12 +1,10 @@
 import AutoSearch from "./productsNavBar/AutoSearch";
-import {
-  Container,
-  ButtonGroupContainer,
-  CustomButton,
-  MenuItemText,
-} from "./productsNavBar/CustomComponents";
-import { ButtonGroup, MenuItem, Menu } from "@mui/material";
+import { Container } from "./productsNavBar/CustomComponents";
+import DropDownMenu from "./productsNavBar/DropDownMenu";
+import ButtonsBar from "./productsNavBar/ButtonsBar";
 import useProductNavBar from "./productsNavBar/useProductNavBar";
+import useNavigation from "./productsNavBar/useNavigation";
+import { memo } from "react";
 
 const ProductsNavBar = ({ products, categories, categoriesTree }) => {
   const {
@@ -14,50 +12,31 @@ const ProductsNavBar = ({ products, categories, categoriesTree }) => {
     handleCloseMenu,
     currentCategory,
     handleOpenMenu,
-    getCategoryButtonHanlder,
-    getSubCategoryButtonHanlder,
+    setElementPosition,
     wrapperRef,
   } = useProductNavBar();
 
+  const { getCategoryButtonHanlder, getSubCategoryButtonHanlder } =
+    useNavigation({ setElementPosition });
+
   return (
     <Container>
-      <ButtonGroupContainer>
-        <ButtonGroup ref={wrapperRef}>
-          {categories.map((category) => (
-            <CustomButton
-              name={category.name}
-              key={category.name}
-              onMouseEnter={handleOpenMenu}
-              onClick={getCategoryButtonHanlder(category.path)}
-            >
-              {category.label}
-            </CustomButton>
-          ))}
-        </ButtonGroup>
-      </ButtonGroupContainer>
-      <Menu
-        elevation={16}
-        anchorEl={elementPosition}
-        keepMounted
-        open={Boolean(elementPosition)}
-        variant="navMenu"
-        onMouseLeave={handleCloseMenu}
-      >
-        {categoriesTree[`${currentCategory}`].map((subCategory) => (
-          <MenuItem
-            key={subCategory.label}
-            onClick={getSubCategoryButtonHanlder({
-              category: currentCategory,
-              subCategory: subCategory.query,
-            })}
-          >
-            <MenuItemText>{subCategory.label}</MenuItemText>
-          </MenuItem>
-        ))}
-      </Menu>
+      <ButtonsBar
+        categories={categories}
+        handleOpenMenu={handleOpenMenu}
+        getCategoryButtonHanlder={getCategoryButtonHanlder}
+        ref={wrapperRef}
+      />
+      <DropDownMenu
+        elementPosition={elementPosition}
+        handleCloseMenu={handleCloseMenu}
+        categoriesTree={categoriesTree}
+        currentCategory={currentCategory}
+        getSubCategoryButtonHanlder={getSubCategoryButtonHanlder}
+      />
       <AutoSearch autocompleteData={products} />
     </Container>
   );
 };
 
-export default ProductsNavBar;
+export default memo(ProductsNavBar);
