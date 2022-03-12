@@ -1,10 +1,8 @@
 import CustomButton from "./navButton/CustomButton";
-import { useNavigate } from "react-router-dom";
+import useNavigation from "./navButton/useNavigation";
 
 const NavButton = ({ buttonSettings }) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => navigate(buttonSettings.path);
+  const { handleClick } = useNavigation(buttonSettings.path);
 
   return (
     <CustomButton onClick={handleClick}>{buttonSettings.label}</CustomButton>

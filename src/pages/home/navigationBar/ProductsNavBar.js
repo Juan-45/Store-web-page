@@ -7,6 +7,7 @@ import {
 } from "./productsNavBar/CustomComponents";
 import { ButtonGroup, MenuItem, Menu } from "@mui/material";
 import useProductNavBar from "./productsNavBar/useProductNavBar";
+import useNavigation from "./productsNavBar/useNavigation";
 
 const ProductsNavBar = ({ products, categories, categoriesTree }) => {
   const {
@@ -14,10 +15,12 @@ const ProductsNavBar = ({ products, categories, categoriesTree }) => {
     handleCloseMenu,
     currentCategory,
     handleOpenMenu,
-    getCategoryButtonHanlder,
-    getSubCategoryButtonHanlder,
+    setElementPosition,
     wrapperRef,
   } = useProductNavBar();
+
+  const { getCategoryButtonHanlder, getSubCategoryButtonHanlder } =
+    useNavigation({ setElementPosition });
 
   return (
     <Container>

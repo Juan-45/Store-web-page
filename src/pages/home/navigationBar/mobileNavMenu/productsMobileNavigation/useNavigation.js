@@ -1,13 +1,6 @@
-import useMenu from "hooks/useMenu";
 import { useNavigate, createSearchParams } from "react-router-dom";
 
-const useProductsMobileNavigation = () => {
-  const {
-    setElementPosition,
-    elementPosition,
-    handleOpenMenu,
-    handleCloseMenu,
-  } = useMenu();
+const useNavigation = ({ setElementPosition }) => {
   const navigate = useNavigate();
 
   const getSubCategoryButtonHandler =
@@ -23,11 +16,8 @@ const useProductsMobileNavigation = () => {
     };
 
   return {
-    elementPosition,
-    handleOpenMenu,
-    handleCloseMenu,
     getSubCategoryButtonHandler,
   };
 };
 
-export default useProductsMobileNavigation;
+export default useNavigation;

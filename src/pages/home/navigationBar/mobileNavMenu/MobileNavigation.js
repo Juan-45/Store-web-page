@@ -1,9 +1,9 @@
-import useMenu from "hooks/useMenu";
-import { useNavigate } from "react-router-dom";
 import MobileButton from "components/MobileButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CustomMenu from "components/CustomMenu";
 import CustomMenuItem from "components/CustomMenuItem";
+import useMenu from "hooks/useMenu";
+import useNavigation from "./mobileNavigation/useNavigation";
 
 const MobileNavigation = ({ isTouchScreen, navSettings }) => {
   const {
@@ -12,12 +12,8 @@ const MobileNavigation = ({ isTouchScreen, navSettings }) => {
     handleOpenMenu,
     handleCloseMenu,
   } = useMenu();
-  const navigate = useNavigate();
 
-  const getOnClickHandler = (currentSettings) => () => {
-    navigate(currentSettings["path"]);
-    setElementPosition(false);
-  };
+  const { getOnClickHandler } = useNavigation({ setElementPosition });
 
   return (
     <>
