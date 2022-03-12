@@ -9,83 +9,144 @@ import PermanentButtons from "./navigationBar/PermanentButtons";
 import SubContainer from "./navigationBar/SubContainer";
 
 const navSettings = [
-  { label: "Contacto", path: "contact" },
-  { label: "Crear Cuenta", path: "signup" },
-  { label: "Nosotros", path: "aboutUs" },
-  { label: "Sucursales", path: "storePicker" },
-  { label: "Productos", path: "products" },
+  { label: "Contacto", path: "contacto" },
+  { label: "Crear Cuenta", path: "cuenta" },
+  { label: "Nosotros", path: "sobreNosotros" },
+  { label: "Sucursales", path: "sucursales" },
+  { label: "Productos", path: "productos" },
 ];
 
-const subCategories = {
+const categories = [
+  { label: "Mix de frutas", name: "mixDeFruta", path: "mixDeFruta" },
+  { label: "Celíacos", name: "celiacos", path: "celiacos" },
+  { label: "Fruta seca", name: "frutaSeca", path: "frutaSeca" },
+  { label: "Gourmet", name: "gourmet", path: "gourmet" },
+  { label: "Desayuno", name: "desayuno", path: "desayuno" },
+  { label: "Especias", name: "especias", path: "especias" },
+  { label: "Mas categorías", name: "masCategorias", path: "masCategorias" },
+];
+
+const categoriesTree = {
   mixDeFruta: [
-    { label: "Con pasas", name: "conPasas" },
-    { label: "Sin pasas", name: "sinPasas" },
-    { label: "Con sal", name: "conSal" },
-    { label: "Sin maní", name: "sinMani" },
-    { label: "Todos", name: "todos" },
+    { label: "Con pasas", name: "conPasas", query: "conPasas" },
+    { label: "Sin pasas", name: "sinPasas", query: "sinPasas" },
+    { label: "Con sal", name: "conSal", query: "conSal" },
+    { label: "Sin maní", name: "sinMani", query: "sinMani" },
+    { label: "Todos", name: "todos", query: "todos" },
   ],
   celiacos: [
-    { label: "Arroz", name: "arroz" },
-    { label: "Harinas y pre-mezclas", name: "harinasYPreMezclas" },
-    { label: "Pastas", name: "pastas" },
-    { label: "Snacks", name: "snacks" },
-    { label: "Fruta con chocolate", name: "frutaConChocolate" },
-    { label: "Desayuno y merienda", name: "desayunoYMerienda" },
-    { label: "Bebidas e infusiones", name: "bebidasEInfusiones" },
+    { label: "Arroz", name: "arroz", query: "arroz" },
+    {
+      label: "Harinas y pre-mezclas",
+      name: "harinasYPreMezclas",
+      query: "harinas",
+    },
+    { label: "Pastas", name: "pastas", query: "pastas" },
+    { label: "Snacks", name: "snacks", query: "snacks" },
+    {
+      label: "Fruta con chocolate",
+      name: "frutaConChocolate",
+      query: "frutaChocolate",
+    },
+    {
+      label: "Desayuno y merienda",
+      name: "desayunoYMerienda",
+      query: "desyunoMeriendas",
+    },
+    {
+      label: "Bebidas e infusiones",
+      name: "bebidasEInfusiones",
+      query: "bebidasInfusiones",
+    },
   ],
   frutaSeca: [
-    { label: "Castañas", name: "castañas" },
-    { label: "Pistacho", name: "pistacho" },
-    { label: "Almendra", name: "almendra" },
-    { label: "Nuez", name: "nuez" },
-    { label: "Sin TACC", name: "sinTACC" },
-    { label: "Maíz frito", name: "maizFrito" },
-    { label: "Mix de frutas secas", name: "mixDeFrutasSecas" },
+    { label: "Castañas", name: "castañas", query: "castañas" },
+    { label: "Pistacho", name: "pistacho", query: "pistacho" },
+    { label: "Almendra", name: "almendra", query: "almendra" },
+    { label: "Nuez", name: "nuez", query: "nuez" },
+    { label: "Sin TACC", name: "sinTACC", query: "sinTACC" },
+    { label: "Maíz frito", name: "maizFrito", query: "maizFrito" },
+    {
+      label: "Mix de frutas secas",
+      name: "mixDeFrutasSecas",
+      query: "mixFrutasSecas",
+    },
   ],
   gourmet: [
-    { label: "Sushi", name: "sushi" },
-    { label: "Fideos y Arroces", name: "fideosYArroces" },
-    { label: "Salsas y aderezos", name: "salsasYAderezos" },
-    { label: "Mieles y Syrup", name: "mielesYSyrup" },
-    { label: "Tés e infusuiones", name: "tesEInfusiones" },
-    { label: "Conservas", name: "conservas" },
-    { label: "Hongos", name: "hongos" },
+    { label: "Sushi", name: "sushi", query: "sushi" },
+    {
+      label: "Fideos y Arroces",
+      name: "fideosYArroces",
+      query: "fideosArroces",
+    },
+    {
+      label: "Salsas y aderezos",
+      name: "salsasYAderezos",
+      query: "salsasYAderezos",
+    },
+    { label: "Mieles y Syrup", name: "mielesYSyrup", query: "mielesSyrup" },
+    { label: "Conservas", name: "conservas", query: "conservas" },
+    { label: "Hongos", name: "hongos", query: "hongos" },
   ],
   desayuno: [
-    { label: "Granolas y mueslis", name: "granolaYMueslis" },
-    { label: "Cereales", name: "cereales" },
-    { label: "Dulces", name: "dulces" },
-    { label: "Panes y galletitas", name: "panesYGalletitas" },
-    { label: "Endulzante", name: "endulzante" },
-    { label: "Leches y bebidas vegetales", name: "lecheYBebidasVegetales" },
-    { label: "Infusiones", name: "infusiones" },
+    {
+      label: "Granolas y mueslis",
+      name: "granolaYMueslis",
+      query: "granolaMueslis",
+    },
+    { label: "Cereales", name: "cereales", query: "cereales" },
+    { label: "Dulces", name: "dulces", query: "dulces" },
+    {
+      label: "Panes y galletitas",
+      name: "panesYGalletitas",
+      query: "panesGalletitas",
+    },
+    { label: "Endulzante", name: "endulzante", query: "endulzante" },
+    {
+      label: "Leches y bebidas vegetales",
+      name: "lecheYBebidasVegetales",
+      query: "lecheBebidasVegetales",
+    },
+    { label: "Infusiones", name: "infusiones", query: "infusiones" },
   ],
   especias: [
-    { label: "Para carnes rojas", name: "carnesRojas" },
-    { label: "Para carnes blancas", name: "carnesBlancas" },
-    { label: "Para pescados", name: "pescados" },
-    { label: "Para verduras", name: "verduras" },
-    { label: "Para repostería", name: "reposteria" },
-    { label: "Para infusiones", name: "infusiones" },
-    { label: "Terapeúticas", name: "terapeuticas" },
+    { label: "Para carnes rojas", name: "carnesRojas", query: "carnesRojas" },
+    {
+      label: "Para carnes blancas",
+      name: "carnesBlancas",
+      query: "carnesBlancas",
+    },
+    { label: "Para pescados", name: "pescados", query: "pescados" },
+    { label: "Para verduras", name: "verduras", query: "verduras" },
+    { label: "Para repostería", name: "reposteria", query: "reposteria" },
+    { label: "Para infusiones", name: "infusiones", query: "infusiones" },
+    { label: "Terapeúticas", name: "terapeuticas", query: "terapeuticas" },
   ],
   masCategorias: [
-    { label: "Semillas", name: "semillas" },
-    { label: "Aceites y aderezos", name: "aceitesYAderezo" },
-    { label: "Suplementos", name: "suplementos" },
-    { label: "Miel", name: "miel" },
-    { label: "Orgánico", name: "organico" },
-    { label: "Harinas", name: "harinas" },
-    { label: "Granos", name: "granos" },
-    { label: "Kosher", name: "kosher" },
-    { label: "Suplementos deportivos", name: "suplementosDeportivos" },
-    { label: "Veganos", name: "veganos" },
-    { label: "Almacén", name: "almacen" },
-    { label: "Repostería", name: "reposteria" },
-    { label: "Cosmética", name: "cosmetica" },
-    { label: "Sin azucar", name: "sinAzucar" },
-    { label: "Endulzantes", name: "endulzante" },
-    { label: "Jugos y bebidas", name: "jugosYBebidas" },
+    { label: "Semillas", name: "semillas", query: "semillas" },
+    {
+      label: "Aceites y aderezos",
+      name: "aceitesYAderezo",
+      query: "aceitesAderezos",
+    },
+    { label: "Suplementos", name: "suplementos", query: "suplementos" },
+    { label: "Miel", name: "miel", query: "miel" },
+    { label: "Orgánico", name: "organico", query: "organico" },
+    { label: "Harinas", name: "harinas", query: "harinas" },
+    { label: "Granos", name: "granos", query: "granos" },
+    { label: "Kosher", name: "kosher", query: "kosher" },
+    {
+      label: "Suplementos deportivos",
+      name: "suplementosDeportivos",
+      query: "suplementosDeportivos",
+    },
+    { label: "Veganos", name: "veganos", query: "veganos" },
+    { label: "Almacén", name: "almacen", query: "almacen" },
+    { label: "Repostería", name: "reposteria", query: "reposteria" },
+    { label: "Cosmética", name: "cosmetica", query: "cosmetica" },
+    { label: "Sin azucar", name: "sinAzucar", query: "sinAzucar" },
+    { label: "Endulzantes", name: "endulzante", query: "endulzante" },
+    { label: "Jugos y bebidas", name: "jugosYBebidas", query: "jugosBebidas" },
   ],
 };
 
@@ -97,16 +158,6 @@ const products = [
   { label: "Yerba Mate Libre de Gluten x 500 gr." },
   { label: "Arroz Integral Yamani x 1,25 kg" },
   { label: "Copos Integrales (Trigo, Maíz, Avena, Arroz) x 3 kg" },
-];
-
-const categories = [
-  { label: "Mix de frutas", name: "mixDeFruta" },
-  { label: "Celíacos", name: "celiacos" },
-  { label: "Fruta seca", name: "frutaSeca" },
-  { label: "Gourmet", name: "gourmet" },
-  { label: "Desayuno", name: "desayuno" },
-  { label: "Especias", name: "especias" },
-  { label: "Mas categorías", name: "masCategorias" },
 ];
 
 const NavigationBar = ({ shouldDisplay }) => {
@@ -123,20 +174,20 @@ const NavigationBar = ({ shouldDisplay }) => {
               <NavButtonsBar navSettings={navSettings} />
               <MobileNavMenu
                 navSettings={navSettings}
-                subCategories={subCategories}
+                categoriesTree={categoriesTree}
                 categories={categories}
                 isTouchScreen={isTouchScreen}
               />
             </SubContainer>,
             <Routes key="ProductsNavBar">
               <Route
-                path="products"
+                path="productos/*"
                 element={
                   <ProductsNavBar
                     products={products}
                     categories={categories}
                     isTouchScreen={isTouchScreen}
-                    subCategories={subCategories}
+                    categoriesTree={categoriesTree}
                   />
                 }
               />
