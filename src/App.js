@@ -20,13 +20,13 @@ function App() {
       <Container>
         <BrowserRouter>
           <Routes>
-            <Route path="/Store-web-page/*" element={<Home />}>
+            <Route path="Store-web-page/*" element={<Home />}>
               <Route path="" element={<MainContent />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="signup" element={<SignUp />} />
-              <Route path="aboutUs" element={<AboutUs />} />
-              <Route path="storePicker" element={<StorePicker />} />
-              <Route path="products" element={<Products />} />
+              <Route path="contacto" element={<Contact />} />
+              <Route path="cuenta" element={<SignUp />} />
+              <Route path="sobreNosotros" element={<AboutUs />} />
+              <Route path="sucursales" element={<StorePicker />} />
+              <Route path="productos/*" element={<Products />} />
               <Route
                 path="*"
                 element={

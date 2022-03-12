@@ -12,19 +12,11 @@ import {
 const CategoriesMenu = ({
   isTouchScreen,
   categories,
-  subCategories,
-  setElementPosition,
+  categoriesTree,
   elementPosition,
   handleCloseMenu,
+  getSubCategoryButtonHandler,
 }) => {
-  const getItemButtonHandler =
-    ({ currentCategory, item }) =>
-    () => {
-      setElementPosition(false);
-      console.log("Categoría:", currentCategory);
-      console.log("Item:", item);
-    };
-
   return (
     <CustomMenu
       anchorEl={elementPosition}
@@ -41,14 +33,14 @@ const CategoriesMenu = ({
             </CustomAccordionSummary>
             <CustomAccordionDetails>
               <CustomList>
-                {subCategories[category.name].map((subCategories) => (
+                {categoriesTree[category.name].map((subCategory) => (
                   <CustomListItemButton
-                    key={subCategories.label}
-                    onClick={getItemButtonHandler({
-                      currentCategory: category.name,
-                      item: subCategories.label,
+                    key={subCategory.label}
+                    onClick={getSubCategoryButtonHandler({
+                      categoryPath: category.path,
+                      subCategoryQuery: subCategory.query,
                     })}
-                    primary={subCategories.label}
+                    primary={subCategory.label}
                   />
                 ))}
               </CustomList>

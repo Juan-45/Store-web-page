@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 
 const Message = ({ open, handleClose, messageSettings }) => {
-  console.log(messageSettings);
   const { title, text } = messageSettings;
 
   return (

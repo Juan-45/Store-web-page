@@ -22,10 +22,11 @@ const ButtonGroupContainer = ({ children }) => (
   </Box>
 );
 
-const CustomButton = ({ children }) => (
+const CustomButton = ({ children, ...props }) => (
   <Button
     size="small"
     sx={{ borderRadius: "0", flexShrink: "0", flexBasis: "content" }}
+    {...props}
   >
     {children}
   </Button>

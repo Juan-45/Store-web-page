@@ -1,19 +1,19 @@
 import MobileButton from "components/MobileButton";
 import StoreIcon from "@mui/icons-material/Store";
-import useMenu from "hooks/useMenu";
 import CategoriesMenu from "./productsMobileNavigation/CategoriesMenu";
+import useProductsMobileNavigation from "./productsMobileNavigation/useProductsMobileNavigation";
 
 const ProductsMobileNavigation = ({
   isTouchScreen,
   categories,
-  subCategories,
+  categoriesTree,
 }) => {
   const {
-    setElementPosition,
     elementPosition,
     handleOpenMenu,
     handleCloseMenu,
-  } = useMenu();
+    getSubCategoryButtonHandler,
+  } = useProductsMobileNavigation();
 
   return (
     <>
@@ -25,8 +25,8 @@ const ProductsMobileNavigation = ({
         elementPosition={elementPosition}
         handleCloseMenu={handleCloseMenu}
         categories={categories}
-        subCategories={subCategories}
-        setElementPosition={setElementPosition}
+        categoriesTree={categoriesTree}
+        getSubCategoryButtonHandler={getSubCategoryButtonHandler}
       />
     </>
   );

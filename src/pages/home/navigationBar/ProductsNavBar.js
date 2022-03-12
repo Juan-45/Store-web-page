@@ -6,28 +6,18 @@ import {
   MenuItemText,
 } from "./productsNavBar/CustomComponents";
 import { ButtonGroup, MenuItem, Menu } from "@mui/material";
-import { useState, useRef } from "react";
-import useOutsideClickListener from "hooks/useOutsideClickListener";
-import useMenu from "hooks/useMenu";
+import useProductNavBar from "./productsNavBar/useProductNavBar";
 
-const ProductsNavBar = ({ products, categories, subCategories }) => {
-  const { setElementPosition, elementPosition, handleCloseMenu } = useMenu();
-  const [currentSubCategory, setCurrentSubCategory] = useState("mixDeFruta");
-  const wrapperRef = useRef(null);
-  const closeMenu = () => setElementPosition(false);
-
-  useOutsideClickListener(wrapperRef, closeMenu);
-  // const navigate = useNavigate();
-
-  const handleOpenMenu = (e) => {
-    setElementPosition(e.currentTarget);
-    setCurrentSubCategory(e.currentTarget.name);
-  };
-
-  const getOnClickHandler = () => {
-    // navigate(currentSettings["path"]);
-    setElementPosition(false);
-  };
+const ProductsNavBar = ({ products, categories, categoriesTree }) => {
+  const {
+    elementPosition,
+    handleCloseMenu,
+    currentCategory,
+    handleOpenMenu,
+    getCategoryButtonHanlder,
+    getSubCategoryButtonHanlder,
+    wrapperRef,
+  } = useProductNavBar();
 
   return (
     <Container>
@@ -38,6 +28,7 @@ const ProductsNavBar = ({ products, categories, subCategories }) => {
               name={category.name}
               key={category.name}
               onMouseEnter={handleOpenMenu}
+              onClick={getCategoryButtonHanlder(category.path)}
             >
               {category.label}
             </CustomButton>
@@ -52,9 +43,15 @@ const ProductsNavBar = ({ products, categories, subCategories }) => {
         variant="navMenu"
         onMouseLeave={handleCloseMenu}
       >
-        {subCategories[`${currentSubCategory}`].map((item) => (
-          <MenuItem key={item.label} onClick={getOnClickHandler}>
-            <MenuItemText>{item.label}</MenuItemText>
+        {categoriesTree[`${currentCategory}`].map((subCategory) => (
+          <MenuItem
+            key={subCategory.label}
+            onClick={getSubCategoryButtonHanlder({
+              category: currentCategory,
+              subCategory: subCategory.query,
+            })}
+          >
+            <MenuItemText>{subCategory.label}</MenuItemText>
           </MenuItem>
         ))}
       </Menu>
