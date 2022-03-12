@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 const MobileNavMenu = ({
   navSettings,
   categories,
-  subCategories,
+  categoriesTree,
   isTouchScreen,
 }) => {
   return (
@@ -17,11 +17,11 @@ const MobileNavMenu = ({
       />
       <Routes key="ProductsNavBar">
         <Route
-          path="products"
+          path="productos/*"
           element={
             <ProductsMobileNavigation
               categories={categories}
-              subCategories={subCategories}
+              categoriesTree={categoriesTree}
               isTouchScreen={isTouchScreen}
             />
           }
