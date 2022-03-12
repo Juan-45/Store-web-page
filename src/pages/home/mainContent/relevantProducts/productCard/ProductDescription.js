@@ -3,7 +3,7 @@ import theme from "theme";
 
 const ProductDescription = ({ title, price, minimum }) => (
   <Box
-    style={{
+    sx={{
       background: "#dedede",
       boxSizing: "border-box",
       padding: "15px",
