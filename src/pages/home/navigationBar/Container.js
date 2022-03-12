@@ -5,7 +5,7 @@ const Container = ({ children, shouldDisplay, isTouchScreen }) => {
   return (
     <PaperWrapper shouldDisplay={shouldDisplay} isTouchScreen={isTouchScreen}>
       <Grid container justifyContent="center">
-        <Grid item xs={11} md={9} lg={8} xl={5}>
+        <Grid item xs={11} md={9} lg={8} xl={7}>
           <Grid
             container
             item
