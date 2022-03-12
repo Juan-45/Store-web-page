@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import ProductsNavBar from "./navigationBar/ProductsNavBar";
 import PermanentButtons from "./navigationBar/PermanentButtons";
 import SubContainer from "./navigationBar/SubContainer";
+import { memo } from "react";
 
 const navSettings = [
   { label: "Contacto", path: "contacto" },
@@ -197,4 +198,4 @@ const NavigationBar = ({ shouldDisplay }) => {
   );
 };
 
-export default NavigationBar;
+export default memo(NavigationBar);

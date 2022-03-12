@@ -1,6 +1,7 @@
 import Container from "./navButtonsBar/Container";
 import NavButton from "./navButtonsBar/NavButton";
 import ButtonsContainer from "./navButtonsBar/ButtonsContainer";
+import { memo } from "react";
 
 const NavButtonsBar = ({ navSettings }) => (
   <Container>
@@ -12,4 +13,4 @@ const NavButtonsBar = ({ navSettings }) => (
   </Container>
 );
 
-export default NavButtonsBar;
+export default memo(NavButtonsBar);

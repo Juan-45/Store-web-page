@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Message from "components/Message";
 import useMessage from "components/message/useMessage";
 import PermanentButtonsGroup from "./permanentButtons/PermanentButtonsGroup";
+import { memo } from "react";
 
 const PermanentButtons = () => {
   const navigate = useNavigate();
@@ -37,4 +38,4 @@ const PermanentButtons = () => {
   );
 };
 
-export default PermanentButtons;
+export default memo(PermanentButtons);
