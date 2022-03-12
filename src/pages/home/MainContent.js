@@ -1,4 +1,4 @@
-import ContentContainer from "./mainContent/ContentContainer";
+import ContentContainer from "./mainContent/relevantProducts/ContentContainer";
 import PresentationContainer from "./mainContent/PresentationContainer";
 import PresentationItem from "./mainContent/PresentationItem";
 import ParallaxBackground from "./ParallaxBackground";
