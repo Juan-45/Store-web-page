@@ -1,8 +1,7 @@
 import {
   Accordion,
   AccordionSummary,
-  FormControlLabel,
-  Checkbox,
+  AccordionDetails,
   Box,
   Typography,
   styled,
@@ -15,7 +14,11 @@ const Container = styled(Box)({
 });
 
 const CustomAccordion = ({ children, ...props }) => (
-  <Accordion sx={{ color: "black" }} square={true} {...props}>
+  <Accordion
+    sx={{ color: theme.palette.text.secondary }}
+    square={true}
+    {...props}
+  >
     {children}
   </Accordion>
 );
@@ -26,26 +29,13 @@ const CustomAccordionSummary = ({ children }) => (
   </AccordionSummary>
 );
 
-const CustomFormControlLabel = ({ ...props }) => (
-  <FormControlLabel
-    control={<Checkbox />}
-    componentsProps={{
-      typography: {
-        variant: "body2",
-      },
-    }}
-    sx={{
-      "&:hover": {
-        background: theme.palette.secondary.light,
-      },
-    }}
-    {...props}
-  />
-);
+const CustomAccordionDetails = styled(AccordionDetails)({
+  padding: "0px",
+});
 
 export {
   Container,
   CustomAccordion,
   CustomAccordionSummary,
-  CustomFormControlLabel,
+  CustomAccordionDetails,
 };

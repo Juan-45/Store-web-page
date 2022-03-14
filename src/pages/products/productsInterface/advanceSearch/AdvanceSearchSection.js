@@ -1,10 +1,11 @@
-import { AccordionDetails, FormGroup } from "@mui/material";
+import { FormGroup } from "@mui/material";
 import {
   Container,
   CustomAccordion,
   CustomAccordionSummary,
+  CustomAccordionDetails,
 } from "./advanceSearchSection/CustomComponents";
-import CheckboxItem from "./advanceSearchSection/CheckboxItem";
+import CheckboxItem from "../CheckboxItem";
 
 const AdvanceSearchSection = ({
   title,
@@ -15,7 +16,7 @@ const AdvanceSearchSection = ({
   <Container>
     <CustomAccordion>
       <CustomAccordionSummary>{title}</CustomAccordionSummary>
-      <AccordionDetails>
+      <CustomAccordionDetails>
         <FormGroup>
           {searchSettings.map((item) => (
             <CheckboxItem
@@ -26,7 +27,7 @@ const AdvanceSearchSection = ({
             />
           ))}
         </FormGroup>
-      </AccordionDetails>
+      </CustomAccordionDetails>
     </CustomAccordion>
   </Container>
 );
