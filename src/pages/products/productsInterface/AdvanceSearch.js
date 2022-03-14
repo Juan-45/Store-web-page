@@ -1,43 +1,11 @@
 import AdvanceSearchSection from "./advanceSearch/AdvanceSearchSection";
 import Container from "./advanceSearch/Container";
-import useAdvanceSearch from "./advanceSearch/useAdvanceSearch";
+import useAdvanceSearch from "./useAdvanceSearch";
 
-const AdvanceSearch = ({ shouldReset, setShouldReset }) => {
+const AdvanceSearch = ({ shouldReset, setShouldReset, searchSettings }) => {
   const { getQueriesManager } = useAdvanceSearch(setShouldReset);
 
-  const dietSearchSettings = [
-    {
-      label: "Sin TACC",
-      value: "sinTACC",
-    },
-    {
-      label: "Vegano",
-      value: "vegano",
-    },
-    {
-      label: "Sin Sal agregada",
-      value: "sinSalAgregada",
-    },
-    {
-      label: "Sin Lactosa",
-      value: "sinLactosa",
-    },
-  ];
-
-  const weightSearchSettings = [
-    {
-      label: "< de 100 g",
-      value: "<100g",
-    },
-    {
-      label: "E/ 150 y 500 g",
-      value: "e150y500g",
-    },
-    {
-      label: "1 Kg",
-      value: "1Kg",
-    },
-  ];
+  const { dietSearchSettings, weightSearchSettings } = searchSettings;
 
   return (
     <Container>
