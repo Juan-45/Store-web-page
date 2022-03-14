@@ -14,7 +14,7 @@ const navSettings = [
   { label: "Crear Cuenta", path: "cuenta" },
   { label: "Nosotros", path: "sobreNosotros" },
   { label: "Sucursales", path: "sucursales" },
-  { label: "Productos", path: "productos" },
+  { label: "Productos", path: "productos/mixDeFruta" },
 ];
 
 const categories = [
