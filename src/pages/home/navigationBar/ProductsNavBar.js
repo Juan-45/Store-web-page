@@ -9,6 +9,7 @@ import { memo } from "react";
 const ProductsNavBar = ({ products, categories, categoriesTree }) => {
   const {
     elementPosition,
+    shouldOpen,
     handleCloseMenu,
     currentCategory,
     handleOpenMenu,
@@ -29,6 +30,7 @@ const ProductsNavBar = ({ products, categories, categoriesTree }) => {
       />
       <DropDownMenu
         elementPosition={elementPosition}
+        shouldOpen={shouldOpen}
         handleCloseMenu={handleCloseMenu}
         categoriesTree={categoriesTree}
         currentCategory={currentCategory}
