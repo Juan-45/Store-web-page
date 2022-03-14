@@ -293,6 +293,15 @@ theme.components = {
       },
     },
   },
+
+  MuiFab: {
+    styleOverrides: {
+      root: {
+        boxShadow:
+          "0px 8px 10px -5px rgb(0 0 0 / 60%), 0px 16px 24px 2px rgb(0 0 0 / 42%), 0px 6px 30px 5px rgb(0 0 0 / 36%)",
+      },
+    },
+  },
 };
 
 export default theme;
