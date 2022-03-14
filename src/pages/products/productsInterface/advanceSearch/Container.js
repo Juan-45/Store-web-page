@@ -5,7 +5,7 @@ const Container = ({ children }) => (
     container
     item
     direction="column"
-    sx={{ display: { xs: "none", sm: "flex" } }}
+    sx={{ display: { xs: "none", sm: "flex" }, paddingTop: "20px" }}
     xs={4}
     sm={4}
   >
