@@ -1,4 +1,4 @@
-import { CustomFormControlLabel } from "./CustomComponents";
+import CustomFormControlLabel from "./checkboxItem/CustomFormControlLabel";
 import { useState, useEffect } from "react";
 
 const CheckboxItem = ({ shouldReset, manageQueries, ...props }) => {
