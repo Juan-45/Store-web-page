@@ -14,7 +14,10 @@ const navSettings = [
   { label: "Crear Cuenta", path: "cuenta" },
   { label: "Nosotros", path: "sobreNosotros" },
   { label: "Sucursales", path: "sucursales" },
-  { label: "Productos", path: "productos/mixDeFruta" },
+  {
+    label: "Productos",
+    path: "productos/mixDeFruta?orden=nombre%2Cdesc",
+  },
 ];
 
 const categories = [
@@ -33,7 +36,6 @@ const categoriesTree = {
     { label: "Sin pasas", name: "sinPasas", query: "sinPasas" },
     { label: "Con sal", name: "conSal", query: "conSal" },
     { label: "Sin maní", name: "sinMani", query: "sinMani" },
-    { label: "Todos", name: "todos", query: "todos" },
   ],
   celiacos: [
     { label: "Arroz", name: "arroz", query: "arroz" },
