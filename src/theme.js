@@ -12,6 +12,7 @@ const theme = createTheme({
     //gray
     secondary: {
       main: "#636363",
+      mainMedium: "#cccccc",
       dark: "#3c3c3c",
       light: "#e2e2e2",
       hover: "#c4c4c4",
@@ -99,6 +100,11 @@ theme.components = {
       },
       outlined: {
         boxShadow: "unset",
+      },
+      containedSizeSmall: {
+        fontSize: "0.875rem",
+        padding: "4px 8px",
+        letterSpacing: "0px",
       },
     },
   },
@@ -225,6 +231,15 @@ theme.components = {
 
         [theme.breakpoints.up("xl")]: {
           fontSize: "1.225rem",
+        },
+      },
+      subtitle1: {
+        [theme.breakpoints.up("xs")]: {
+          fontSize: "0.875rem",
+        },
+
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "1rem",
         },
       },
     },
