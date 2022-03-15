@@ -8,6 +8,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -38,12 +39,13 @@ const CustomAccordionSummary = ({ children, ...props }) => (
     }}
     {...props}
   >
-    {children}
+    <Typography variant="body2">{children}</Typography>
   </AccordionSummary>
 );
 
 const CustomAccordionDetails = styled(AccordionDetails)({
   color: theme.palette.text.secondary,
+  padding: "0px",
 });
 
 const CustomListItemButton = ({ primary, ...props }) => (
@@ -58,14 +60,17 @@ const CustomListItemButton = ({ primary, ...props }) => (
     {...props}
   >
     <ListItemIcon>
-      <ArrowForwardIosIcon />
+      <ArrowForwardIosIcon fontSize="1rem" />
     </ListItemIcon>
-    <ListItemText primary={primary} />
+    <ListItemText
+      primary={primary}
+      primaryTypographyProps={{ variant: "body2" }}
+    />
   </ListItemButton>
 );
 
 const CustomList = ({ children, ...props }) => (
-  <List orientation="vertical" {...props}>
+  <List orientation="vertical" sx={{ padding: "0px" }} {...props}>
     {children}
   </List>
 );

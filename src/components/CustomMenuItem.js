@@ -6,7 +6,9 @@ const CustomMenuItem = ({ onClickHandler, label }) => (
     <ListItemIcon>
       <ArrowForwardIosIcon />
     </ListItemIcon>
-    <Typography textAlign="center">{label}</Typography>
+    <Typography textAlign="center" variant="body2">
+      {label}
+    </Typography>
   </MenuItem>
 );
 

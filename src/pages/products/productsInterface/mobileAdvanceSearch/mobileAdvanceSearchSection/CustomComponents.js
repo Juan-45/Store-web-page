@@ -4,7 +4,12 @@ import CheckboxItem from "../../CheckboxItem";
 const Title = ({ children }) => (
   <>
     <Divider />
-    <Typography sx={{ padding: "8px 0px 8px 16px" }}>{children}</Typography>
+    <Typography
+      variant="body2"
+      sx={{ padding: "8px 0px 8px 16px", fontWeight: "600" }}
+    >
+      {children}
+    </Typography>
     <Divider />
   </>
 );

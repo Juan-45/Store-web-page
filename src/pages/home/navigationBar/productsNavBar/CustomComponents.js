@@ -33,7 +33,9 @@ const CustomButton = ({ children, ...props }) => (
 );
 
 const MenuItemText = ({ children }) => (
-  <Typography textAlign="center">{children}</Typography>
+  <Typography textAlign="center" variant="body2">
+    {children}
+  </Typography>
 );
 
 export { Container, ButtonGroupContainer, CustomButton, MenuItemText };

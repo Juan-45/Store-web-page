@@ -25,7 +25,9 @@ const CustomAccordion = ({ children, ...props }) => (
 
 const CustomAccordionSummary = ({ children }) => (
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <Typography variant="body1">{children}</Typography>
+    <Typography variant="body2" sx={{ fontWeight: "600" }}>
+      {children}
+    </Typography>
   </AccordionSummary>
 );
 
