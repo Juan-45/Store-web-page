@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import CustomMenu from "components/CustomMenu";
 import {
   CustomMenuItem,
@@ -28,9 +27,7 @@ const CategoriesMenu = ({
       {categories.map((category) => (
         <CustomMenuItem key={category.name}>
           <CustomAccordion>
-            <CustomAccordionSummary>
-              <Typography>{category.label}</Typography>
-            </CustomAccordionSummary>
+            <CustomAccordionSummary>{category.label}</CustomAccordionSummary>
             <CustomAccordionDetails>
               <CustomList>
                 {categoriesTree[category.name].map((subCategory) => (
