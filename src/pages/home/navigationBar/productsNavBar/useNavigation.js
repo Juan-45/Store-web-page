@@ -4,7 +4,7 @@ const useNavigation = ({ setElementPosition }) => {
   const navigate = useNavigate();
 
   const getCategoryButtonHanlder = (path) => () => {
-    navigate(path);
+    navigate(`${path}?orden=nombre%2Cdesc`);
   };
 
   const getSubCategoryButtonHanlder =
