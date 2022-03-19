@@ -1,57 +1,121 @@
-import { useParams, useSearchParams } from "react-router-dom";
-import { Grid } from "@mui/material";
-import GenericContainer from "components/GenericContainer";
+import {
+  Container,
+  InnerContainer,
+  ProductsContainer,
+} from "./productsInterface/CustomComponents";
 import ProductCard from "./productsInterface/ProductCard";
+import AdvanceSearch from "./productsInterface/AdvanceSearch";
+import MobileAdvanceSearch from "./productsInterface/MobileAdvanceSearch";
+import SamplingSettings from "./productsInterface/SamplingSettings";
+import useResetAdvanceSearch from "./productsInterface/useResetAdvanceSearch";
 
 const ProductsInterface = () => {
-  const params = useParams();
-  const searchParams = useSearchParams();
+  const { shouldReset, setShouldReset } = useResetAdvanceSearch();
 
-  console.log("useParams:", params);
-  console.log("searchParams:", searchParams);
+  const searchSettings = {
+    dietSearchSettings: [
+      {
+        label: "Sin TACC",
+        value: "sinTACC",
+      },
+      {
+        label: "Vegano",
+        value: "vegano",
+      },
+      {
+        label: "Sin Sal agregada",
+        value: "sinSalAgregada",
+      },
+      {
+        label: "Sin Lactosa",
+        value: "sinLactosa",
+      },
+    ],
+    weightSearchSettings: [
+      {
+        label: "< de 100 g",
+        value: "<100g",
+      },
+      {
+        label: "E/ 150 y 500 g",
+        value: "e150y500g",
+      },
+      {
+        label: "1 Kg",
+        value: "1Kg",
+      },
+    ],
+  };
+
+  const productsData = [
+    {
+      title: "Titulo",
+      price: "$140",
+      details: "el pepe",
+      imageSrc: "https://via.placeholder.com/300x300",
+    },
+    {
+      title: "Titulo",
+      price: "$140",
+      details: "el pepe",
+      imageSrc: "https://via.placeholder.com/300x300",
+    },
+    {
+      title: "Titulo",
+      price: "$140",
+      details: "el pepe",
+      imageSrc: "https://via.placeholder.com/300x300",
+    },
+    {
+      title: "Titulo",
+      price: "$140",
+      details: "el pepe",
+      imageSrc: "https://via.placeholder.com/300x300",
+    },
+    {
+      title: "Titulo",
+      price: "$140",
+      details: "el pepe",
+      imageSrc: "https://via.placeholder.com/300x300",
+    },
+    {
+      title: "Titulo",
+      price: "$140",
+      details: "el pepe",
+      imageSrc: "https://via.placeholder.com/300x300",
+    },
+    {
+      title: "Titulo",
+      price: "$140",
+      details: "el pepe",
+      imageSrc: "https://via.placeholder.com/300x300",
+    },
+  ];
 
   return (
-    <Grid container columns="16" columnGap="20px" wrap="nowrap">
-      <GenericContainer
-        container
-        item
-        direction="column"
-        sx={{ display: { xs: "none", sm: "flex" }, height: "700px" }}
-        xs={4}
-        sm={4}
-      >
-        Criterios avanzados de bsuqeuda
-      </GenericContainer>
-
-      <GenericContainer
-        container
-        item
-        direction="column"
-        xs={16}
-        sm={12}
-        wrap="nowrap"
-      >
-        <Grid container sx={{ height: "40px", background: "white" }}>
-          Criterios de Distribucion
-        </Grid>
-
-        <Grid
-          container
-          //columnGap="20px"
-          // rowGap="20px"
-          columns="12"
-          //  sx={{ boxSizing: "border-box", padding: "20px" }}
-          //wrap="nowrap"
-        >
-          {/*xs= 2 cajas, sm= 2 cajas, md= 3 cajas, lg= 4 cajas */}
-
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </Grid>
-      </GenericContainer>
-    </Grid>
+    <Container>
+      <AdvanceSearch
+        shouldReset={shouldReset}
+        setShouldReset={setShouldReset}
+        searchSettings={searchSettings}
+      />
+      <MobileAdvanceSearch
+        shouldReset={shouldReset}
+        setShouldReset={setShouldReset}
+        searchSettings={searchSettings}
+      />
+      <InnerContainer>
+        <SamplingSettings
+          shouldReset={shouldReset}
+          setShouldReset={setShouldReset}
+        />
+        <ProductsContainer>
+          {productsData.map((productData) => (
+            <ProductCard productData={productData} />
+          ))}
+        </ProductsContainer>
+      </InnerContainer>
+    </Container>
   );
 };
 
