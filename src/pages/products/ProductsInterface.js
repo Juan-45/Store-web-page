@@ -8,9 +8,12 @@ import AdvanceSearch from "./productsInterface/AdvanceSearch";
 import MobileAdvanceSearch from "./productsInterface/MobileAdvanceSearch";
 import SamplingSettings from "./productsInterface/SamplingSettings";
 import useResetAdvanceSearch from "./productsInterface/useResetAdvanceSearch";
+import useMockedData from "./productsInterface/useMockedData";
 
 const ProductsInterface = () => {
   const { shouldReset, setShouldReset } = useResetAdvanceSearch();
+
+  const { productsData } = useMockedData();
 
   const searchSettings = {
     dietSearchSettings: [
@@ -42,55 +45,10 @@ const ProductsInterface = () => {
       },
       {
         label: "1 Kg",
-        value: "1Kg",
+        value: "1kg",
       },
     ],
   };
-
-  const productsData = [
-    {
-      title: "Titulo",
-      price: "$140",
-      details: "el pepe",
-      imageSrc: "https://via.placeholder.com/300x300",
-    },
-    {
-      title: "Titulo",
-      price: "$140",
-      details: "el pepe",
-      imageSrc: "https://via.placeholder.com/300x300",
-    },
-    {
-      title: "Titulo",
-      price: "$140",
-      details: "el pepe",
-      imageSrc: "https://via.placeholder.com/300x300",
-    },
-    {
-      title: "Titulo",
-      price: "$140",
-      details: "el pepe",
-      imageSrc: "https://via.placeholder.com/300x300",
-    },
-    {
-      title: "Titulo",
-      price: "$140",
-      details: "el pepe",
-      imageSrc: "https://via.placeholder.com/300x300",
-    },
-    {
-      title: "Titulo",
-      price: "$140",
-      details: "el pepe",
-      imageSrc: "https://via.placeholder.com/300x300",
-    },
-    {
-      title: "Titulo",
-      price: "$140",
-      details: "el pepe",
-      imageSrc: "https://via.placeholder.com/300x300",
-    },
-  ];
 
   return (
     <Container>
