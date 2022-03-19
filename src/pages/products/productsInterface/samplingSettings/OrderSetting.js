@@ -8,7 +8,7 @@ import { Box } from "@mui/material";
 import useMenu from "hooks/useMenu";
 import useOrderSetting from "./orderSetting/useOrderSetting";
 
-const OrderSetting = () => {
+const OrderSetting = ({ shouldReset, setShouldReset }) => {
   const {
     setElementPosition,
     elementPosition,
@@ -16,7 +16,7 @@ const OrderSetting = () => {
     handleCloseMenu,
   } = useMenu();
   const { orderOption, upwardOrder, getOrderOptionHandler, handleUpwardOrder } =
-    useOrderSetting(setElementPosition);
+    useOrderSetting(setElementPosition, shouldReset, setShouldReset);
 
   return (
     <Box>

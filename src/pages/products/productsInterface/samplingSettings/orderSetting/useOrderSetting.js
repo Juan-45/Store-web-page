@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const useOrderSetting = (setElementPosition) => {
+const useOrderSetting = (setElementPosition, shouldReset, setShouldReset) => {
   const [orderOption, setOrderOption] = useState("Nombre");
   const [upwardOrder, setUpwardOrder] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,6 +21,7 @@ const useOrderSetting = (setElementPosition) => {
     setOrderOption(query);
     setSearchParams(currentQueryParams);
     setElementPosition(false);
+    setShouldReset(false);
   };
 
   const handleUpwardOrder = () => {
@@ -33,7 +34,15 @@ const useOrderSetting = (setElementPosition) => {
 
     setSearchParams(currentQueryParams);
     setUpwardOrder((prev) => !prev);
+    setShouldReset(false);
   };
+
+  useEffect(() => {
+    if (shouldReset) {
+      setOrderOption("Nombre");
+      setUpwardOrder(false);
+    }
+  }, [shouldReset]);
 
   return {
     orderOption,
