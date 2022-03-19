@@ -28,13 +28,13 @@ const MobileAdvanceSearch = ({
         <MobileAdvanceSearchSection
           title="Dietas"
           searchSettings={dietSearchSettings}
-          manageQueries={getQueriesManager("diet")}
+          manageQueries={getQueriesManager("dieta")}
           shouldReset={shouldReset}
         />
         <MobileAdvanceSearchSection
           title="Peso"
           searchSettings={weightSearchSettings}
-          manageQueries={getQueriesManager("weight")}
+          manageQueries={getQueriesManager("peso")}
           shouldReset={shouldReset}
         />
       </CustomDrawer>
