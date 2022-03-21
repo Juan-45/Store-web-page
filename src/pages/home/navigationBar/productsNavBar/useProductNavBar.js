@@ -1,19 +1,19 @@
 import useOutsideClickListener from "hooks/useOutsideClickListener";
 import theme from "theme";
 import { useMediaQuery } from "@mui/material";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import useMenu from "hooks/useMenu";
 
 const useProductsNavBar = () => {
   const [currentCategory, setCurrentCategory] = useState("mixDeFruta");
-  const wrapperRef = useRef(null);
+
   const { setElementPosition, elementPosition, handleCloseMenu } = useMenu();
 
   const isMatching = useMediaQuery(theme.breakpoints.down("sm"));
   const shouldOpen = Boolean(elementPosition) && !isMatching;
 
   const closeMenu = () => setElementPosition(false);
-  useOutsideClickListener(wrapperRef, closeMenu);
+  const { wrapperRef, menuRef } = useOutsideClickListener(closeMenu);
 
   const handleOpenMenu = (e) => {
     setElementPosition(e.currentTarget);
@@ -28,6 +28,7 @@ const useProductsNavBar = () => {
     handleOpenMenu,
     setElementPosition,
     wrapperRef,
+    menuRef,
   };
 };
 

@@ -15,6 +15,7 @@ const ProductsNavBar = ({ products, categories, categoriesTree }) => {
     handleOpenMenu,
     setElementPosition,
     wrapperRef,
+    menuRef,
   } = useProductNavBar();
 
   const { getCategoryButtonHanlder, getSubCategoryButtonHanlder } =
@@ -35,6 +36,7 @@ const ProductsNavBar = ({ products, categories, categoriesTree }) => {
         categoriesTree={categoriesTree}
         currentCategory={currentCategory}
         getSubCategoryButtonHanlder={getSubCategoryButtonHanlder}
+        ref={menuRef}
       />
       <AutoSearch autocompleteData={products} />
     </Container>
