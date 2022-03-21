@@ -1,15 +1,18 @@
 import { MenuItem, Menu } from "@mui/material";
 import { MenuItemText } from "./CustomComponents";
-import { memo } from "react";
+import { memo, forwardRef } from "react";
 
-const DropDownMenu = ({
-  elementPosition,
-  shouldOpen,
-  handleCloseMenu,
-  categoriesTree,
-  currentCategory,
-  getSubCategoryButtonHanlder,
-}) => {
+const DropDownMenu = (
+  {
+    elementPosition,
+    shouldOpen,
+    handleCloseMenu,
+    categoriesTree,
+    currentCategory,
+    getSubCategoryButtonHanlder,
+  },
+  ref
+) => {
   return (
     <Menu
       elevation={16}
@@ -18,6 +21,9 @@ const DropDownMenu = ({
       open={shouldOpen}
       variant="navMenu"
       onMouseLeave={handleCloseMenu}
+      MenuListProps={{
+        ref,
+      }}
     >
       {categoriesTree[`${currentCategory}`].map((subCategory) => (
         <MenuItem
@@ -33,4 +39,4 @@ const DropDownMenu = ({
     </Menu>
   );
 };
-export default memo(DropDownMenu);
+export default memo(forwardRef(DropDownMenu));
