@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const useOrderSetting = (setElementPosition, shouldReset, setShouldReset) => {
-  const [orderOption, setOrderOption] = useState("Nombre");
+  const [orderOption, setOrderOption] = useState("nombre");
   const [upwardOrder, setUpwardOrder] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
