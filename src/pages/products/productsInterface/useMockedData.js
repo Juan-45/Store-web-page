@@ -1,4 +1,5 @@
 import { useParams, useSearchParams } from "react-router-dom";
+import onlineStore from "images/online-store.png";
 
 const useMockedData = () => {
   const params = useParams();
@@ -10,13 +11,41 @@ const useMockedData = () => {
     samplingOrder: searchParams.get("orden"),
     dietType: searchParams.get("dieta"),
     weight: searchParams.get("peso"),
+    order: searchParams.get("orden"),
   };
 
   const getMockedData = (urlSettings) => {
-    const { category, subCategory, dietType, weight } = urlSettings;
+    const { category, subCategory, dietType, weight, order } = urlSettings;
+
+    const orderType = order.split(",")[0];
+    const orderDirection = order.split(",")[1];
 
     const getRandomInteger = (min, max) =>
       Math.floor(Math.random() * (max - min) + min);
+
+    const getProductWeightNumber = (productName) => {
+      const weightString = productName.split(" -- ")[1];
+
+      if (weightString === "1kg") return 1;
+      else {
+        return parseInt(weightString.replace("g", ""));
+      }
+    };
+
+    const getProductPrice = (productWeightNumber) => {
+      if (productWeightNumber === 1) return getRandomInteger(600, 3000);
+      else if (productWeightNumber <= 100) return getRandomInteger(50, 400);
+      else if (productWeightNumber > 100 && productWeightNumber <= 500)
+        return getRandomInteger(190, 900);
+      else return getRandomInteger(600, 3000);
+    };
+
+    const getPriceFor1Kg = ({ productPrice, productWeightNumber }) => {
+      if (productWeightNumber === 1) return productPrice;
+      else {
+        return Math.floor((1000 / productWeightNumber) * productPrice * 0.97);
+      }
+    };
 
     const getProductNameArray = () => {
       const getWeightString = (weight) => {
@@ -149,21 +178,58 @@ const useMockedData = () => {
 
     const productsNamesArray = getProductNameArray();
 
-    const productsMockedData = productsNamesArray.map((productName) => {
-      const priceString = `$ ${getRandomInteger(50, 600)},00`;
-      const detailsStrings = `$ ${getRandomInteger(1000, 3000)},00 por 1Kg`;
+    let productsMockedData = productsNamesArray.map((productName) => {
+      const productPrice = getProductPrice(getProductWeightNumber(productName));
+
+      const priceString = `$ ${productPrice},00`;
+      const detailsStrings = `$ ${getPriceFor1Kg({
+        productPrice,
+        productWeightNumber: getProductWeightNumber(productName),
+      })},00 por 1Kg`;
 
       return {
         title: productName,
         price: priceString,
         details: detailsStrings,
-        imageSrc: "https://via.placeholder.com/300x300",
+        imageSrc: onlineStore,
       };
     });
 
+    if (orderType === "nombre" && orderDirection === "asc") {
+      productsMockedData = productsMockedData.reverse();
+    }
+
+    if (orderType === "precio") {
+      const getPriceNumber = (item) =>
+        parseInt(item.price.split(" ")[1].split(",")[0]);
+
+      const pricesArray = productsMockedData.map((item) =>
+        getPriceNumber(item)
+      );
+
+      const orderedPricesArray = pricesArray.sort((a, b) => a - b);
+
+      let orderedProductsMockedData = orderedPricesArray.map(
+        (orderedPriceNumber) => {
+          return productsMockedData.find((productsMockedDataItem) => {
+            const currentPriceNumber = parseInt(
+              productsMockedDataItem.price.split(" ")[1].split(",")[0]
+            );
+
+            return orderedPriceNumber === currentPriceNumber;
+          });
+        }
+      );
+
+      if (orderDirection === "asc") {
+        orderedProductsMockedData = orderedProductsMockedData.reverse();
+      }
+
+      return orderedProductsMockedData;
+    }
+
     return productsMockedData;
   };
-
   const productsData = getMockedData(urlSettings);
 
   return { productsData };
