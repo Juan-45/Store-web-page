@@ -12,6 +12,7 @@ const theme = createTheme({
     //gray
     secondary: {
       main: "#636363",
+      mainMedium: "#cccccc",
       dark: "#3c3c3c",
       light: "#e2e2e2",
       hover: "#c4c4c4",
@@ -73,6 +74,20 @@ theme.components = {
       size: "small",
       fullWidth: true,
     },
+    styleOverrides: {
+      root: { marginBottom: "20px" },
+    },
+  },
+
+  MuiButtonGroup: {
+    defaultProps: {
+      variant: "contained",
+    },
+    styleOverrides: {
+      contained: {
+        boxShadow: theme.shadows[16],
+      },
+    },
   },
 
   MuiButton: {
@@ -85,6 +100,11 @@ theme.components = {
       },
       outlined: {
         boxShadow: "unset",
+      },
+      containedSizeSmall: {
+        fontSize: "0.875rem",
+        padding: "4px 8px",
+        letterSpacing: "0px",
       },
     },
   },
@@ -113,6 +133,20 @@ theme.components = {
           },
         },
       },
+      {
+        props: { variant: "navMenu" },
+        style: {
+          pointerEvents: "none",
+          "& .MuiMenu-paper": {
+            borderRadius: "0",
+            background: theme.palette.primary.light,
+            pointerEvents: "auto",
+          },
+          "& .MuiMenuItem-root:hover": {
+            background: theme.palette.primary.main,
+          },
+        },
+      },
     ],
   },
 
@@ -123,6 +157,21 @@ theme.components = {
         style: {
           boxShadow:
             "0px 8px 10px -5px rgb(0 0 0 / 60%), 0px 16px 24px 2px rgb(0 0 0 / 42%), 0px 6px 30px 5px rgb(0 0 0 / 36%)",
+        },
+      },
+    ],
+  },
+
+  MuiIconButton: {
+    variants: [
+      {
+        props: { variant: "mobile" },
+        style: {
+          background: theme.palette.primary.main,
+          boxShadow: theme.shadows[16],
+          "&:hover": {
+            background: theme.palette.primary.dark,
+          },
         },
       },
     ],
@@ -175,7 +224,6 @@ theme.components = {
           fontSize: "1.4rem",
         },
       },
-
       body2: {
         [theme.breakpoints.up("xs")]: {
           fontSize: "1rem",
@@ -183,6 +231,15 @@ theme.components = {
 
         [theme.breakpoints.up("xl")]: {
           fontSize: "1.225rem",
+        },
+      },
+      subtitle1: {
+        [theme.breakpoints.up("xs")]: {
+          fontSize: "0.875rem",
+        },
+
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "1rem",
         },
       },
     },
@@ -233,6 +290,30 @@ theme.components = {
         margin: "0px 15px",
         boxShadow:
           "0px 8px 10px -5px rgb(0 0 0 / 30%), 0px 16px 24px 2px rgb(0 0 0 / 21%), 0px 6px 30px 5px rgb(0 0 0 / 18%)",
+      },
+    },
+  },
+
+  MuiDialogTitle: {
+    styleOverrides: {
+      root: {
+        [theme.breakpoints.up("xs")]: {
+          fontSize: "1.75rem",
+        },
+
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "2rem",
+        },
+        color: theme.palette.text.secondary,
+      },
+    },
+  },
+
+  MuiFab: {
+    styleOverrides: {
+      root: {
+        boxShadow:
+          "0px 8px 10px -5px rgb(0 0 0 / 60%), 0px 16px 24px 2px rgb(0 0 0 / 42%), 0px 6px 30px 5px rgb(0 0 0 / 36%)",
       },
     },
   },

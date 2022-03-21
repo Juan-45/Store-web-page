@@ -1,26 +1,16 @@
 import Container from "./navButtonsBar/Container";
 import NavButton from "./navButtonsBar/NavButton";
-import { Grid } from "@mui/material/";
-import theme from "theme";
-import SideButtons from "./SideButtons";
+import ButtonsContainer from "./navButtonsBar/ButtonsContainer";
+import { memo } from "react";
 
 const NavButtonsBar = ({ navSettings }) => (
   <Container>
-    <SideButtons />
-    <Grid
-      container
-      alignItems="center"
-      sx={{
-        boxShadow: theme.shadows[16],
-        flexWrap: "nowrap",
-        width: "unset",
-      }}
-    >
+    <ButtonsContainer>
       {navSettings.map((item) => (
         <NavButton buttonSettings={item} key={item.label} />
       ))}
-    </Grid>
+    </ButtonsContainer>
   </Container>
 );
 
-export default NavButtonsBar;
+export default memo(NavButtonsBar);

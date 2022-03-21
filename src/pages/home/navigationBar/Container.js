@@ -5,7 +5,7 @@ const Container = ({ children, shouldDisplay, isTouchScreen }) => {
   return (
     <PaperWrapper shouldDisplay={shouldDisplay} isTouchScreen={isTouchScreen}>
       <Grid container justifyContent="center">
-        <Grid item xs={10} md={9} lg={7} xl={6}>
+        <Grid item xs={11} md={9} lg={8} xl={7}>
           <Grid
             container
             item
@@ -15,11 +15,10 @@ const Container = ({ children, shouldDisplay, isTouchScreen }) => {
                 md: "column",
               },
               justifyContent: {
-                xs: "flex-start",
+                xs: "space-between",
               },
               alignItems: {
                 xs: "flex-start",
-                md: "center",
               },
               height: "fit-content",
               paddingBottom: {

@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 import wood from "images/wood.jpg";
-import Grid from "@mui/material/Grid";
+import { Grid } from "@mui/material";
 
 const ParallaxBackground = styled(Grid)({
   //component-style

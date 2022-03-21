@@ -1,24 +1,11 @@
-import { styled } from "@mui/material/styles";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import CustomButton from "./navButton/CustomButton";
+import useNavigation from "./navButton/useNavigation";
 
 const NavButton = ({ buttonSettings }) => {
-  const CustomButton = styled(Button)(({ theme }) => ({
-    color: theme.palette.text.primary,
-    width: "15%",
-    borderRadius: "0",
-    flexShrink: "0",
-    flexBasis: "content",
-  }));
-
-  const navigate = useNavigate();
-
-  const handleClick = () => navigate(buttonSettings.path);
+  const { handleClick } = useNavigation({ path: buttonSettings.path });
 
   return (
-    <CustomButton variant="contained" onClick={handleClick}>
-      {buttonSettings.label}
-    </CustomButton>
+    <CustomButton onClick={handleClick}>{buttonSettings.label}</CustomButton>
   );
 };
 

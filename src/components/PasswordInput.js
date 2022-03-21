@@ -1,14 +1,11 @@
-import {
-  FilledInput,
-  IconButton,
-  InputAdornment,
-  FormHelperText,
-  FormControl,
-  InputLabel,
-} from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { FormHelperText } from "@mui/material";
+
 import { useState, useEffect } from "react";
+import {
+  CustomFormControl,
+  CustomFilledInput,
+  CustomInputLabel,
+} from "components/passwordInput/CustomComponents";
 
 const PasswordInput = ({
   onChange,
@@ -39,37 +36,27 @@ const PasswordInput = ({
   }, [shouldReset]);
 
   return (
-    <FormControl
-      variant="filled"
-      sx={{ minWidth: "100%", marginBottom: "20px" }}
-    >
-      <InputLabel
+    <CustomFormControl>
+      <CustomInputLabel
         htmlFor={`filled-adornment-password- ${id}`}
         error={error}
-        sx={{ top: "-3px" }}
       >
         {required ? `${label} *` : label}
-      </InputLabel>
-      <FilledInput
+      </CustomInputLabel>
+      <CustomFilledInput
         id={`filled-adornment-password- ${id}`}
         value={value}
         type={showPassword ? "text" : "password"}
         error={error}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton onClick={handleClickShowPassword} edge="end">
-              {showPassword ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
-          </InputAdornment>
-        }
+        showPassword={showPassword}
+        handleClickShowPassword={handleClickShowPassword}
         onChange={handleChange}
-        sx={{
-          "& > input": { paddingBottom: "4px" },
-        }}
         {...props}
       />
-      <FormHelperText error={error}>{helperText}</FormHelperText>
-    </FormControl>
+      {error ? (
+        <FormHelperText error={error}>{helperText}</FormHelperText>
+      ) : null}
+    </CustomFormControl>
   );
 };
 

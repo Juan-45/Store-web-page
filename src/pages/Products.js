@@ -1,11 +1,13 @@
-import { Box } from "@mui/material";
-import { Typography } from "@mui/material";
+import Container from "./products/Container";
+import GenericTitle from "components/GenericTitle";
+import ProductsInterface from "./products/ProductsInterface";
 
 const Products = () => {
   return (
-    <Box sx={{ height: "100vh", background: "gray", paddingTop: "50vh" }}>
-      <Typography variant="h1">Productos</Typography>
-    </Box>
+    <Container>
+      <GenericTitle>Busca nuestros productos</GenericTitle>
+      <ProductsInterface />
+    </Container>
   );
 };
 
