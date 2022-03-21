@@ -6,8 +6,8 @@ const ButtonsBar = (
   { categories, handleOpenMenu, getCategoryButtonHanlder },
   ref
 ) => (
-  <ButtonGroupContainer>
-    <ButtonGroup ref={ref}>
+  <ButtonGroupContainer ref={ref}>
+    <ButtonGroup>
       {categories.map((category) => (
         <CustomButton
           name={category.name}
