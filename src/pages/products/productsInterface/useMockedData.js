@@ -67,7 +67,7 @@ const useMockedData = () => {
 
         const weightArrayLength = weightArray.length;
         const getWeightOneParameter = (weight) => {
-          if (weight === "<100g")
+          if (weight === "<=100g")
             return ["40g", "50g", "80g", "100g"][getRandomInteger(0, 4)];
           else if (weight === "e150y500g")
             return ["150g", "200g", "250g", "400g", "500g"][
@@ -77,7 +77,7 @@ const useMockedData = () => {
         };
 
         const getWeightTwoParameters = (weightArray) => {
-          const lessThan100 = weightArray.includes("<100g");
+          const lessThan100 = weightArray.includes("<=100g");
           const between150And500 = weightArray.includes("e150y500g");
           const oneKilogram = weightArray.includes("1kg");
           if (lessThan100 && between150And500)

@@ -36,8 +36,8 @@ const ProductsInterface = () => {
     ],
     weightSearchSettings: [
       {
-        label: "< de 100 g",
-        value: "<100g",
+        label: "<= de 100 g",
+        value: "<=100g",
       },
       {
         label: "E/ 150 y 500 g",
