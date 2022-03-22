@@ -14,12 +14,14 @@ const AdvanceSearch = ({ shouldReset, setShouldReset, searchSettings }) => {
         searchSettings={dietSearchSettings}
         manageQueries={getQueriesManager("dieta")}
         shouldReset={shouldReset}
+        queryKey="dieta"
       />
       <AdvanceSearchSection
         title={"Peso"}
         searchSettings={weightSearchSettings}
         manageQueries={getQueriesManager("peso")}
         shouldReset={shouldReset}
+        queryKey="peso"
       />
     </Container>
   );
