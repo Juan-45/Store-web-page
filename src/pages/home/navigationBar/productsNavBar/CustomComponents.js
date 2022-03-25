@@ -1,4 +1,5 @@
 import { Typography, Grid, Box, Button } from "@mui/material";
+import { forwardRef } from "react";
 
 const Container = ({ children }) => (
   <Grid
@@ -11,16 +12,17 @@ const Container = ({ children }) => (
   </Grid>
 );
 
-const ButtonGroupContainer = ({ children }) => (
+const ButtonGroupContainer = forwardRef(({ children }, ref) => (
   <Box
     sx={{
       display: { xs: "none", sm: "inline-flex" },
       marginBottom: "10px",
     }}
+    ref={ref}
   >
     {children}
   </Box>
-);
+));
 
 const CustomButton = ({ children, ...props }) => (
   <Button

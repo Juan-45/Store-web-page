@@ -10,6 +10,7 @@ const useNavigation = ({ setElementPosition }) => {
         pathname: categoryPath,
         search: `?${createSearchParams({
           subCategoria: subCategoryQuery,
+          orden: "nombre,desc",
         })}`,
       });
       setElementPosition(false);

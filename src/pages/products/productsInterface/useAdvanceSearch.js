@@ -46,11 +46,11 @@ const useAdvanceSearch = (setShouldReset) => {
     }
   };
 
-  const getQueriesManager = (queryKey) => (e) => {
-    if (e.target.checked) {
-      updateQueryParams(e.target.value, queryKey);
+  const getQueriesManager = (queryKey) => (checked, value) => {
+    if (checked) {
+      updateQueryParams(value, queryKey);
     } else {
-      removeSearchQueries(e.target.value, queryKey);
+      removeSearchQueries(value, queryKey);
     }
     setShouldReset(false);
   };

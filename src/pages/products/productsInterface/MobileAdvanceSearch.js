@@ -27,12 +27,14 @@ const MobileAdvanceSearch = ({
         <DrawerHeader handleDrawerClose={handleDrawerClose} />
         <MobileAdvanceSearchSection
           title="Dietas"
+          queryKey="dieta"
           searchSettings={dietSearchSettings}
           manageQueries={getQueriesManager("dieta")}
           shouldReset={shouldReset}
         />
         <MobileAdvanceSearchSection
           title="Peso"
+          queryKey="peso"
           searchSettings={weightSearchSettings}
           manageQueries={getQueriesManager("peso")}
           shouldReset={shouldReset}

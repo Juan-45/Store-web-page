@@ -1,24 +1,31 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import onlineStore from "images/online-store.png";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 const useMockedData = () => {
   const params = useParams();
   const [searchParams] = useSearchParams();
+  const [mockedData, setMockedData] = useState([]);
+  const mockedDataByNameDesc = useRef([]);
+  const mockedDataByNameAsc = useRef([]);
+  const mockedDataByPriceDesc = useRef([]);
+  const mockedDataByPriceAsc = useRef([]);
 
-  const urlSettings = {
-    category: params["*"],
-    subCategory: searchParams.get("subCategoria"),
-    samplingOrder: searchParams.get("orden"),
-    dietType: searchParams.get("dieta"),
-    weight: searchParams.get("peso"),
-    order: searchParams.get("orden"),
-  };
+  const category = params["*"];
+  const subCategory = searchParams.get("subCategoria");
+  const dietType = searchParams.get("dieta");
+  const weight = searchParams.get("peso");
+  const samplingOrder = searchParams.get("orden");
 
-  const getMockedData = (urlSettings) => {
-    const { category, subCategory, dietType, weight, order } = urlSettings;
+  const categoryRef = useRef(category);
+  const subCategoryRef = useRef(subCategory);
+  const dietTypeRef = useRef(dietType);
+  const weightRef = useRef(weight);
 
-    const orderType = order.split(",")[0];
-    const orderDirection = order.split(",")[1];
+  const mockedDataIsInitial = mockedData.length === 0;
+
+  const updateMockedDataRefs = useCallback((urlSettings) => {
+    const { category, subCategory, dietType, weight } = urlSettings;
 
     const getRandomInteger = (min, max) =>
       Math.floor(Math.random() * (max - min) + min);
@@ -67,7 +74,7 @@ const useMockedData = () => {
 
         const weightArrayLength = weightArray.length;
         const getWeightOneParameter = (weight) => {
-          if (weight === "<100g")
+          if (weight === "<=100g")
             return ["40g", "50g", "80g", "100g"][getRandomInteger(0, 4)];
           else if (weight === "e150y500g")
             return ["150g", "200g", "250g", "400g", "500g"][
@@ -77,7 +84,7 @@ const useMockedData = () => {
         };
 
         const getWeightTwoParameters = (weightArray) => {
-          const lessThan100 = weightArray.includes("<100g");
+          const lessThan100 = weightArray.includes("<=100g");
           const between150And500 = weightArray.includes("e150y500g");
           const oneKilogram = weightArray.includes("1kg");
           if (lessThan100 && between150And500)
@@ -178,7 +185,7 @@ const useMockedData = () => {
 
     const productsNamesArray = getProductNameArray();
 
-    let productsMockedData = productsNamesArray.map((productName) => {
+    const getProductData = (productName) => {
       const productPrice = getProductPrice(getProductWeightNumber(productName));
 
       const priceString = `$ ${productPrice},00`;
@@ -193,46 +200,110 @@ const useMockedData = () => {
         details: detailsStrings,
         imageSrc: onlineStore,
       };
-    });
+    };
 
-    if (orderType === "nombre" && orderDirection === "asc") {
-      productsMockedData = productsMockedData.reverse();
-    }
-
-    if (orderType === "precio") {
+    const updateMockedDataByPriceDesc = () => {
       const getPriceNumber = (item) =>
         parseInt(item.price.split(" ")[1].split(",")[0]);
 
-      const pricesArray = productsMockedData.map((item) =>
+      const pricesArray = mockedDataByNameDesc.current.map((item) =>
         getPriceNumber(item)
       );
 
       const orderedPricesArray = pricesArray.sort((a, b) => a - b);
 
-      let orderedProductsMockedData = orderedPricesArray.map(
-        (orderedPriceNumber) => {
-          return productsMockedData.find((productsMockedDataItem) => {
-            const currentPriceNumber = parseInt(
-              productsMockedDataItem.price.split(" ")[1].split(",")[0]
-            );
+      let mockedDataCopy = [...mockedDataByNameDesc.current];
+      mockedDataByPriceDesc.current = [];
+      for (let j = 0; j < orderedPricesArray.length; j++) {
+        const orderedPriceNumber = orderedPricesArray[j];
+        let matches = [];
 
-            return orderedPriceNumber === currentPriceNumber;
-          });
+        for (let i = 0; i < mockedDataCopy.length; i++) {
+          const currentPriceNumber = parseInt(
+            mockedDataCopy[i].price.split(" ")[1].split(",")[0]
+          );
+
+          if (currentPriceNumber === orderedPriceNumber) {
+            matches.push(mockedDataCopy[i]);
+            mockedDataCopy.splice(i, 1);
+            i--;
+          }
         }
-      );
 
-      if (orderDirection === "asc") {
-        orderedProductsMockedData = orderedProductsMockedData.reverse();
+        if (matches.length >= 1) {
+          for (let k = 0; k < matches.length; k++) {
+            mockedDataByPriceDesc.current.push(matches[k]);
+          }
+        }
       }
+    };
 
-      return orderedProductsMockedData;
+    mockedDataByNameDesc.current = productsNamesArray.map((productName) =>
+      getProductData(productName)
+    );
+
+    const mockedDataByNameDescCopy = [...mockedDataByNameDesc.current];
+    mockedDataByNameAsc.current = mockedDataByNameDescCopy.reverse();
+
+    updateMockedDataByPriceDesc();
+
+    const mockedDataByPriceDescCopy = [...mockedDataByPriceDesc.current];
+    mockedDataByPriceAsc.current = mockedDataByPriceDescCopy.reverse();
+  }, []);
+
+  useEffect(() => {
+    const orderType = samplingOrder.split(",")[0];
+    const orderDirection = samplingOrder.split(",")[1];
+
+    const urlSettings = {
+      category,
+      subCategory,
+      dietType,
+      weight,
+    };
+
+    const productsParamsChanges =
+      categoryRef.current !== category ||
+      subCategoryRef.current !== subCategory ||
+      dietTypeRef.current !== dietType ||
+      weightRef.current !== weight;
+
+    const updateProductsParamsRef = () => {
+      categoryRef.current = category;
+      subCategoryRef.current = subCategory;
+      dietTypeRef.current = dietType;
+      weightRef.current = weight;
+    };
+
+    const updateMockedDataState = () => {
+      if (orderType === "nombre") {
+        if (orderDirection === "desc")
+          setMockedData(mockedDataByNameDesc.current);
+        else setMockedData(mockedDataByNameAsc.current);
+      } else if (orderType === "precio") {
+        if (orderDirection === "desc")
+          setMockedData(mockedDataByPriceDesc.current);
+        else setMockedData(mockedDataByPriceAsc.current);
+      }
+    };
+
+    if (productsParamsChanges || mockedDataIsInitial) {
+      updateMockedDataRefs(urlSettings);
+      updateProductsParamsRef();
     }
 
-    return productsMockedData;
-  };
-  const productsData = getMockedData(urlSettings);
+    updateMockedDataState();
+  }, [
+    category,
+    subCategory,
+    dietType,
+    weight,
+    updateMockedDataRefs,
+    samplingOrder,
+    mockedDataIsInitial,
+  ]);
 
-  return { productsData };
+  return { mockedData };
 };
 
 export default useMockedData;

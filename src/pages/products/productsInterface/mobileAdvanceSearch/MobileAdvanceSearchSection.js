@@ -9,6 +9,7 @@ const MobileAdvanceSearchSection = ({
   searchSettings,
   manageQueries,
   shouldReset,
+  queryKey,
 }) => (
   <>
     <Title>{title}</Title>
@@ -19,6 +20,8 @@ const MobileAdvanceSearchSection = ({
           value={item.value}
           manageQueries={manageQueries}
           shouldReset={shouldReset}
+          queryKey={queryKey}
+          key={item.value}
         />
       ))}
     </List>

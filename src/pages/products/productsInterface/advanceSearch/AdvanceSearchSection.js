@@ -12,6 +12,7 @@ const AdvanceSearchSection = ({
   searchSettings,
   manageQueries,
   shouldReset,
+  queryKey,
 }) => (
   <Container>
     <CustomAccordion>
@@ -24,6 +25,8 @@ const AdvanceSearchSection = ({
               value={item.value}
               manageQueries={manageQueries}
               shouldReset={shouldReset}
+              queryKey={queryKey}
+              key={item.value}
             />
           ))}
         </FormGroup>
