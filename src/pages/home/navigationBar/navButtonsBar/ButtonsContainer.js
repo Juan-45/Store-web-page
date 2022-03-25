@@ -6,7 +6,7 @@ const ButtonsContainer = ({ children }) => (
     container
     alignItems="center"
     sx={{
-      boxShadow: theme.shadows[16],
+      boxShadow: theme.shadows[4],
       flexWrap: "nowrap",
       width: "unset",
     }}
