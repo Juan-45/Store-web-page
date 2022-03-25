@@ -21,6 +21,7 @@ const MobileAdvanceSearchSection = ({
           manageQueries={manageQueries}
           shouldReset={shouldReset}
           queryKey={queryKey}
+          key={item.value}
         />
       ))}
     </List>

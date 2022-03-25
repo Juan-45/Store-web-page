@@ -26,6 +26,7 @@ const AdvanceSearchSection = ({
               manageQueries={manageQueries}
               shouldReset={shouldReset}
               queryKey={queryKey}
+              key={item.value}
             />
           ))}
         </FormGroup>
