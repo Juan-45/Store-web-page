@@ -14,6 +14,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 //TODO set all imports from MUI to {}
 //TODO Store-web-page should be /home
 
+//TODO fix things pointed out by Matias
+//TODO add google maps
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
