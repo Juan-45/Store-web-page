@@ -43,21 +43,21 @@ const useOrderSetting = (setElementPosition, shouldReset, setShouldReset) => {
       setUpwardOrder(false);
     }
 
-    const getQueryValuesArray = () => {
-      const queryValues = searchParams.get("orden");
+    const getOrderQueryValuesArray = () => {
+      const orderQueryValues = searchParams.get("orden");
 
       return {
-        orderType: queryValues.split(",")[0],
-        orderDirection: queryValues.split(",")[1],
+        type: orderQueryValues.split(",")[0],
+        direction: orderQueryValues.split(",")[1],
       };
     };
 
-    const { orderType, orderDirection } = getQueryValuesArray();
+    const { type, direction } = getOrderQueryValuesArray(searchParams);
 
-    if (orderType === "nombre") setOrderOption("Nombre");
+    if (type === "nombre") setOrderOption("Nombre");
     else setOrderOption("Precio");
 
-    if (orderDirection === "desc") setUpwardOrder(false);
+    if (direction === "desc") setUpwardOrder(false);
     else setUpwardOrder(true);
   }, [shouldReset, searchParams]);
 
