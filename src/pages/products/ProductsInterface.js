@@ -13,7 +13,7 @@ import useMockedData from "./productsInterface/useMockedData";
 const ProductsInterface = () => {
   const { shouldReset, setShouldReset } = useResetAdvanceSearch();
 
-  const { productsData } = useMockedData();
+  const { mockedData } = useMockedData();
 
   const searchSettings = {
     dietSearchSettings: [
@@ -68,8 +68,8 @@ const ProductsInterface = () => {
           setShouldReset={setShouldReset}
         />
         <ProductsContainer>
-          {productsData.map((productData) => (
-            <ProductCard productData={productData} />
+          {mockedData.map((productData) => (
+            <ProductCard productData={productData} key={productData.title} />
           ))}
         </ProductsContainer>
       </InnerContainer>
