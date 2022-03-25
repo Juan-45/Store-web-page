@@ -6,8 +6,7 @@ const PaperWrapper = ({ children, shouldDisplay, isTouchScreen }) => {
   return (
     <Paper
       className={shouldDisplay ? "" : "fade"}
-      elevation={16}
-      variant="darkShadow"
+      elevation={0}
       square={true}
       sx={{
         height: "fit-content",
