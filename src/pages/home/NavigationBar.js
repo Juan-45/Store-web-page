@@ -2,7 +2,6 @@ import MobileNavMenu from "./navigationBar/MobileNavMenu";
 import Container from "./navigationBar/Container";
 import NavButtonsBar from "./navigationBar/NavButtonsBar";
 import useCheckTouchScreens from "hooks/useCheckTouchScreens";
-import useNavigationBar from "./navigationBar/useNavigationBar";
 import { Route, Routes } from "react-router-dom";
 import ProductsNavBar from "./navigationBar/ProductsNavBar";
 import PermanentButtons from "./navigationBar/PermanentButtons";
@@ -155,7 +154,6 @@ const categoriesTree = {
 
 const NavigationBar = ({ shouldDisplay, scrollbarWidth }) => {
   const { isTouchScreen } = useCheckTouchScreens();
-  const { shouldRemoveComponent } = useNavigationBar(shouldDisplay);
 
   return (
     <Container
@@ -163,32 +161,28 @@ const NavigationBar = ({ shouldDisplay, scrollbarWidth }) => {
       isTouchScreen={isTouchScreen}
       scrollbarWidth={scrollbarWidth}
     >
-      {shouldRemoveComponent
-        ? null
-        : [
-            <SubContainer key="NavButtonsBar">
-              <PermanentButtons />
-              <NavButtonsBar navSettings={navSettings} />
-              <MobileNavMenu
-                navSettings={navSettings}
-                categoriesTree={categoriesTree}
-                categories={categories}
-                isTouchScreen={isTouchScreen}
-              />
-            </SubContainer>,
-            <Routes key="ProductsNavBar">
-              <Route
-                path="productos/*"
-                element={
-                  <ProductsNavBar
-                    categories={categories}
-                    isTouchScreen={isTouchScreen}
-                    categoriesTree={categoriesTree}
-                  />
-                }
-              />
-            </Routes>,
-          ]}
+      <SubContainer key="NavButtonsBar">
+        <PermanentButtons />
+        <NavButtonsBar navSettings={navSettings} />
+        <MobileNavMenu
+          navSettings={navSettings}
+          categoriesTree={categoriesTree}
+          categories={categories}
+          isTouchScreen={isTouchScreen}
+        />
+      </SubContainer>
+      <Routes key="ProductsNavBar">
+        <Route
+          path="productos/*"
+          element={
+            <ProductsNavBar
+              categories={categories}
+              isTouchScreen={isTouchScreen}
+              categoriesTree={categoriesTree}
+            />
+          }
+        />
+      </Routes>
     </Container>
   );
 };
