@@ -3,19 +3,25 @@ import NavigationBar from "./home/NavigationBar";
 import useDisplayOnScroll from "hooks/useDisplayOnScroll";
 import Footer from "./home/Footer";
 import { Outlet, useParams } from "react-router-dom";
+import useScrollbar from "hooks/useScrollbar";
 
 const Home = () => {
   const { shouldDisplay, scrollHandler } = useDisplayOnScroll();
-
+  const { ref, scrollbarWidth } = useScrollbar();
   const params = useParams();
   const isMainContentURLPathSetted = params["*"] === "";
 
   return (
     <>
-      <NavigationBar container shouldDisplay={shouldDisplay} />
+      <NavigationBar
+        container
+        shouldDisplay={shouldDisplay}
+        scrollbarWidth={scrollbarWidth}
+      />
       <ParallaxContainer
         onScroll={scrollHandler}
         isMainContentURLPathSetted={isMainContentURLPathSetted}
+        ref={ref}
       >
         <Outlet />
         <Footer />

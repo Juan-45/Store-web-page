@@ -17,6 +17,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 //TODO fix things pointed out by Matias
 //TODO add google maps
 
+//TODO improve products navBar rendering performance
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
