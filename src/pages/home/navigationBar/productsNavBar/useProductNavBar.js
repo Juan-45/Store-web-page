@@ -1,7 +1,7 @@
 import useOutsideClickListener from "hooks/useOutsideClickListener";
 import theme from "theme";
 import { useMediaQuery } from "@mui/material";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import useMenu from "hooks/useMenu";
 
 const useProductsNavBar = () => {
@@ -12,13 +12,19 @@ const useProductsNavBar = () => {
   const isMatching = useMediaQuery(theme.breakpoints.down("sm"));
   const shouldOpen = Boolean(elementPosition) && !isMatching;
 
-  const closeMenu = () => setElementPosition(false);
+  const closeMenu = useCallback(
+    () => setElementPosition(false),
+    [setElementPosition]
+  );
   const { wrapperRef, menuRef } = useOutsideClickListener(closeMenu);
 
-  const handleOpenMenu = (e) => {
-    setElementPosition(e.currentTarget);
-    setCurrentCategory(e.currentTarget.name);
-  };
+  const handleOpenMenu = useCallback(
+    (e) => {
+      setElementPosition(e.currentTarget);
+      setCurrentCategory(e.currentTarget.name);
+    },
+    [setElementPosition]
+  );
 
   return {
     elementPosition,

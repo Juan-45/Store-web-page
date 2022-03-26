@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 const useMenu = () => {
   const [elementPosition, setElementPosition] = useState();
-  const handleOpenMenu = (e) => setElementPosition(e.currentTarget);
-  const handleCloseMenu = () => setElementPosition(false);
+  const handleOpenMenu = useCallback(
+    (e) => setElementPosition(e.currentTarget),
+    []
+  );
+  const handleCloseMenu = useCallback(() => setElementPosition(false), []);
 
   return {
     setElementPosition,

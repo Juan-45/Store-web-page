@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 const useMessage = () => {
   const [messageSettings, setMessageSettings] = useState({
@@ -7,7 +7,7 @@ const useMessage = () => {
   });
   const [open, setOpen] = useState(false);
 
-  const handleClose = () => setOpen(false);
+  const handleClose = useCallback(() => setOpen(false), []);
 
   return {
     messageSettings,
