@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material";
-import GenericContainer from "components/GenericContainer";
 
 const Container = ({ children }) => (
   <Grid
@@ -14,16 +13,9 @@ const Container = ({ children }) => (
 );
 
 const InnerContainer = ({ children }) => (
-  <GenericContainer
-    container
-    item
-    direction="column"
-    xs={16}
-    sm={12}
-    wrap="nowrap"
-  >
+  <Grid container item direction="column" xs={16} sm={12} wrap="nowrap">
     {children}
-  </GenericContainer>
+  </Grid>
 );
 
 const ProductsContainer = ({ children }) => (
