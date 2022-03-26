@@ -6,10 +6,10 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
+import { memo } from "react";
 
 const Message = ({ open, handleClose, messageSettings }) => {
   const { title, text } = messageSettings;
-
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>{title}</DialogTitle>
@@ -25,4 +25,4 @@ const Message = ({ open, handleClose, messageSettings }) => {
   );
 };
 
-export default Message;
+export default memo(Message);

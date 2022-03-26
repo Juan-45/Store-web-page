@@ -1,6 +1,7 @@
 import { Container, SubContainer, Title } from "./footer/CustomComponents";
 import { Typography, Box } from "@mui/material";
 import SocialNetworkButtons from "./footer/SocialNetworkButtons";
+import { memo } from "react";
 
 const Footer = () => {
   return (
@@ -18,4 +19,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

@@ -1,6 +1,7 @@
 import HomeIcon from "@mui/icons-material/Home";
 import MobileButton from "components/MobileButton";
 import PersonIcon from "@mui/icons-material/Person";
+import { memo } from "react";
 
 const PermanentButtonsGroup = ({
   handleHomeButton,
@@ -19,4 +20,4 @@ const PermanentButtonsGroup = ({
   </>
 );
 
-export default PermanentButtonsGroup;
+export default memo(PermanentButtonsGroup);
