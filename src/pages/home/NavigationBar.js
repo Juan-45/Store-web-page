@@ -163,12 +163,16 @@ const products = [
   { label: "Copos Integrales (Trigo, Maíz, Avena, Arroz) x 3 kg" },
 ];
 
-const NavigationBar = ({ shouldDisplay }) => {
+const NavigationBar = ({ shouldDisplay, scrollbarWidth }) => {
   const { isTouchScreen } = useCheckTouchScreens();
   const { shouldRemoveComponent } = useNavigationBar(shouldDisplay);
 
   return (
-    <Container shouldDisplay={shouldDisplay} isTouchScreen={isTouchScreen}>
+    <Container
+      shouldDisplay={shouldDisplay}
+      isTouchScreen={isTouchScreen}
+      scrollbarWidth={scrollbarWidth}
+    >
       {shouldRemoveComponent
         ? null
         : [
