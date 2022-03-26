@@ -32,7 +32,7 @@ const theme = createTheme({
       dark: "#2d2d2d",
       default: "#747474",
       defaultTraslucid: "#747474e6",
-      light: "#f2f2f2",
+      light: "#d0d0d0",
     },
   },
 
