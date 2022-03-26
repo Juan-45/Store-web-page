@@ -9,7 +9,7 @@ const CustomAlert = ({ children, severity }) => (
       width: { xs: "80%", md: "100%" },
       boxSizing: "border-box",
       background: theme.palette[severity].traslucid,
-      boxShadow: theme.shadows[16],
+      boxShadow: theme.shadows[4],
       marginBottom: "20px",
     }}
   >

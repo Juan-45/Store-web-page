@@ -32,7 +32,7 @@ const theme = createTheme({
       dark: "#2d2d2d",
       default: "#747474",
       defaultTraslucid: "#747474e6",
-      light: "#f2f2f2",
+      light: "#d0d0d0",
     },
   },
 
@@ -85,7 +85,7 @@ theme.components = {
     },
     styleOverrides: {
       contained: {
-        boxShadow: theme.shadows[16],
+        boxShadow: theme.shadows[4],
       },
     },
   },
@@ -96,7 +96,10 @@ theme.components = {
     },
     styleOverrides: {
       root: {
-        boxShadow: theme.shadows[16],
+        boxShadow: theme.shadows[4],
+        "&:hover": {
+          boxShadow: "unset",
+        },
       },
       outlined: {
         boxShadow: "unset",
@@ -168,7 +171,7 @@ theme.components = {
         props: { variant: "mobile" },
         style: {
           background: theme.palette.primary.main,
-          boxShadow: theme.shadows[16],
+          boxShadow: theme.shadows[4],
           "&:hover": {
             background: theme.palette.primary.dark,
           },
@@ -259,7 +262,7 @@ theme.components = {
     styleOverrides: {
       root: {
         color: "black",
-        boxShadow: theme.shadows[16],
+        boxShadow: theme.shadows[4],
         background: theme.palette.primary.light,
         borderRadius: "0",
         "&:hover": {
@@ -289,7 +292,7 @@ theme.components = {
         height: "15px",
         margin: "0px 15px",
         boxShadow:
-          "0px 8px 10px -5px rgb(0 0 0 / 30%), 0px 16px 24px 2px rgb(0 0 0 / 21%), 0px 6px 30px 5px rgb(0 0 0 / 18%)",
+          "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
       },
     },
   },

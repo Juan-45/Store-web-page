@@ -10,6 +10,7 @@ const CustomButton = ({ children, ...props }) => (
       borderRadius: "0",
       flexShrink: "0",
       flexBasis: "content",
+      boxShadow: "unset",
     }}
     {...props}
   >

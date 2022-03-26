@@ -4,7 +4,7 @@ import theme from "theme";
 const ProductDescription = ({ title, price, minimum }) => (
   <Box
     sx={{
-      background: "#dedede",
+      background: theme.palette.background.light,
       boxSizing: "border-box",
       padding: "15px",
       maxHeight: "150px",

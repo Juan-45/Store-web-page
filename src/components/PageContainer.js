@@ -8,7 +8,6 @@ const PageContainer = ({ children, sx, ...props }) => {
       alignItems="flex-start"
       justifyContent="center"
       sx={{
-        background: theme.palette.background.light,
         color: theme.palette.text.secondary,
         minHeight: "100vh",
       }}

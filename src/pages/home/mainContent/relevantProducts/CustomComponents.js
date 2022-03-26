@@ -6,7 +6,7 @@ const Container = styled(Box)({
 });
 
 const CarouselContainer = styled(Box)({
-  background: theme.palette.background.default,
+  background: theme.palette.background.light,
 });
 
 const Title = ({ children }) => (

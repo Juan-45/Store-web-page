@@ -13,7 +13,7 @@ const CustomFormControlLabel = ({ sx, ...props }) => (
       margin: "0px",
       paddingRight: "8px",
       "&:hover": {
-        background: theme.palette.secondary.light,
+        background: theme.palette.background.light,
       },
       ...sx,
     }}

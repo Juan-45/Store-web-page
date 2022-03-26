@@ -44,13 +44,12 @@ const Location = ({ locationSettings }) => {
       />
       <Grid
         sx={{
-          background: theme.palette.secondary.light,
           boxShadow: theme.shadows[4],
           width: "100%",
           marginBottom: "20px",
           p: "5px",
           "&:hover": {
-            background: theme.palette.secondary.hover,
+            background: theme.palette.background.light,
           },
         }}
         container

@@ -8,7 +8,16 @@ const Container = ({ children }) => (
       height: "fit-content",
     }}
   >
-    <Paper elevation={8} square={true} sx={{ background: "unset" }}>
+    <Paper
+      elevation={8}
+      square={true}
+      sx={{
+        background: "unset",
+        "&:hover": {
+          filter: "brightness(90%)",
+        },
+      }}
+    >
       {children}
     </Paper>
   </Box>
