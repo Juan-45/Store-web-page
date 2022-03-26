@@ -6,7 +6,7 @@ import useProductNavBar from "./productsNavBar/useProductNavBar";
 import useNavigation from "./productsNavBar/useNavigation";
 import { memo } from "react";
 
-const ProductsNavBar = ({ products, categories, categoriesTree }) => {
+const ProductsNavBar = ({ categories, categoriesTree }) => {
   const {
     elementPosition,
     shouldOpen,
@@ -38,7 +38,7 @@ const ProductsNavBar = ({ products, categories, categoriesTree }) => {
         getSubCategoryButtonHanlder={getSubCategoryButtonHanlder}
         ref={menuRef}
       />
-      <AutoSearch autocompleteData={products} />
+      <AutoSearch />
     </Container>
   );
 };
