@@ -9,27 +9,22 @@ const MobileNavMenu = ({
   categories,
   categoriesTree,
   isTouchScreen,
-}) => {
-  return (
-    <MobileBarContainer>
-      <MobileNavigation
-        navSettings={navSettings}
-        isTouchScreen={isTouchScreen}
+}) => (
+  <MobileBarContainer>
+    <MobileNavigation navSettings={navSettings} isTouchScreen={isTouchScreen} />
+    <Routes key="ProductsNavBar">
+      <Route
+        path="productos/*"
+        element={
+          <ProductsMobileNavigation
+            categories={categories}
+            categoriesTree={categoriesTree}
+            isTouchScreen={isTouchScreen}
+          />
+        }
       />
-      <Routes key="ProductsNavBar">
-        <Route
-          path="productos/*"
-          element={
-            <ProductsMobileNavigation
-              categories={categories}
-              categoriesTree={categoriesTree}
-              isTouchScreen={isTouchScreen}
-            />
-          }
-        />
-      </Routes>
-    </MobileBarContainer>
-  );
-};
+    </Routes>
+  </MobileBarContainer>
+);
 
 export default memo(MobileNavMenu);
