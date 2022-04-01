@@ -8,10 +8,12 @@ import {
   InterfaceSubContainer,
 } from "./storePicker/CustomComponents";
 import { useState } from "react";
+import useGoogleMaps from "hooks/useGoogleMaps";
+//import { forwardRef } from "react";
 
 const StorePicker = () => {
   const [currentCity, setCurrentCity] = useState("pergamino");
-
+  const { mapContainer, setNewMarkersGroup } = useGoogleMaps();
   const locationSettings = {
     pergamino: [
       {
@@ -125,23 +127,51 @@ const StorePicker = () => {
     ],
   };
 
-  const handleClick = (event) => setCurrentCity(event.target.name);
+  const cities = [
+    { label: "Pergamino", name: "pergamino" },
+    { label: "Rosario", name: "rosario" },
+    { label: "Junín", name: "junin" },
+    { label: "Buenos Aires", name: "buenosAires" },
+  ];
+
+  const markerSettings = {
+    pergamino: [
+      [-33.891928, -60.578678],
+      [-33.90490724488811, -60.57927677879034],
+    ],
+    /*rosario: [
+  -32.95191722391424, -60.6696295306874
+  { lat: -33.891928, lng: -60.578678 },
+  { lat: -33.90490724488811, lng: -60.57927677879034 },
+
+],
+junin: [
+
+  { lat: -33.891928, lng: -60.578678 },
+  { lat: -33.90490724488811, lng: -60.57927677879034 },
+
+],
+buenosAires: [
+  { lat: -33.891928, lng: -60.578678 },
+  { lat: -33.90490724488811, lng: -60.57927677879034 },
+
+
+]*/
+  };
+
+  const handleClick = (event) => {
+    setCurrentCity(event.target.name);
+    console.log(event.target.name);
+    setNewMarkersGroup(markerSettings[event.target.name]);
+  };
 
   return (
     <PageContainer>
       <GenericTitle>Encuentra nuestras sucursales</GenericTitle>
       <InterfaceContainer>
-        <CityMenu
-          handleClick={handleClick}
-          cities={[
-            { label: "Pergamino", name: "pergamino" },
-            { label: "Rosario", name: "rosario" },
-            { label: "Junín", name: "junin" },
-            { label: "Buenos Aires", name: "buenosAires" },
-          ]}
-        />
+        <CityMenu handleClick={handleClick} cities={cities} />
         <InterfaceSubContainer>
-          <GoogleMapsContainer />
+          <GoogleMapsContainer ref={mapContainer} />
           <LocationsList locationSettings={locationSettings[currentCity]} />
         </InterfaceSubContainer>
       </InterfaceContainer>
