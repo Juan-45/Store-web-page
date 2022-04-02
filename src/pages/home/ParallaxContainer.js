@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 const ParallaxContainer = styled("div", {
   shouldForwardProp: (prop) => prop !== "isMainContentURLPathSetted",
 })(({ isMainContentURLPathSetted }) => ({
+  position: "absolute",
   perspective: isMainContentURLPathSetted ? "1px" : "unset",
   height: "100vh",
   width: "100vw",
