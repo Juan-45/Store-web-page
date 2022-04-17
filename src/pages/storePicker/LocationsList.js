@@ -1,7 +1,12 @@
 import GenericContainer from "components/GenericContainer";
 import Location from "./locationsList/Location";
 
-const LocationsList = ({ locationSettings }) => (
+const LocationsList = ({
+  locationSettings,
+  centerMap,
+  gpsButtonHanlder,
+  streetViewButtonHandler,
+}) => (
   <GenericContainer
     sx={{
       minHeight: "500px",
@@ -16,6 +21,9 @@ const LocationsList = ({ locationSettings }) => (
     {locationSettings.map((currentLocationSettings) => (
       <Location
         locationSettings={currentLocationSettings}
+        centerMap={centerMap}
+        gpsButtonHanlder={gpsButtonHanlder}
+        streetViewButtonHandler={streetViewButtonHandler}
         key={currentLocationSettings.key}
       />
     ))}
