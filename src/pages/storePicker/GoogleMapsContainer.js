@@ -9,6 +9,7 @@ const GoogleMapsContainer = ({ ...props }, ref) => {
     <GenericContainer
       sx={{
         p: "10px",
+        overflow: "scroll",
       }}
       container
       justifyContent="center"
@@ -21,8 +22,8 @@ const GoogleMapsContainer = ({ ...props }, ref) => {
         sx={{
           display: "flex",
           flexShrink: "0",
-          width: { xs: "350px", sm: "450px", lg: "600px" },
-          height: { xs: "350px", sm: "450px", lg: "600px" },
+          width: { xs: "400px", sm: "500px", lg: "600px" },
+          height: { xs: "400px", sm: "500px", lg: "600px" },
         }}
         ref={ref}
       >
