@@ -49,6 +49,9 @@ const theme = createTheme({
   borders: {
     main: "1px solid #0089ff80",
   },
+  typography: {
+    fontFamily: ["Helvetica"],
+  },
 });
 
 theme.typography.fontFamily = [...theme.typography.fontFamily, "Niconne"];
@@ -183,6 +186,7 @@ theme.components = {
   MuiTypography: {
     styleOverrides: {
       root: {
+        // fontFamily: "Helvetica",
         [theme.breakpoints.up("xs")]: {
           lineHeight: 1.1,
         },

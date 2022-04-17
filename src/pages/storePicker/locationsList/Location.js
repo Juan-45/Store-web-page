@@ -1,47 +1,24 @@
 import { Grid, Typography, Button } from "@mui/material";
 import theme from "theme";
-import Message from "components/Message";
-import useMessage from "components/message/useMessage";
+import useLocation from "./location/useLocation";
 
-const Location = ({ locationSettings }) => {
+const Location = ({
+  locationSettings,
+  centerMap,
+  gpsButtonHanlder,
+  streetViewButtonHandler,
+}) => {
   const { zone, address, phone } = locationSettings;
 
-  const { messageSettings, setOpen, setMessageSettings, open, handleClose } =
-    useMessage();
-
-  const handleStreetView = (e) => {
-    e.stopPropagation();
-    setOpen(true);
-    setMessageSettings({
-      title: "Vista en Google StreetView",
-      text: `Se mostrará una vista en StreetView de la ubicación: ${address}`,
-    });
-  };
-
-  const handleGPS = (e) => {
-    e.stopPropagation();
-    setOpen(true);
-    setMessageSettings({
-      title: "Ventana GPS",
-      text: `Se abrira otra pestaña con Google GPS mostrando la ruta más corta entre la posición actual del usuario y ${address}`,
-    });
-  };
-
-  const handleLocation = (e) => {
-    setOpen(true);
-    setMessageSettings({
-      title: "Localización seleccionada",
-      text: `Se centrará el mapa en la ubicación: ${address}`,
-    });
-  };
+  const { handleStreetView, handleGPS, handleLocationOnClick } = useLocation({
+    locationSettings,
+    centerMap,
+    gpsButtonHanlder,
+    streetViewButtonHandler,
+  });
 
   return (
     <>
-      <Message
-        open={open}
-        messageSettings={messageSettings}
-        handleClose={handleClose}
-      />
       <Grid
         sx={{
           boxShadow: theme.shadows[4],
@@ -55,7 +32,7 @@ const Location = ({ locationSettings }) => {
         container
         alignItems="flex-start"
         direction="column"
-        onClick={handleLocation}
+        onClick={handleLocationOnClick}
       >
         <Grid
           container
