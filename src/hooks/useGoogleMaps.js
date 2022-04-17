@@ -1,45 +1,109 @@
 import { Loader } from "@googlemaps/js-api-loader";
-import { useEffect, useState, useRef } from "react";
+import {
+  initialMapSettings,
+  locationSettings,
+} from "localData/googleMapsLocations";
+import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 
 const useGoogleMaps = () => {
   const mapContainer = useRef();
-  //const mapInstance = useRef();
-  //const markerInstance = useRef();
   const [mapInstance, setMapInstance] = useState();
+  const [panoramaInstance, setPanoramaInstance] = useState();
 
-  //-33.90490724488811, -60.57927677879034
+  const getArrs = useCallback((locationSettings) => {
+    const markersLocationsArr = [];
+    const infoWindowsDetailsArr = [];
+    const panoramaSettingsArr = [];
+    Object.entries(locationSettings).forEach((item) => {
+      const locationsSettingsOfOneCity = item[1];
 
-  const mapOptions = {
-    center: {
-      lat: -33.89757502194482,
-      lng: -60.576089323497705,
+      locationsSettingsOfOneCity.forEach((obj) => {
+        const { zone, address, phone } = obj;
+        infoWindowsDetailsArr.push({
+          zone,
+          address,
+          phone,
+        });
+        markersLocationsArr.push(obj.centerMapSettings.coordinates);
+        panoramaSettingsArr.push(obj.panoramaSettings);
+      });
+    });
+    return { markersLocationsArr, infoWindowsDetailsArr, panoramaSettingsArr };
+  }, []);
+
+  const { markersLocationsArr, infoWindowsDetailsArr, panoramaSettingsArr } =
+    useMemo(() => getArrs(locationSettings), [getArrs]);
+
+  const gpsButtonHtml = '<button class="gpsButton" id="gpsButton">GPS</button>';
+
+  const streetViewButton =
+    '<button class="streetButton" id="streetButton">Vista en calle</button>';
+
+  const htmlStringArr = useMemo(
+    () =>
+      infoWindowsDetailsArr.map((item) => {
+        return (
+          '<div class="infoWindowContainer">' +
+          `<span class="infoWindowText infoWindowTitle">${item.zone}</span>` +
+          `<span class="infoWindowText infoWindowP">${item.address}</span>` +
+          `<span class="infoWindowText infoWindowP">${item.phone}</span>` +
+          '<div class="infoWindowsButtonContainer">' +
+          gpsButtonHtml +
+          streetViewButton +
+          "</div></div>"
+        );
+      }),
+    [infoWindowsDetailsArr]
+  );
+
+  const getLatLng = useCallback(
+    (lat, lng) => new window.google.maps.LatLng(lat, lng),
+    []
+  );
+
+  const gpsButtonHanlder = useCallback((location) => {
+    const { lng, lat } = location;
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+    window.open(url, "_blank");
+  }, []);
+
+  const streetViewInfoWindowButtonHandler = useCallback(
+    ({ panoramaSettings, coordinates, panoramaInstance }) => {
+      const { pov, zoom } = panoramaSettings;
+      panoramaInstance.setOptions({
+        position: { lat: coordinates[0], lng: coordinates[1] },
+        pov,
+        zoom,
+      });
+      panoramaInstance.setVisible(true);
     },
-    zoom: 15,
-  };
+    []
+  );
 
-  const positionArr = [
-    //PERGAMINO
-    [-33.891928, -60.578678],
-    [-33.90490724488811, -60.57927677879034],
-    //ROSARIO
-    [-32.952007252462764, -60.669575886508134],
-    [-32.953665280919026, -60.62706570185155],
-    [-32.9693499809984, -60.63369767074301],
-    [-32.94605642700096, -60.64028240235162],
-    [-32.946479022465596, -60.64112418233984],
-    //JUNIN
-    [-34.596278680522786, -60.959656068380475],
-    [-34.59129331602334, -60.94148510366818],
-    //BUENOS AIRES
-    [-34.60895191956675, -58.38004263073937],
-    [-34.56292561789363, -58.456084803540364],
-    [-34.65906253041514, -58.44203213435343],
-    [-34.599145770499064, -58.384829459807285],
-    [-34.56973889884847, -58.445487929755146],
-    [-34.56673255869329, -58.45145302542204],
-    [-34.618721543410715, -58.39161330757574],
-    [-34.612059561693755, -58.39168554968186],
-  ];
+  const streetViewButtonHandler = ({ panoramaSettings, coordinates }) =>
+    streetViewInfoWindowButtonHandler({
+      panoramaInstance,
+      panoramaSettings,
+      coordinates,
+    });
+
+  const addHandlers = useCallback(
+    ({ coordinates, panoramaInstance, panoramaSettings }) => {
+      const lat = coordinates[0];
+      const lng = coordinates[1];
+      document
+        .getElementById("gpsButton")
+        .addEventListener("click", () => gpsButtonHanlder({ lat, lng }));
+      document.getElementById("streetButton").addEventListener("click", () =>
+        streetViewInfoWindowButtonHandler({
+          panoramaSettings,
+          coordinates,
+          panoramaInstance,
+        })
+      );
+    },
+    [gpsButtonHanlder, streetViewInfoWindowButtonHandler]
+  );
 
   const getLoader = () =>
     new Loader({
@@ -47,51 +111,113 @@ const useGoogleMaps = () => {
       version: "weekly",
     });
 
-  const createNewMarkers = ({ mapInstance, positionArr }) => {
-    const latLng = (lat, lng) => new window.google.maps.LatLng(lat, lng);
-    for (let i = 0; i < positionArr.length; i++) {
-      const currentPosition = positionArr[i];
-      new window.google.maps.Marker({
-        position: latLng(currentPosition[0], currentPosition[1]),
-        icon: {
-          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-          scaledSize: { height: 45, width: 45 },
-        },
-        map: mapInstance,
-      });
-    }
-  };
-  //TODO crear funcion para botones de ciudad que centren el mapa en la ciudad
-  //TODO crear funciones para los item (domicilios) para centrar el mapa en el marker
-  // const setNewMarkersGroup = (positionArr) => {};
+  const createNewMarkers = useCallback(
+    ({
+      mapInstance,
+      panoramaInstance,
+      markersLocationsArr,
+      htmlStringArr,
+      panoramaSettingsArr,
+    }) => {
+      const latLng = (lat, lng) => new window.google.maps.LatLng(lat, lng);
 
-  //createNewMarkers({ mapInstance, positionArr });
+      const infoWindow = new window.google.maps.InfoWindow({});
 
-  const getMapInstance = ({ loader }) =>
-    loader.loadCallback((e) => {
-      if (e) {
-        console.log(e);
-      } else {
-        const map = new window.google.maps.Map(
-          mapContainer.current,
-          mapOptions
-        );
-        setMapInstance(map);
-        createNewMarkers({
-          mapInstance: map,
-          positionArr,
+      for (let i = 0; i < markersLocationsArr.length; i++) {
+        const currentPosition = markersLocationsArr[i];
+        const currentHTMLContent = htmlStringArr[i];
+        const currentPanoramaSettings = panoramaSettingsArr[i];
+
+        const marker = new window.google.maps.Marker({
+          position: latLng(currentPosition[0], currentPosition[1]),
+          icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+            scaledSize: { height: 45, width: 45 },
+          },
+          map: mapInstance,
+        });
+
+        marker.addListener("click", () => {
+          infoWindow.setContent(currentHTMLContent);
+          infoWindow.open({
+            anchor: marker,
+            map: mapInstance,
+            shouldFocus: false,
+          });
+          infoWindow.addListener("domready", () => {
+            addHandlers({
+              coordinates: currentPosition,
+              panoramaInstance,
+              panoramaSettings: currentPanoramaSettings,
+            });
+          });
+          infoWindow.addListener("content_changed", () => {
+            window.google.maps.event.clearListeners(infoWindow, "domready");
+          });
         });
       }
-    });
+    },
+    [addHandlers]
+  );
 
-  const getLatLng = (lat, lng) => new window.google.maps.LatLng(lat, lng);
+  const saveMapInstance = useCallback((map) => setMapInstance(map), []);
+  const savePanoramaInstance = useCallback(
+    (panorama) => setPanoramaInstance(panorama),
+    []
+  );
+
+  const createMap = useCallback(
+    ({ loader }) =>
+      loader.loadCallback((e) => {
+        if (e) {
+          console.log(e);
+        } else {
+          const map = new window.google.maps.Map(
+            mapContainer.current,
+            initialMapSettings
+          );
+          const panorama = new window.google.maps.StreetViewPanorama(
+            mapContainer.current,
+            {
+              enableCloseButton: true,
+              visible: false,
+            }
+          );
+
+          saveMapInstance(map);
+          savePanoramaInstance(panorama);
+          createNewMarkers({
+            mapInstance: map,
+            panoramaInstance: panorama,
+            markersLocationsArr,
+            htmlStringArr,
+            panoramaSettingsArr,
+          });
+        }
+      }),
+    [
+      createNewMarkers,
+      htmlStringArr,
+      markersLocationsArr,
+      panoramaSettingsArr,
+      saveMapInstance,
+      savePanoramaInstance,
+    ]
+  );
 
   useEffect(() => {
     const loader = getLoader();
-    getMapInstance({ loader });
-  }, []);
+    createMap({ loader });
+  }, [createMap]);
 
-  return { mapContainer, mapInstance, getLatLng /*setNewMarkersGroup*/ };
+  return {
+    mapContainer,
+    mapInstance,
+    getLatLng,
+    gpsButtonHanlder,
+    panoramaInstance,
+    streetViewButtonHandler,
+  };
 };
 
 export default useGoogleMaps;
