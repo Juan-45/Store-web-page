@@ -1,10 +1,10 @@
+import "./googleMapsContainer/InfoWindow.css";
 import { Box } from "@mui/material";
 import { forwardRef } from "react";
 
 import GenericContainer from "components/GenericContainer";
 
 const GoogleMapsContainer = ({ ...props }, ref) => {
-  // console.log(ref.current);
   return (
     <GenericContainer
       sx={{
@@ -19,7 +19,6 @@ const GoogleMapsContainer = ({ ...props }, ref) => {
     >
       <Box
         sx={{
-          background: "gray",
           display: "flex",
           flexShrink: "0",
           width: { xs: "350px", sm: "450px", lg: "600px" },
@@ -27,7 +26,7 @@ const GoogleMapsContainer = ({ ...props }, ref) => {
         }}
         ref={ref}
       >
-        VENTANA DE GOOGLE MAP
+        LOADING...
       </Box>
     </GenericContainer>
   );
