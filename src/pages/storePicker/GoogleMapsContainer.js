@@ -24,10 +24,12 @@ const GoogleMapsContainer = ({ ...props }, ref) => {
           flexShrink: "0",
           width: { xs: "400px", sm: "500px", lg: "600px" },
           height: { xs: "400px", sm: "500px", lg: "600px" },
+          justifyContent: "center",
+          alignItems: "center",
         }}
         ref={ref}
       >
-        LOADING...
+        <Box>LOADING...</Box>
       </Box>
     </GenericContainer>
   );
