@@ -10,13 +10,6 @@ import Products from "pages/Products";
 import Container from "app/Container";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-//TODO comprobar layout en laptop
-//TODO set all imports from MUI to {}
-//TODO Store-web-page should be /home
-
-//TODO fix things pointed out by Matias
-//TODO add google maps
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
