@@ -1,6 +1,8 @@
-import PersonalDetailsForm from "pages/signUp/form/PersonalDetailsForm";
-import AccountDetailsForm from "pages/signUp/form/AccountDetailsForm";
 import FormWrapper from "components/FormWrapper";
+import FormRow from "components/FormRow";
+import Subtitle from "components/Subtitle";
+import Input from "components/Input";
+import PasswordInput from "components/PasswordInput";
 import useHandlers from "./form/useHandlers";
 
 const Form = ({
@@ -41,18 +43,6 @@ const Form = ({
     rePassword: touched.rePassword && errors.rePassword,
   };
 
-  const personalDetailsHandlers = {
-    debouncedSurnameHandler,
-    debouncedNameHandler,
-    debouncedIdHandler,
-  };
-
-  const accountDetailsHandlers = {
-    debouncedEmailHandler,
-    debouncedPasswordHandler,
-    debouncedRePasswordHandler,
-  };
-
   return (
     <FormWrapper
       formTitle="Crear cuenta"
@@ -62,18 +52,72 @@ const Form = ({
       isSubmitted={isSubmitted}
       isSubmitting={isSubmitting}
     >
-      <PersonalDetailsForm
-        inputsErrorsSettings={inputsErrorsSettings}
-        handleBlur={handleBlur}
-        shouldReset={shouldReset}
-        handlers={personalDetailsHandlers}
-      />
-      <AccountDetailsForm
-        inputsErrorsSettings={inputsErrorsSettings}
-        handleBlur={handleBlur}
-        shouldReset={shouldReset}
-        handlers={accountDetailsHandlers}
-      />
+      <Subtitle>Información Personal</Subtitle>
+      <FormRow>
+        <Input
+          label="Apellido"
+          required
+          onChange={debouncedSurnameHandler}
+          onBlur={handleBlur("surname")}
+          error={inputsErrorsSettings.surname}
+          helperText={inputsErrorsSettings.surname}
+          shouldReset={shouldReset}
+        />
+        <Input
+          label="Nombre"
+          required
+          onChange={debouncedNameHandler}
+          onBlur={handleBlur("name")}
+          error={inputsErrorsSettings.name}
+          helperText={inputsErrorsSettings.name}
+          shouldReset={shouldReset}
+        />
+      </FormRow>
+      <FormRow>
+        <Input
+          label="DNI"
+          required
+          onChange={debouncedIdHandler}
+          onBlur={handleBlur("id")}
+          error={inputsErrorsSettings.id}
+          helperText={inputsErrorsSettings.id}
+          shouldReset={shouldReset}
+        />
+      </FormRow>
+      <Subtitle>Información de Inicio de Sesión</Subtitle>
+      <FormRow>
+        <PasswordInput
+          label="Contraseña"
+          required
+          onChange={debouncedPasswordHandler}
+          onBlur={handleBlur("password")}
+          error={inputsErrorsSettings.password}
+          helperText={inputsErrorsSettings.password}
+          shouldReset={shouldReset}
+          id="password"
+        />
+        <PasswordInput
+          label="Repetir contraseña"
+          required
+          onChange={debouncedRePasswordHandler}
+          onBlur={handleBlur("rePassword")}
+          error={inputsErrorsSettings.rePassword}
+          helperText={inputsErrorsSettings.rePassword}
+          shouldReset={shouldReset}
+          id="rePassword"
+        />
+      </FormRow>
+      <FormRow>
+        <Input
+          label="Correo electrónico"
+          required
+          onChange={debouncedEmailHandler}
+          onBlur={handleBlur("email")}
+          error={inputsErrorsSettings.email}
+          helperText={inputsErrorsSettings.email}
+          shouldReset={shouldReset}
+        />
+      </FormRow>
     </FormWrapper>
   );
 };
