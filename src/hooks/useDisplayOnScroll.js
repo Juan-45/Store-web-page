@@ -1,11 +1,13 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 const useDisplayOnScroll = () => {
   const latestScrollPosition = useRef(0);
   const isScrollingDown = useRef(false);
   const scrollDownDistance = useRef(0);
   const scrollUpDistance = useRef(0);
-  const [shouldDisplay, setShouldDisplay] = useState(true);
+  const timerID = useRef();
+  const [shouldDisplay, setshouldDisplay] = useState(true);
+  const [shouldRemove, setShouldRemove] = useState(false);
 
   const scrollHandler = useCallback((e) => {
     const currentScrollPosition = e.target.scrollTop;
@@ -20,7 +22,7 @@ const useDisplayOnScroll = () => {
       scrollDownDistance.current = scrollDownDistance.current + latestRange;
       scrollUpDistance.current = 0;
       if (scrollDownDistance.current >= toogleRange) {
-        setShouldDisplay(false);
+        setshouldDisplay(false);
       }
     } else {
       latestScrollPosition.current = currentScrollPosition;
@@ -28,13 +30,22 @@ const useDisplayOnScroll = () => {
       scrollUpDistance.current = scrollUpDistance.current + latestRange;
       scrollDownDistance.current = 0;
       if (scrollUpDistance.current >= toogleRange) {
-        setShouldDisplay(true);
+        setshouldDisplay(true);
       }
     }
   }, []);
-
+  useEffect(() => {
+    const timer = () => window.setTimeout(() => setShouldRemove(true), 500);
+    if (!shouldDisplay) {
+      timerID.current = timer();
+    } else {
+      window.clearTimeout(timerID.current);
+      setShouldRemove(false);
+    }
+  }, [shouldDisplay]);
   return {
     shouldDisplay,
+    shouldRemove,
     scrollHandler,
   };
 };

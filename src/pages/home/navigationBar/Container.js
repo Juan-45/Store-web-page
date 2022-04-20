@@ -1,52 +1,49 @@
 import { Grid } from "@mui/material/";
 import PaperWrapper from "./container/PaperWrapper";
-import useHideContent from "./container/useHideContent";
 
 const Container = ({
   children,
   shouldDisplay,
+  shouldRemove,
   isTouchScreen,
   scrollbarWidth,
-}) => {
-  const { shouldHide } = useHideContent(shouldDisplay);
-  return (
-    <PaperWrapper
-      shouldDisplay={shouldDisplay}
-      isTouchScreen={isTouchScreen}
-      scrollbarWidth={scrollbarWidth}
+}) => (
+  <PaperWrapper
+    shouldDisplay={shouldDisplay}
+    isTouchScreen={isTouchScreen}
+    scrollbarWidth={scrollbarWidth}
+  >
+    <Grid
+      container
+      justifyContent="center"
+      sx={{ display: shouldRemove ? "none" : "flex" }}
     >
-      <Grid
-        container
-        justifyContent="center"
-        sx={{ display: shouldHide ? "none" : "flex" }}
-      >
-        <Grid item xs={11} md={9} lg={8} xl={7}>
-          <Grid
-            container
-            item
-            sx={{
-              flexDirection: {
-                xs: "row",
-                md: "column",
-              },
-              justifyContent: {
-                xs: "space-between",
-              },
-              alignItems: {
-                xs: "flex-start",
-              },
-              height: "fit-content",
-              paddingBottom: {
-                xs: "13px",
-              },
-            }}
-          >
-            {children}
-          </Grid>
+      <Grid item xs={11} md={9} lg={8} xl={7}>
+        <Grid
+          container
+          item
+          sx={{
+            flexDirection: {
+              xs: "row",
+              md: "column",
+            },
+            justifyContent: {
+              xs: "space-between",
+            },
+            alignItems: {
+              xs: "flex-start",
+            },
+            height: "fit-content",
+            paddingBottom: {
+              xs: "13px",
+            },
+          }}
+        >
+          {children}
         </Grid>
       </Grid>
-    </PaperWrapper>
-  );
-};
+    </Grid>
+  </PaperWrapper>
+);
 
 export default Container;

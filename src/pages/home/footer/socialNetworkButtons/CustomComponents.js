@@ -2,6 +2,7 @@ import { Grid, IconButton } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const Container = ({ children }) => (
   <Grid container justifyContent="space-evenly" wrap="nowrap">
@@ -27,9 +28,16 @@ const TwitterIconButton = ({ ...props }) => (
   </IconButton>
 );
 
+const WhatsappIconButton = ({ ...props }) => (
+  <IconButton disableRipple color="primary" {...props}>
+    <WhatsAppIcon fontSize="large" />
+  </IconButton>
+);
+
 export {
   Container,
   FacebookIconButton,
   InstagramIconButton,
   TwitterIconButton,
+  WhatsappIconButton,
 };

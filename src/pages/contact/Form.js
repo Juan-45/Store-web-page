@@ -1,8 +1,9 @@
 import TextArea from "components/TextArea";
 import useHandlers from "./form/useHandlers";
-import PersonalDetailsForm from "./form/PersonalDetailsForm";
 import SubFormContainer from "components/SubFormContainer";
+import FormRow from "components/FormRow";
 import FormWrapper from "components/FormWrapper";
+import Input from "components/Input";
 
 const Form = ({
   shouldReset,
@@ -40,13 +41,6 @@ const Form = ({
     comment: touched.comment && errors.comment,
   };
 
-  const handlers = {
-    debouncedSurnameHandler,
-    debouncedNameHandler,
-    debouncedEmailHandler,
-    debouncedPhoneHandler,
-  };
-
   return (
     <FormWrapper
       formTitle="Contacto"
@@ -56,12 +50,45 @@ const Form = ({
       isSubmitted={isSubmitted}
       isSubmitting={isSubmitting}
     >
-      <PersonalDetailsForm
-        inputsErrorsSettings={inputsErrorsSettings}
-        handleBlur={handleBlur}
-        shouldReset={shouldReset}
-        handlers={handlers}
-      />
+      <FormRow>
+        <Input
+          label="Apellido"
+          required
+          onChange={debouncedSurnameHandler}
+          onBlur={handleBlur("surname")}
+          error={inputsErrorsSettings.surname}
+          helperText={inputsErrorsSettings.surname}
+          shouldReset={shouldReset}
+        />
+        <Input
+          label="Nombre"
+          required
+          onChange={debouncedNameHandler}
+          onBlur={handleBlur("name")}
+          error={inputsErrorsSettings.name}
+          helperText={inputsErrorsSettings.name}
+          shouldReset={shouldReset}
+        />
+      </FormRow>
+      <FormRow>
+        <Input
+          label="E-Mail"
+          required
+          onChange={debouncedEmailHandler}
+          onBlur={handleBlur("email")}
+          error={inputsErrorsSettings.email}
+          helperText={inputsErrorsSettings.email}
+          shouldReset={shouldReset}
+        />
+        <Input
+          label="Teléfono"
+          onChange={debouncedPhoneHandler}
+          onBlur={handleBlur("phone")}
+          error={inputsErrorsSettings.phone}
+          helperText={inputsErrorsSettings.phone}
+          shouldReset={shouldReset}
+        />
+      </FormRow>
       <SubFormContainer>
         <TextArea
           label="Comentario"

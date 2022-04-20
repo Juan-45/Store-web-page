@@ -3,6 +3,7 @@ import {
   FacebookIconButton,
   InstagramIconButton,
   TwitterIconButton,
+  WhatsappIconButton,
 } from "./socialNetworkButtons/CustomComponents";
 import Message from "components/Message";
 import useMessage from "components/message/useMessage";
@@ -30,6 +31,7 @@ const SocialNetworkButtons = () => {
         <FacebookIconButton onClick={handleCLick} />
         <InstagramIconButton onClick={handleCLick} />
         <TwitterIconButton onClick={handleCLick} />
+        <WhatsappIconButton onClick={handleCLick} />
       </Container>
     </>
   );

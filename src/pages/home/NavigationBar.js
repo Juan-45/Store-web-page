@@ -152,12 +152,13 @@ const categoriesTree = {
   ],
 };
 
-const NavigationBar = ({ shouldDisplay, scrollbarWidth }) => {
+const NavigationBar = ({ shouldDisplay, shouldRemove, scrollbarWidth }) => {
   const { isTouchScreen } = useCheckTouchScreens();
 
   return (
     <Container
       shouldDisplay={shouldDisplay}
+      shouldRemove={shouldRemove}
       isTouchScreen={isTouchScreen}
       scrollbarWidth={scrollbarWidth}
     >
