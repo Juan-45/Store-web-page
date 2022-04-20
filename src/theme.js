@@ -266,12 +266,9 @@ theme.components = {
     styleOverrides: {
       root: {
         color: "black",
-        boxShadow: theme.shadows[4],
-        background: theme.palette.primary.light,
+        boxShadow: theme.shadows[1],
+        background: theme.palette.secondary.light,
         borderRadius: "0",
-        "&:hover": {
-          background: theme.palette.primary.main,
-        },
         "&.Mui-focused": {
           background: theme.palette.grey[400],
         },
